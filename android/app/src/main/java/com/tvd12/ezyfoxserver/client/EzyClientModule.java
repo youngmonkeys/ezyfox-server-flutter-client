@@ -14,45 +14,71 @@ import com.tvd12.ezyfoxserver.client.proxy.EzyStartPingScheduleMethod;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
 
+import io.flutter.plugin.common.BinaryMessenger;
 import io.flutter.plugin.common.MethodChannel;
 
 public class EzyClientModule {
 
-    private final MethodChannel methodChannel;
+    private MethodChannel methodChannel;
+    private final AtomicBoolean registered;
     private final Map<String, EzyMethodProxy> methods;
 
-    public EzyClientModule(MethodChannel methodChannel) {
-        this.methodChannel = methodChannel;
+    public static final String CHANNEL = "com.tvd12.ezyfoxserver.client";
+    private static final EzyClientModule INSTANCE = new EzyClientModule();
+
+    private EzyClientModule() {
         this.methods = new HashMap<>();
-        this.addDefaultMethods();
+        this.registered = new AtomicBoolean(false);
+    }
+
+    public static EzyClientModule getInstance() {
+        return INSTANCE;
+    }
+
+    public void register(BinaryMessenger messenger) {
+        if(registered.compareAndSet(false, true)) {
+            doRegister(messenger);
+        }
+    }
+
+    private void doRegister(BinaryMessenger messenger) {
+        methodChannel = new MethodChannel(
+                messenger,
+                CHANNEL
+        );
+        methodChannel.setMethodCallHandler((call, result) -> {
+            EzyMethodProxy method = methods.get(call.method);
+            if(method == null)
+                throw new IllegalArgumentException("has no method with name: " + call.method);
+            Map args = (Map)call.arguments;
+            int methodType = (Integer)args.getOrDefault("ezy.method_type", 1);
+            method.validate(args);
+            if(methodType <= 1) {
+                method.invoke(args);
+            }
+        });
     }
 
     public void run(String method, Map params) {
-        run2(method, params, null);
+        runWithCallback(method, params, null);
     }
 
-    public void run2(String method, Map params, MethodChannel.Result success) {
-        run3(method, params, success, null);
-    }
-
-    public void run3(
-            String method,
-            Map params,
-            MethodChannel.Result success, MethodChannel.Result failure) {
+    public void runWithCallback(String method, Map params, MethodChannel.Result callback) {
         EzyMethodProxy func = methods.get(method);
         if(func == null)
             throw new IllegalArgumentException("has no method: " + method);
         try {
             func.validate(params);
             Object result = func.invoke(params);
-            if(success != null)
-                success.success(result);
+            if(callback != null)
+                callback.success(result);
         }
         catch (EzyMethodCallException e) {
-            if(failure != null) {
+            if(callback != null) {
                 Log.w("ezyfox-client", "call method: " + method + " with params: " + params + " error: " + e.getMessage());
-                failure.success(e.toDataMap());
+                callback.error(e.getCode(), e.getMessage(), e.toString());
             }
         }
         catch (Exception e) {
