@@ -1,9 +1,10 @@
 package com.tvd12.ezyfoxserver.client.proxy;
 
-import com.facebook.react.bridge.Map;
 import com.tvd12.ezyfoxserver.client.EzyClient;
 import com.tvd12.ezyfoxserver.client.EzyMethodNames;
 import com.tvd12.ezyfoxserver.client.socket.EzyPingSchedule;
+
+import java.util.Map;
 
 /**
  * Created by tavandung12 on 10/25/18.

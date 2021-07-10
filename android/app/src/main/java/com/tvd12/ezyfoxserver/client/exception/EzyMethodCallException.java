@@ -1,5 +1,8 @@
 package com.tvd12.ezyfoxserver.client.exception;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by tavandung12 on 10/24/18.
  */
@@ -27,5 +30,12 @@ public class EzyMethodCallException extends RuntimeException {
     @Override
     public String getMessage() {
         return message;
+    }
+
+    public Map<String, String> toDataMap() {
+        Map<String, String> map = new HashMap<>();
+        map.put("code", code);
+        map.put("message", message);
+        return map;
     }
 }
