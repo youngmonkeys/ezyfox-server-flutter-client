@@ -49,16 +49,16 @@ public class EzyClientModule {
                 CHANNEL
         );
         methodChannel.setMethodCallHandler((call, result) -> {
-            EzyMethodProxy method = methods.get(call.method);
-            if(method == null)
-                throw new IllegalArgumentException("has no method with name: " + call.method);
             Map args = (Map)call.arguments;
             int methodType = (Integer)args.getOrDefault("ezy.method_type", 1);
-            method.validate(args);
             if(methodType <= 1) {
-                method.invoke(args);
+                run(call.method, args);
+            }
+            else {
+                runWithCallback(call.method, args, result);
             }
         });
+        this.addDefaultMethods();
     }
 
     public void run(String method, Map params) {

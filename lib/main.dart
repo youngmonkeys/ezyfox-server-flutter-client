@@ -78,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter++;
     });
 
-    _getBatteryLevel();
+    // _getBatteryLevel();
   }
 
   @override
