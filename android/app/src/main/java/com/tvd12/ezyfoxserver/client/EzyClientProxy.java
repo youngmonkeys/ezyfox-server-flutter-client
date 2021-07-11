@@ -19,21 +19,21 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import io.flutter.plugin.common.BinaryMessenger;
 import io.flutter.plugin.common.MethodChannel;
 
-public class EzyClientModule {
+public class EzyClientProxy {
 
     private MethodChannel methodChannel;
     private final AtomicBoolean registered;
     private final Map<String, EzyMethodProxy> methods;
 
     public static final String CHANNEL = "com.tvd12.ezyfoxserver.client";
-    private static final EzyClientModule INSTANCE = new EzyClientModule();
+    private static final EzyClientProxy INSTANCE = new EzyClientProxy();
 
-    private EzyClientModule() {
+    private EzyClientProxy() {
         this.methods = new HashMap<>();
         this.registered = new AtomicBoolean(false);
     }
 
-    public static EzyClientModule getInstance() {
+    public static EzyClientProxy getInstance() {
         return INSTANCE;
     }
 
