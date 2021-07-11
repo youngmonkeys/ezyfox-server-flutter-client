@@ -49,31 +49,19 @@ public class EzyClientProxy {
                 CHANNEL
         );
         methodChannel.setMethodCallHandler((call, result) -> {
-            Map args = (Map)call.arguments;
-            int methodType = (Integer)args.getOrDefault("ezy.method_type", 1);
-            if(methodType <= 1) {
-                run(call.method, args);
-            }
-            else {
-                runWithCallback(call.method, args, result);
-            }
+            run(call.method, (Map)call.arguments, result);
         });
         this.addDefaultMethods();
     }
 
-    public void run(String method, Map params) {
-        runWithCallback(method, params, null);
-    }
-
-    public void runWithCallback(String method, Map params, MethodChannel.Result callback) {
+    public void run(String method, Map params, MethodChannel.Result callback) {
         EzyMethodProxy func = methods.get(method);
         if(func == null)
             throw new IllegalArgumentException("has no method: " + method);
         try {
             func.validate(params);
             Object result = func.invoke(params);
-            if(callback != null)
-                callback.success(result);
+            callback.success(result);
         }
         catch (EzyMethodCallException e) {
             if(callback != null) {
