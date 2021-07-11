@@ -47,14 +47,7 @@ std::vector<EzyClient*> clientVector;
                       methodChannelWithName:@"com.tvd12.ezyfoxserver.client"
                       binaryMessenger:messager];
     [_methodChannel setMethodCallHandler:^(FlutterMethodCall* call, FlutterResult result) {
-        NSDictionary* args = call.arguments;
-        NSNumber* methodType = [args valueForKey:@"ezy.method_type"];
-        if(methodType == nil || methodType.intValue <= 1) {
-            [EzyClientProxy.getInstance run:call.method params:args];
-        }
-        else {
-            [EzyClientProxy.getInstance runWithCallback:call.method params:args callback:result];
-        }
+        [EzyClientProxy.getInstance run:call.method params:call.arguments callback:result];
     }];
     [self addDefaultMethods];
     
@@ -64,13 +57,7 @@ std::vector<EzyClient*> clientVector;
     [thread start];
 }
 
--(void)run:(NSString*)method params:(NSDictionary*)params {
-    [self runWithCallback:method params:params callback: nil];
-}
-
--(void)runWithCallback:(NSString*)method
-                params:(NSDictionary*)params
-              callback:(FlutterResult)callback {
+-(void)run:(NSString*)method params:(NSDictionary*)params callback:(FlutterResult)callback {
     EzyMethodProxy* func = [_methods valueForKey:method];
     if(!func) {
         NSString* exceptionReason = [NSString stringWithFormat:@"has no method: %@", method];
