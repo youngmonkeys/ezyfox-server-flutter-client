@@ -1,3 +1,4 @@
+import 'ezy_handlers.dart';
 import 'ezy_managers.dart';
 
 class EzySetup {
@@ -22,7 +23,7 @@ class EzySetup {
   EzyAppSetup setupApp(String appName) {
     var appSetup = this.appSetupByAppName[appName];
     if(appSetup == null) {
-      var appDataHandlers = this.handlerManager.getAppDataHandlers(appName)
+      var appDataHandlers = this.handlerManager.getAppDataHandlers(appName);
       appSetup = EzyAppSetup(appDataHandlers, this);
       this.appSetupByAppName[appName] = appSetup;
     }
@@ -35,8 +36,8 @@ class EzyAppSetup {
   late EzyAppDataHandlers dataHandlers;
 
   EzyAppSetup(EzyAppDataHandlers dataHandlers, EzySetup parent) {
-    this.parent = parent
-    this.dataHandlers = dataHandlers
+    this.parent = parent;
+    this.dataHandlers = dataHandlers;
   }
 
   EzyAppSetup addDataHandler(String cmd, EzyAppDataHandler handler) {

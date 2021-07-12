@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'ezyclient/ezy_clients.dart';
+import 'ezyclient/ezy_client.dart';
+import 'ezyclient/ezy_config.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -52,19 +56,16 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   static const platform = const MethodChannel('samples.flutter.dev/battery');
 
-  String _batteryLevel = 'Unknown battery level.';
+  String socketState = 'Socket has not connected yet';
 
-  Future<void> _getBatteryLevel() async {
-    String batteryLevel;
-    try {
-      final int result = await platform.invokeMethod('getBatteryLevel');
-      batteryLevel = 'Battery level at $result % .';
-    } on PlatformException catch (e) {
-      batteryLevel = "Failed to get battery level: '${e.message}'.";
-    }
-
+  Future<void> connectToServer() async {
+    EzyConfig config = EzyConfig();
+    config.clientName = "hello";
+    EzyClients clients = EzyClients.getInstance();
+    clients.processEvents();
+    EzyClient client = clients.newDefaultClient(config);
     setState(() {
-      _batteryLevel = batteryLevel;
+      socketState = "Socket connected";
     });
   }
 
@@ -78,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter++;
     });
 
-    // _getBatteryLevel();
+    connectToServer();
   }
 
   @override
@@ -123,10 +124,10 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.headline4,
             ),
             const Text(
-              'Battery Level: ',
+              'Socket state: ',
             ),
             Text(
-              '$_batteryLevel',
+              '$socketState',
               style: Theme.of(context).textTheme.headline4,
             )
           ],

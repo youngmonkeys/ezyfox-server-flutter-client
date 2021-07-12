@@ -71,9 +71,9 @@ class EzyConnectionSuccessHandler extends EzyAbstractEventHandler {
 
   String? generateClientKey() {
     if(client.enableSSL) {
-      var keyPair = EzyRSAProxy.getInstance().generateKeyPair()
-      client.privateKey = keyPair.privateKey;
-      return keyPair.publicKey;
+      // var keyPair = EzyRSAProxy.getInstance().generateKeyPair()
+      // client.privateKey = keyPair.privateKey;
+      // return keyPair.publicKey;
     }
     return null;
   }
@@ -93,21 +93,21 @@ class EzyConnectionFailureHandler extends EzyAbstractEventHandler {
 
   @override
   void handle(Map event) {
-    var reason = event["reason"] as int
-    var reasonName = EzyConnectionFailedReasons.getConnectionFailedReasonName(reason)
-    EzyLogger.warn("connection failure, reason = \(reasonName)")
+    var reason = event["reason"] as int;
+    var reasonName = EzyConnectionFailedReasons.getConnectionFailedReasonName(reason);
+    EzyLogger.warn("connection failure, reason = \(reasonName)");
     var config = this.client.config;
     var reconnectConfig = config.reconnect;
-    var should = this.shouldReconnect(event)
+    var should = this.shouldReconnect(event);
     var reconnectEnable = reconnectConfig.enable;
     var mustReconnect = reconnectEnable && should;
-    var reconnecting = false;
-    this.client.setStatus(status: EzyConnectionStatus.FAILURE)
+    this.client.setStatus(EzyConnectionStatus.FAILURE);
     if(mustReconnect) {
-    reconnecting = client.reconnect()
-    }
-    if(!reconnecting) {
-    this.control(event: event)
+      client.reconnect().then((value) => {
+        if(value) {
+          control(event)
+        }
+      });
     }
   }
 
@@ -137,7 +137,11 @@ class EzyDisconnectionHandler extends EzyAbstractEventHandler {
       should;
     this.client.setStatus(EzyConnectionStatus.DISCONNECTED);
     if(mustReconnect) {
-      client.reconnect().then((value) => control(event));
+      client.reconnect().then((value) => {
+        if(value) {
+          control(event)
+        }
+      });
     }
   }
 
@@ -169,7 +173,7 @@ class EzyHandshakeHandler extends EzyAbstractDataHandler {
   void handle(List data) {
     this.startPing();
     if(this.doHandle(data)) {
-      this.handleLogin()
+      this.handleLogin();
     }
     this.postHandle(data);
   }
@@ -180,7 +184,7 @@ class EzyHandshakeHandler extends EzyAbstractDataHandler {
     if(client.enableSSL) {
     var sessionKey = decrypteSessionKey(data[3]);
     if(sessionKey == null) {
-    return false;
+      return false;
     }
     client.setSessionKey(sessionKey);
     }
@@ -197,7 +201,8 @@ class EzyHandshakeHandler extends EzyAbstractDataHandler {
       return null;
     }
     var privateKey = client.privateKey;
-    return EzyRSAProxy.getInstance().decrypt(encyptedSessionKey, privateKey);
+    // return EzyRSAProxy.getInstance().decrypt(encyptedSessionKey, privateKey);
+    return null;
   }
 
   void postHandle(List data) {
