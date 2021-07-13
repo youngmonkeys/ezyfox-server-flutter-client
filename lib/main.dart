@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
+import 'ezyclient/ezy_constants.dart';
+import 'ezyclient/ezy_handlers.dart';
 import 'ezyclient/ezy_clients.dart';
 import 'ezyclient/ezy_client.dart';
 import 'ezyclient/ezy_config.dart';
@@ -54,7 +55,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  static const platform = const MethodChannel('samples.flutter.dev/battery');
 
   String socketState = 'Socket has not connected yet';
 
@@ -63,6 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
     config.clientName = "hello";
     EzyClients clients = EzyClients.getInstance();
     EzyClient client = clients.newDefaultClient(config);
+    client.setup.addDataHandler(EzyCommand.HANDSHAKE, _SocketHandshakeHandler());
     client.connect("tvd12.com", 3005);
     setState(() {
       socketState = "Socket connected";
@@ -139,5 +140,17 @@ class _MyHomePageState extends State<MyHomePage> {
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+}
+
+class _SocketHandshakeHandler extends EzyHandshakeHandler {
+  @override
+  List getLoginRequest() {
+    var request = [];
+    request.add("example");
+    request.add("username");
+    request.add("password");
+    request.add([]);
+    return request;
   }
 }

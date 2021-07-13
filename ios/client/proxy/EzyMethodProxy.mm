@@ -142,7 +142,7 @@ public:
         [params setValue:[EzyNativeStrings newNSString:mClient->getName().c_str()] forKey:@"clientName"];
         [params setValue:[EzyNativeStrings newNSString:eventTypeName.c_str()] forKey:@"eventType"];
         [params setValue:eventData forKey:@"data"];
-        [mMethodChannel invokeMethod:@"onSocketEvent" arguments:params];
+        [mMethodChannel invokeMethod:@"ezy.event" arguments:params];
     }
 };
 
@@ -171,7 +171,7 @@ public:
         [params setValue:[EzyNativeStrings newNSString:mClient->getName().c_str()] forKey:@"clientName"];
         [params setValue:[EzyNativeStrings newNSString:commandName.c_str()] forKey:@"command"];
         [params setValue:commandData forKey:@"data"];
-        [mMethodChannel invokeMethod:@"onSocketData" arguments:params];
+        [mMethodChannel invokeMethod:@"ezy.data" arguments:params];
     }
 };
 
@@ -273,7 +273,7 @@ FlutterMethodChannel* mMethodChannel;
 
 - (NSObject *)invoke:(NSDictionary *)params {
     EzyClient* client = getClient(params);
-    int reason = 0;
+    int reason = constant::Close;
     if([params valueForKey:@"reason"])
         reason = [[params valueForKey:@"reason"] intValue];
     client->disconnect(reason);

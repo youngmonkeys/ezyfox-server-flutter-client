@@ -43,6 +43,7 @@ std::vector<EzyClient*> clientVector;
     if (_registed) {
         return;
     }
+    _registed = true;
     _methodChannel = [FlutterMethodChannel
                       methodChannelWithName:@"com.tvd12.ezyfoxserver.client"
                       binaryMessenger:messager];

@@ -43,7 +43,6 @@ public class EzyClientProxy {
     public void register(BinaryMessenger messenger) {
         if(registered.compareAndSet(false, true)) {
             doRegister(messenger);
-            mainEventsLoop.start();
         }
     }
 
@@ -56,6 +55,7 @@ public class EzyClientProxy {
             run(call.method, (Map)call.arguments, result);
         });
         this.addDefaultMethods();
+        this.mainEventsLoop.start();
     }
 
     public void run(String method, Map params, MethodChannel.Result callback) {

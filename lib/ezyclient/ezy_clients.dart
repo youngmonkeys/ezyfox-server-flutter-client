@@ -7,9 +7,9 @@ import 'ezy_logger.dart';
 class EzyClients {
   late String defaultClientName;
   late Map<String, EzyClient> clients;
-  static EzyClients _INSTANCE = EzyClients();
+  static final EzyClients _INSTANCE = EzyClients._();
 
-  EzyClients() {
+  EzyClients._() {
     this.defaultClientName = "";
     this.clients = Map();
   }

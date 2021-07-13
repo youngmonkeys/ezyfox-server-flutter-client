@@ -103,7 +103,7 @@ class EzyNativeEventHandler implements EzyEventHandler<EzyEvent> {
         params.put("clientName", client.getName());
         params.put("eventType", eventTypeName);
         params.put("data", eventData);
-        methodChannel.invokeMethod("onSocketEvent", params);
+        methodChannel.invokeMethod("ezy.event", params);
     }
 }
 
@@ -128,6 +128,6 @@ class EzyNativeDataHandler implements EzyDataHandler {
         params.put("clientName", client.getName());
         params.put("command", commandName);
         params.put("data", commandData);
-        methodChannel.invokeMethod("onSocketData", params);
+        methodChannel.invokeMethod("ezy.data", params);
     }
 }

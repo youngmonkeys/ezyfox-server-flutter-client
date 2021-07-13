@@ -17,7 +17,7 @@ class EzyClient {
   late String name;
   late EzyZone? zone;
   late EzyUser? me;
-  late EzySetup? setup;
+  late EzySetup setup;
   late EzyHandlerManager handlerManager;
   late String? privateKey;
   late int sessionId;
