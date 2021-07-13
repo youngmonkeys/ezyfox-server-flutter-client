@@ -1,7 +1,7 @@
 import 'dart:core';
 
 class EzyConfig {
-  late String zoneName;
+  late String zoneName = "";
   late String clientName;
   late bool enableSSL = false;
   late bool enableDebug = false;

@@ -11,6 +11,7 @@ import com.tvd12.ezyfoxserver.client.proxy.EzyReconnectMethod;
 import com.tvd12.ezyfoxserver.client.proxy.EzySendMethod;
 import com.tvd12.ezyfoxserver.client.proxy.EzySetStatusMethod;
 import com.tvd12.ezyfoxserver.client.proxy.EzyStartPingScheduleMethod;
+import com.tvd12.ezyfoxserver.client.socket.EzyMainEventsLoop;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,6 +25,7 @@ public class EzyClientProxy {
     private MethodChannel methodChannel;
     private final AtomicBoolean registered;
     private final Map<String, EzyMethodProxy> methods;
+    private final EzyMainEventsLoop mainEventsLoop;
 
     public static final String CHANNEL = "com.tvd12.ezyfoxserver.client";
     private static final EzyClientProxy INSTANCE = new EzyClientProxy();
@@ -31,6 +33,7 @@ public class EzyClientProxy {
     private EzyClientProxy() {
         this.methods = new HashMap<>();
         this.registered = new AtomicBoolean(false);
+        this.mainEventsLoop = new EzyMainEventsLoop();
     }
 
     public static EzyClientProxy getInstance() {
@@ -40,6 +43,7 @@ public class EzyClientProxy {
     public void register(BinaryMessenger messenger) {
         if(registered.compareAndSet(false, true)) {
             doRegister(messenger);
+            mainEventsLoop.start();
         }
     }
 

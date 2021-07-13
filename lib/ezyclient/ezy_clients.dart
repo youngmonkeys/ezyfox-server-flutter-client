@@ -5,13 +5,11 @@ import 'ezy_config.dart';
 import 'ezy_logger.dart';
 
 class EzyClients {
-  late bool started;
   late String defaultClientName;
   late Map<String, EzyClient> clients;
   static EzyClients _INSTANCE = EzyClients();
 
   EzyClients() {
-    this.started = false;
     this.defaultClientName = "";
     this.clients = Map();
   }
@@ -46,19 +44,5 @@ class EzyClients {
 
   EzyClient getDefaultClient() {
     return this.clients[defaultClientName]!;
-  }
-
-  void processEvents() {
-    if(started) {
-      EzyLogger.info("clients has already started");
-    }
-    else {
-      started = true;
-      startEventsLoop();
-    }
-  }
-
-  void startEventsLoop() {
-    EzyProxy.run("processEvents", {});
   }
 }

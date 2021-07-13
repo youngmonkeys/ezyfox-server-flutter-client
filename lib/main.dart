@@ -62,8 +62,8 @@ class _MyHomePageState extends State<MyHomePage> {
     EzyConfig config = EzyConfig();
     config.clientName = "hello";
     EzyClients clients = EzyClients.getInstance();
-    clients.processEvents();
     EzyClient client = clients.newDefaultClient(config);
+    client.connect("tvd12.com", 3005);
     setState(() {
       socketState = "Socket connected";
     });
