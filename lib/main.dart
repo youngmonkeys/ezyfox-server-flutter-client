@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'ezyclient/ezy_constants.dart';
+import 'ezyclient/ezy_entities.dart';
 import 'ezyclient/ezy_handlers.dart';
 import 'ezyclient/ezy_clients.dart';
 import 'ezyclient/ezy_client.dart';
 import 'ezyclient/ezy_config.dart';
+
+const ZONE_NAME = "example";
+const APP_NAME = "hello-world";
 
 void main() {
   runApp(const MyApp());
@@ -64,10 +68,15 @@ class _MyHomePageState extends State<MyHomePage> {
     EzyClients clients = EzyClients.getInstance();
     EzyClient client = clients.newDefaultClient(config);
     client.setup.addDataHandler(EzyCommand.HANDSHAKE, _SocketHandshakeHandler());
+    client.setup.addDataHandler(EzyCommand.LOGIN, _SocketLoginSuccessHandler());
+    client.setup.addDataHandler(EzyCommand.APP_ACCESS, _SocketAppAccessHandler());
+    var appSetup = client.setup.setupApp(APP_NAME);
+    appSetup.addDataHandler("greet", _SocketGreetResponseHandler((message) {
+      setState(() {
+        socketState = message;
+      });
+    }));
     client.connect("tvd12.com", 3005);
-    setState(() {
-      socketState = "Socket connected";
-    });
   }
 
   void _incrementCounter() {
@@ -125,11 +134,11 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.headline4,
             ),
             const Text(
-              'Socket state: ',
+              'Socket message: ',
             ),
             Text(
               '$socketState',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headline6,
             )
           ],
         ),
@@ -152,5 +161,33 @@ class _SocketHandshakeHandler extends EzyHandshakeHandler {
     request.add("password");
     request.add([]);
     return request;
+  }
+}
+
+class _SocketLoginSuccessHandler extends EzyLoginSuccessHandler {
+  @override
+  void handleLoginSuccess(responseData) {
+    client.send(EzyCommand.APP_ACCESS, [APP_NAME]);
+  }
+}
+
+class _SocketAppAccessHandler extends EzyAppAccessHandler {
+  @override
+  void postHandle(EzyApp app, List data) {
+    app.send("greet", {"who": "Flutter's developer"});
+  }
+}
+
+class _SocketGreetResponseHandler extends EzyAppDataHandler<Map> {
+
+  late Function(String) _callback;
+
+  _SocketGreetResponseHandler(Function(String) callback) {
+    _callback = callback;
+  }
+
+  @override
+  void handle(EzyApp app, Map data) {
+    _callback(data["message"]);
   }
 }
