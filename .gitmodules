@@ -1,7 +1,3 @@
-[submodule "android-client-sdk"]
-  path = android/socket
-  url = https://github.com/youngmonkeys/ezyfox-server-android-client.git
-  
 [submodule "swift-client-sdk"]
   path = ios/client/socket
   url = https://github.com/youngmonkeys/ezyfox-server-cpp-client.git
