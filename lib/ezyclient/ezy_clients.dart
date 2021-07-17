@@ -1,8 +1,7 @@
-import 'package:hello_flutter/ezyclient/ezy_proxy.dart';
+import 'ezy_proxy.dart';
 
 import 'ezy_client.dart';
 import 'ezy_config.dart';
-import 'ezy_logger.dart';
 
 class EzyClients {
   late String defaultClientName;

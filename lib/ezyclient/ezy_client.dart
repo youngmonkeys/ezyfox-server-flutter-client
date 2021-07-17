@@ -1,9 +1,7 @@
 import 'dart:typed_data';
 
-import 'package:hello_flutter/ezyclient/ezy_config.dart';
-import 'package:hello_flutter/ezyclient/ezy_managers.dart';
-import 'package:hello_flutter/ezyclient/ezy_proxy.dart';
-
+import 'ezy_config.dart';
+import 'ezy_managers.dart';
 import 'ezy_constants.dart';
 import 'ezy_entities.dart';
 import 'ezy_logger.dart';
@@ -19,7 +17,7 @@ class EzyClient {
   late EzyUser? me;
   late EzySetup setup;
   late EzyHandlerManager handlerManager;
-  late String? privateKey;
+  late Uint8List? privateKey;
   late int sessionId;
   late String? sessionToken;
   late Uint8List? sessionKey;
@@ -68,7 +66,7 @@ class EzyClient {
     var shouldEncrypted = encrypted;
     if(encrypted && sessionKey == null) {
       if(enableDebug) {
-      shouldEncrypted = false;
+        shouldEncrypted = false;
       }
       else {
         EzyLogger.error(
@@ -111,9 +109,9 @@ class EzyClient {
 
   EzyApp? getApp() {
     if(zone != null) {
-    var appManager = zone!.appManager;
-    var app = appManager.getApp();
-    return app;
+      var appManager = zone!.appManager;
+      var app = appManager.getApp();
+      return app;
     }
     return null;
   }

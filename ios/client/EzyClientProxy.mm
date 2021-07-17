@@ -67,10 +67,8 @@ std::vector<EzyClient*> clientVector;
     @try {
         [func validate:params];
         NSObject* result = [func invoke:params];
-        NSMutableArray* array = [[NSMutableArray alloc]init];
-        [array addObject:result];
         if(callback) {
-            callback(array);
+            callback(result);
         }
     }
     @catch (EzyMethodCallException* e) {
@@ -109,6 +107,9 @@ std::vector<EzyClient*> clientVector;
     [self addMethod:[[EzySendMethod alloc]init]];
     [self addMethod:[[EzySetStatusMethod alloc]init]];
     [self addMethod:[[EzyStartPingScheduleMethod alloc]init]];
+    [self addMethod:[[EzyGenerateKeyPairMethod alloc]init]];
+    [self addMethod:[[EzyRsaDecryptMethod alloc]init]];
+    [self addMethod:[[EzyLogMethod alloc]init]];
 }
 
 -(void)addMethod:(EzyMethodProxy*)method {

@@ -11,8 +11,10 @@
 #include "EzyHeaders.h"
 #import "EzyMethodProxy.h"
 #import "../EzyMethodNames.h"
+#import "../util/NSByteArray.h"
 #import "../util/EzyNativeStrings.h"
 #import "../serializer/EzyNativeSerializers.h"
+#import "../codec/EzyEncryptionProxy.h"
 
 EZY_USING_NAMESPACE;
 EZY_USING_NAMESPACE::config;
@@ -22,6 +24,7 @@ EZY_USING_NAMESPACE::event;
 EZY_USING_NAMESPACE::handler;
 EZY_USING_NAMESPACE::entity;
 EZY_USING_NAMESPACE::socket;
+EZY_USING_NAMESPACE::codec;
 
 static std::map<EzyEventType, std::string> sNativeEventTypeNames = {
     {ConnectionSuccess, "CONNECTION_SUCCESS"},
@@ -337,5 +340,54 @@ FlutterMethodChannel* mMethodChannel;
 
 - (NSString *)getName {
     return METHOD_START_PING_SCHEDULE;
+}
+@end
+
+//======================================================
+@implementation EzyGenerateKeyPairMethod
+
+- (NSObject *)invoke:(NSDictionary *)params {
+    EzyKeyPairProxy* keyPair = [[EzyRSAProxy getInstance] generateKeyPair];
+    NSData* publicKey = [[keyPair publicKey] dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:NO];
+    NSData* privateKey = [[keyPair privateKey] dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:NO];
+    NSDictionary* answer = [NSMutableDictionary dictionary];
+    [answer setValue:[FlutterStandardTypedData typedDataWithBytes:publicKey] forKey:@"publicKey"];
+    [answer setValue:[FlutterStandardTypedData typedDataWithBytes:privateKey] forKey:@"privateKey"];
+    return answer;
+}
+
+- (NSString *)getName {
+    return METHOD_GENERATE_KEY_PAIR;
+}
+@end
+
+//======================================================
+@implementation EzyRsaDecryptMethod
+
+- (NSObject *)invoke:(NSDictionary *)params {
+    FlutterStandardTypedData* data = params[@"message"];
+    FlutterStandardTypedData* privateKey = params[@"privateKey"];
+    NSData* decryption = [[EzyRSAProxy getInstance] decrypt: [data data]
+                                                 privateKey:[privateKey data]];
+    return [FlutterStandardTypedData typedDataWithBytes:decryption];
+}
+
+- (NSString *)getName {
+    return METHOD_RSA_DECRYPT;
+}
+
+@end
+
+//======================================================
+@implementation EzyLogMethod
+
+- (NSObject *)invoke:(NSDictionary *)params {
+    NSString* message = params[@"message"];
+    NSLog(@"%@", message);
+    return [NSNumber numberWithBool:TRUE];
+}
+
+- (NSString *)getName {
+    return METHOD_LOG;
 }
 @end
