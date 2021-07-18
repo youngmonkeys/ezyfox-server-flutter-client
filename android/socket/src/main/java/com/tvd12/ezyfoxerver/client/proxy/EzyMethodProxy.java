@@ -13,7 +13,7 @@ public abstract class EzyMethodProxy {
 
     protected EzyClients clients = EzyClients.getInstance();
 
-    public abstract Object invoke(Map params);
+    public abstract Object invoke(Map params) throws Exception;
     public abstract String getName();
 
     public void validate(Map params) {}

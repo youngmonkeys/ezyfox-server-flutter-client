@@ -80,6 +80,9 @@
 		F17E475F269A6C4F00668CED /* EzyUTSocketClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F17E470D269A6C4F00668CED /* EzyUTSocketClient.cpp */; };
 		F17E4760269A6C4F00668CED /* EzyUdpSocketClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F17E470E269A6C4F00668CED /* EzyUdpSocketClient.cpp */; };
 		F17E4761269A6C4F00668CED /* EzySocketWriter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F17E470F269A6C4F00668CED /* EzySocketWriter.cpp */; };
+		F17E476726A2BFF700668CED /* NSByArray.m in Sources */ = {isa = PBXBuildFile; fileRef = F17E476626A2BFF700668CED /* NSByArray.m */; };
+		F17E476B26A2C00300668CED /* EzyEncryptionProxy.mm in Sources */ = {isa = PBXBuildFile; fileRef = F17E476A26A2C00300668CED /* EzyEncryptionProxy.mm */; };
+		F17E476F26A2C01500668CED /* EzyNSNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = F17E476D26A2C01500668CED /* EzyNSNumber.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -275,6 +278,12 @@
 		F17E470E269A6C4F00668CED /* EzyUdpSocketClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyUdpSocketClient.cpp; sourceTree = "<group>"; };
 		F17E470F269A6C4F00668CED /* EzySocketWriter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzySocketWriter.cpp; sourceTree = "<group>"; };
 		F17E4710269A6C4F00668CED /* EzyMainEventsLoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyMainEventsLoop.h; sourceTree = "<group>"; };
+		F17E476426A2BFF700668CED /* NSByteArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSByteArray.h; sourceTree = "<group>"; };
+		F17E476626A2BFF700668CED /* NSByArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSByArray.m; sourceTree = "<group>"; };
+		F17E476926A2C00300668CED /* EzyEncryptionProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyEncryptionProxy.h; sourceTree = "<group>"; };
+		F17E476A26A2C00300668CED /* EzyEncryptionProxy.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EzyEncryptionProxy.mm; sourceTree = "<group>"; };
+		F17E476D26A2C01500668CED /* EzyNSNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EzyNSNumber.m; sourceTree = "<group>"; };
+		F17E476E26A2C01500668CED /* EzyNSNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyNSNumber.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -343,16 +352,18 @@
 		F17E4655269A6C4E00668CED /* client */ = {
 			isa = PBXGroup;
 			children = (
+				F17E476C26A2C01500668CED /* math */,
+				F17E476826A2C00300668CED /* codec */,
 				F17E4656269A6C4E00668CED /* serializer */,
 				F17E4662269A6C4E00668CED /* proxy */,
 				F17E4665269A6C4E00668CED /* util */,
-				F17E4668269A6C4E00668CED /* EzyMethodNames.h */,
 				F17E4669269A6C4E00668CED /* Prefix.pch */,
 				F17E466B269A6C4E00668CED /* EzyClientProxy.mm */,
+				F17E4671269A6C4E00668CED /* EzyClientProxy.h */,
 				F17E466C269A6C4E00668CED /* AppConfigDefine.h */,
 				F17E466D269A6C4E00668CED /* EzyMethodNames.mm */,
+				F17E4668269A6C4E00668CED /* EzyMethodNames.h */,
 				F17E466E269A6C4E00668CED /* exception */,
-				F17E4671269A6C4E00668CED /* EzyClientProxy.h */,
 				F17E4672269A6C4E00668CED /* socket */,
 			);
 			path = client;
@@ -389,6 +400,8 @@
 			children = (
 				F17E4666269A6C4E00668CED /* EzyNativeStrings.mm */,
 				F17E4667269A6C4E00668CED /* EzyNativeStrings.h */,
+				F17E476626A2BFF700668CED /* NSByArray.m */,
+				F17E476426A2BFF700668CED /* NSByteArray.h */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -727,6 +740,24 @@
 			path = socket;
 			sourceTree = "<group>";
 		};
+		F17E476826A2C00300668CED /* codec */ = {
+			isa = PBXGroup;
+			children = (
+				F17E476926A2C00300668CED /* EzyEncryptionProxy.h */,
+				F17E476A26A2C00300668CED /* EzyEncryptionProxy.mm */,
+			);
+			path = codec;
+			sourceTree = "<group>";
+		};
+		F17E476C26A2C01500668CED /* math */ = {
+			isa = PBXGroup;
+			children = (
+				F17E476D26A2C01500668CED /* EzyNSNumber.m */,
+				F17E476E26A2C01500668CED /* EzyNSNumber.h */,
+			);
+			path = math;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -756,7 +787,7 @@
 		97C146E61CF9000F007C117D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					97C146ED1CF9000F007C117D = {
@@ -862,6 +893,7 @@
 				F17E4740269A6C4F00668CED /* EzyDataDecoder.cpp in Sources */,
 				F17E475D269A6C4F00668CED /* EzySocketPool.cpp in Sources */,
 				F17E472A269A6C4F00668CED /* EzyDataHandlers.cpp in Sources */,
+				F17E476B26A2C00300668CED /* EzyEncryptionProxy.mm in Sources */,
 				F17E4750269A6C4F00668CED /* EzyReleasePool.cpp in Sources */,
 				F17E472E269A6C4F00668CED /* EzyPluginDataHandler.cpp in Sources */,
 				F17E473F269A6C4F00668CED /* EzyMessage.cpp in Sources */,
@@ -874,6 +906,7 @@
 				F17E4752269A6C4F00668CED /* EzyRequest.cpp in Sources */,
 				F17E472D269A6C4F00668CED /* EzyPluginDataHandlers.cpp in Sources */,
 				F17E473D269A6C4F00668CED /* EzyUser.cpp in Sources */,
+				F17E476F26A2C01500668CED /* EzyNSNumber.m in Sources */,
 				F17E4714269A6C4F00668CED /* EzyNativeDataSerializer.mm in Sources */,
 				F17E4736269A6C4F00668CED /* EzyZone.cpp in Sources */,
 				F17E4749269A6C4F00668CED /* EzyPingManager.cpp in Sources */,
@@ -906,6 +939,7 @@
 				F17E4757269A6C4F00668CED /* EzyTcpSocketClient.cpp in Sources */,
 				F17E4746269A6C4F00668CED /* EzyPluginManager.cpp in Sources */,
 				F17E471E269A6C4F00668CED /* EzyMethodCallException.mm in Sources */,
+				F17E476726A2BFF700668CED /* NSByArray.m in Sources */,
 				F17E472B269A6C4F00668CED /* EzyEventHandler.cpp in Sources */,
 				F17E4739269A6C4F00668CED /* EzyNull.cpp in Sources */,
 				F17E4747269A6C4F00668CED /* EzyAppManager.cpp in Sources */,
@@ -966,6 +1000,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -984,7 +1019,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = iphoneos;
@@ -1039,6 +1074,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1063,7 +1099,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1094,6 +1130,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1112,7 +1149,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = iphoneos;

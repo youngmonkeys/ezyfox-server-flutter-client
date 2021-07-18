@@ -39,4 +39,16 @@ NS_ASSUME_NONNULL_BEGIN
 @interface EzyStartPingScheduleMethod : EzyMethodProxy
 @end
 
+@interface EzyGenerateKeyPairMethod : EzyMethodProxy
+@end
+
+@interface EzyRsaDecryptMethod : EzyMethodProxy
+@end
+
+@interface EzyLogMethod : EzyMethodProxy
+@end
+
+@interface EzySetSessionKeyMethod : EzyMethodProxy
+@end
+
 NS_ASSUME_NONNULL_END

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_flutter/ezyclient/ezy_logger.dart';
 
 import 'ezyclient/ezy_constants.dart';
 import 'ezyclient/ezy_entities.dart';
@@ -61,10 +62,13 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   String socketState = 'Socket has not connected yet';
+  String sslMessage = '';
 
   Future<void> connectToServer() async {
     EzyConfig config = EzyConfig();
     config.clientName = "hello";
+    config.enableSSL = true;
+    config.enableDebug = true;
     EzyClients clients = EzyClients.getInstance();
     EzyClient client = clients.newDefaultClient(config);
     client.setup.addDataHandler(EzyCommand.HANDSHAKE, _SocketHandshakeHandler());
@@ -74,6 +78,11 @@ class _MyHomePageState extends State<MyHomePage> {
     appSetup.addDataHandler("greet", _SocketGreetResponseHandler((message) {
       setState(() {
         socketState = message;
+      });
+    }));
+    appSetup.addDataHandler("secureChat", _SocketSecureChatResponseHandler((message) {
+      setState(() {
+        sslMessage = message;
       });
     }));
     client.connect("tvd12.com", 3005);
@@ -139,6 +148,13 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               '$socketState',
               style: Theme.of(context).textTheme.headline6,
+            ),
+            const Text(
+              'SSL message: ',
+            ),
+            Text(
+              '$sslMessage',
+              style: Theme.of(context).textTheme.headline6,
             )
           ],
         ),
@@ -189,5 +205,20 @@ class _SocketGreetResponseHandler extends EzyAppDataHandler<Map> {
   @override
   void handle(EzyApp app, Map data) {
     _callback(data["message"]);
+    app.send("secureChat", {"who": "Young Monkey"}, true);
+  }
+}
+
+class _SocketSecureChatResponseHandler extends EzyAppDataHandler<Map> {
+
+  late Function(String) _callback;
+
+  _SocketSecureChatResponseHandler(Function(String) callback) {
+    _callback = callback;
+  }
+
+  @override
+  void handle(EzyApp app, Map data) {
+    _callback(data["secure-message"]);
   }
 }

@@ -16,3 +16,7 @@ NSString *const METHOD_SEND = @"send";
 NSString *const METHOD_RECONNECT = @"reconnect";
 NSString *const METHOD_SET_STATUS = @"setStatus";
 NSString *const METHOD_START_PING_SCHEDULE = @"startPingSchedule";
+NSString *const METHOD_GENERATE_KEY_PAIR = @"generateKeyPair";
+NSString *const METHOD_RSA_DECRYPT = @"rsaDecrypt";
+NSString *const METHOD_LOG = @"log";
+NSString *const METHOD_SET_SESSION_KEY = @"setSessionKey";

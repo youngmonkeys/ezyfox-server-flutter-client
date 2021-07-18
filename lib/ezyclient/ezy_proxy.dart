@@ -1,7 +1,6 @@
 import 'package:flutter/services.dart';
-import 'package:hello_flutter/ezyclient/ezy_clients.dart';
-import 'package:hello_flutter/ezyclient/ezy_logger.dart';
-
+import 'ezy_clients.dart';
+import 'ezy_logger.dart';
 import 'ezy_client.dart';
 
 class EzyProxy {

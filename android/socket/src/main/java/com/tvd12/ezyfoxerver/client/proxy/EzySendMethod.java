@@ -26,8 +26,9 @@ public class EzySendMethod extends EzyMethodProxy {
         Map request = (Map) params.get("request");
         String cmd = (String) request.get("command");
         List data = (List) request.get("data");
+        boolean encrypted = (Boolean)request.getOrDefault("encrypted", false);
         EzyArray array = EzyNativeSerializers.fromList(data);
-        client.send(EzyCommand.valueOf(cmd), array);
+        client.send(EzyCommand.valueOf(cmd), array, encrypted);
         return Boolean.TRUE;
     }
 

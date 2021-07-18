@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:hello_flutter/ezyclient/ezy_logger.dart';
+import 'ezy_logger.dart';
 
 import 'ezy_client.dart';
 import 'ezy_constants.dart';

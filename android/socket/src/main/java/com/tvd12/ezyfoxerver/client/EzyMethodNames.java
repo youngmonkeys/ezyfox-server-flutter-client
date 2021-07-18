@@ -13,6 +13,10 @@ public final class EzyMethodNames {
     public static final String METHOD_RECONNECT = "reconnect";
     public static final String METHOD_SET_STATUS = "setStatus";
     public static final String METHOD_START_PING_SCHEDULE = "startPingSchedule";
+    public static final String METHOD_GENERATE_KEY_PAIR = "generateKeyPair";
+    public static final String METHOD_RSA_DECRYPT = "rsaDecrypt";
+    public static final String METHOD_LOG = "log";
+    public static final String METHOD_SET_SESSION_KEY = "setSessionKey";
 
     private EzyMethodNames() {
     }

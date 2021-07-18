@@ -6,6 +6,7 @@ import 'ezy_constants.dart';
 import 'ezy_entities.dart';
 import 'ezy_logger.dart';
 import 'ezy_util.dart';
+import 'ezy_codec.dart';
 
 class EzyEventHandler {
   void handle(Map event) {}
@@ -50,32 +51,49 @@ class EzyConnectionSuccessHandler extends EzyAbstractEventHandler {
   }
 
   void sendHandshakeRequest() {
-    var request = newHandshakeRequest();
-    this.client.send(EzyCommand.HANDSHAKE, request);
+    generateClientKey((clientKey) => {
+      this.client.send(EzyCommand.HANDSHAKE, newHandshakeRequest(clientKey))
+    });
   }
 
-  List newHandshakeRequest() {
+  List newHandshakeRequest(Uint8List? clientKey) {
     var clientId = this.getClientId();
-    var clientKey = this.generateClientKey();
-    var enableEncryption = this.client.enableSSL;
     var token = this.getStoredToken();
     var request = [];
     request.add(clientId);
     request.add(clientKey);
     request.add(clientType);
     request.add(clientVersion);
-    request.add(enableEncryption);
+    request.add(_isEnableSSL(clientKey));
     request.add(token);
     return request;
   }
 
-  String? generateClientKey() {
-    if(client.enableSSL) {
-      // var keyPair = EzyRSAProxy.getInstance().generateKeyPair()
-      // client.privateKey = keyPair.privateKey;
-      // return keyPair.publicKey;
+  bool _isEnableSSL(Uint8List? clientKey) {
+    if(client.enableSSL &&
+        client.enableDebug &&
+        (clientKey == null || clientKey.isEmpty)) {
+      return false;
     }
-    return null;
+    return client.enableSSL;
+  }
+
+  void _onKeyPairGenerated(
+      EzyKeyPairProxy keyPair, Function(Uint8List?) callback) {
+    client.privateKey = keyPair.privateKey;
+    callback(keyPair.publicKey);
+  }
+
+  void generateClientKey(Function(Uint8List?) callback) {
+    if(client.enableSSL) {
+      EzyRSAProxy.getInstance().generateKeyPair((keyPair) =>
+      {
+        _onKeyPairGenerated(keyPair, callback)
+      });
+    }
+    else {
+      callback(null);
+    }
   }
 
   String getClientId() {
@@ -95,7 +113,7 @@ class EzyConnectionFailureHandler extends EzyAbstractEventHandler {
   void handle(Map event) {
     var reason = event["reason"] as int;
     var reasonName = EzyConnectionFailedReasons.getConnectionFailedReasonName(reason);
-    EzyLogger.warn("connection failure, reason = \(reasonName)");
+    EzyLogger.warn("connection failure, reason = $reasonName");
     var config = this.client.config;
     var reconnectConfig = config.reconnect;
     var should = this.shouldReconnect(event);
@@ -172,37 +190,48 @@ class EzyHandshakeHandler extends EzyAbstractDataHandler {
 
   void handle(List data) {
     this.startPing();
-    if(this.doHandle(data)) {
-      this.handleLogin();
-    }
-    this.postHandle(data);
+    this.doHandle(data);
   }
 
-  bool doHandle(List data) {
+  void _onSessionKeyDecrypted(List data, Uint8List? sessionKey, bool success) {
+    if(sessionKey != null) {
+      client.setSessionKey(sessionKey);
+    }
+    if(success) {
+      handleLogin();
+    }
+    postHandle(data);
+  }
+
+  void doHandle(List data) {
     client.sessionToken = data[1] as String;
     client.sessionId = data[2] as int;
     if(client.enableSSL) {
-    var sessionKey = decrypteSessionKey(data[3]);
-    if(sessionKey == null) {
-      return false;
+      decryptSessionKey(data[3], (sessionKey, success) => {
+        _onSessionKeyDecrypted(data, sessionKey, success)
+      });
     }
-    client.setSessionKey(sessionKey);
+    else {
+      _onSessionKeyDecrypted(data, null, true);
     }
-    return true;
   }
 
-  Uint8List? decrypteSessionKey(Uint8List? encyptedSessionKey) {
-    if(encyptedSessionKey == null) {
+  void decryptSessionKey(
+      Uint8List? encryptedSessionKey, Function(Uint8List?, bool) callback) {
+    if(encryptedSessionKey == null) {
       if(client.enableDebug) {
-        return Uint8List(0);
+        callback(null, true);
+        return;
       }
       EzyLogger.error("maybe server was not enable SSL, you must enable SSL on server or disable SSL on your client or enable debug mode");
       client.close();
-      return null;
+      callback(null, false);
+      return;
     }
-    var privateKey = client.privateKey;
-    // return EzyRSAProxy.getInstance().decrypt(encyptedSessionKey, privateKey);
-    return null;
+    EzyRSAProxy.getInstance().decrypt(
+        encryptedSessionKey, client.privateKey!, (sessionKey) => {
+      callback(sessionKey, true)
+    });
   }
 
   void postHandle(List data) {
