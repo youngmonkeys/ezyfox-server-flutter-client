@@ -110,6 +110,7 @@ std::vector<EzyClient*> clientVector;
     [self addMethod:[[EzyGenerateKeyPairMethod alloc]init]];
     [self addMethod:[[EzyRsaDecryptMethod alloc]init]];
     [self addMethod:[[EzyLogMethod alloc]init]];
+    [self addMethod:[[EzySetSessionKeyMethod alloc]init]];
 }
 
 -(void)addMethod:(EzyMethodProxy*)method {

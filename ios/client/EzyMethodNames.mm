@@ -19,3 +19,4 @@ NSString *const METHOD_START_PING_SCHEDULE = @"startPingSchedule";
 NSString *const METHOD_GENERATE_KEY_PAIR = @"generateKeyPair";
 NSString *const METHOD_RSA_DECRYPT = @"rsaDecrypt";
 NSString *const METHOD_LOG = @"log";
+NSString *const METHOD_SET_SESSION_KEY = @"setSessionKey";

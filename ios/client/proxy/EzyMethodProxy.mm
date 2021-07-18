@@ -391,3 +391,19 @@ FlutterMethodChannel* mMethodChannel;
     return METHOD_LOG;
 }
 @end
+
+//======================================================
+@implementation EzySetSessionKeyMethod
+
+- (NSObject *)invoke:(NSDictionary *)params {
+    EzyClient* client = getClient(params);
+    FlutterStandardTypedData* flutterSessionKey = params[@"sessionKey"];
+    NSData* sessionKey = [flutterSessionKey data];
+    client->setSessionKey(std::string((char*)[sessionKey bytes], (int)[sessionKey length]));
+    return [NSNumber numberWithBool:TRUE];
+}
+
+- (NSString *)getName {
+    return METHOD_SET_SESSION_KEY;
+}
+@end

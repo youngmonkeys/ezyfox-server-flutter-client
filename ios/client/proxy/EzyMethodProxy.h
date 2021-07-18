@@ -48,4 +48,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface EzyLogMethod : EzyMethodProxy
 @end
 
+@interface EzySetSessionKeyMethod : EzyMethodProxy
+@end
+
 NS_ASSUME_NONNULL_END
