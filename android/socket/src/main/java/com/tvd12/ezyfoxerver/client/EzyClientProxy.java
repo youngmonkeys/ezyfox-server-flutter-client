@@ -8,9 +8,13 @@ import com.tvd12.ezyfoxerver.client.exception.EzyMethodCallException;
 import com.tvd12.ezyfoxerver.client.proxy.EzyConnectMethod;
 import com.tvd12.ezyfoxerver.client.proxy.EzyCreateClientMethod;
 import com.tvd12.ezyfoxerver.client.proxy.EzyDisconnectMethod;
+import com.tvd12.ezyfoxerver.client.proxy.EzyGenerateKeyPairMethod;
+import com.tvd12.ezyfoxerver.client.proxy.EzyLogMethod;
 import com.tvd12.ezyfoxerver.client.proxy.EzyMethodProxy;
 import com.tvd12.ezyfoxerver.client.proxy.EzyReconnectMethod;
+import com.tvd12.ezyfoxerver.client.proxy.EzyRsaDecryptMethod;
 import com.tvd12.ezyfoxerver.client.proxy.EzySendMethod;
+import com.tvd12.ezyfoxerver.client.proxy.EzySetSessionKeyMethod;
 import com.tvd12.ezyfoxerver.client.proxy.EzySetStatusMethod;
 import com.tvd12.ezyfoxerver.client.proxy.EzyStartPingScheduleMethod;
 import com.tvd12.ezyfoxserver.client.socket.EzyMainEventsLoop;
@@ -92,6 +96,10 @@ public class EzyClientProxy {
         addMethod(new EzySendMethod());
         addMethod(new EzySetStatusMethod());
         addMethod(new EzyStartPingScheduleMethod());
+        addMethod(new EzyGenerateKeyPairMethod());
+        addMethod(new EzyRsaDecryptMethod());
+        addMethod(new EzyLogMethod());
+        addMethod(new EzySetSessionKeyMethod());
     }
 
     private void addMethod(EzyMethodProxy method) {

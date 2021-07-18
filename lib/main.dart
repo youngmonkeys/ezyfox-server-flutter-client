@@ -62,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   String socketState = 'Socket has not connected yet';
-  String sslMessage = 'SSL message:';
+  String sslMessage = '';
 
   Future<void> connectToServer() async {
     EzyConfig config = EzyConfig();
@@ -82,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }));
     appSetup.addDataHandler("secureChat", _SocketSecureChatResponseHandler((message) {
       setState(() {
-        sslMessage = 'SSL message: $message';
+        sslMessage = message;
       });
     }));
     client.connect("tvd12.com", 3005);
@@ -148,6 +148,9 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               '$socketState',
               style: Theme.of(context).textTheme.headline6,
+            ),
+            const Text(
+              'SSL message: ',
             ),
             Text(
               '$sslMessage',
