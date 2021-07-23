@@ -1,14 +1,12 @@
 import 'dart:typed_data';
 
-import 'ezy_logger.dart';
-
 import 'ezy_proxy.dart';
 
 class EzyKeyPairProxy {
-  late Uint8List publicKey;
+  late String publicKey;
   late Uint8List privateKey;
 
-  EzyKeyPairProxy(Uint8List publicKey, Uint8List privateKey) {
+  EzyKeyPairProxy(String publicKey, Uint8List privateKey) {
     this.publicKey = publicKey;
     this.privateKey = privateKey;
   }
