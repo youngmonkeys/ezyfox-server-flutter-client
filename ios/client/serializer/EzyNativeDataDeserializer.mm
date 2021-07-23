@@ -73,6 +73,42 @@ EZY_USING_NAMESPACE::entity;
             NSData* realData = [data data];
             output->addByteArray(std::string((char*)[realData bytes], [realData length]));
         }
+        else if(dataType == FlutterStandardDataTypeInt32) {
+            EzyArray *array = new EzyArray();
+            NSData* realData = [data data];
+            int32_t* int32Array = (int32_t*)[realData bytes];
+            for(int i = 0 ; i < [realData length] ; ++i) {
+                array->addInt(int32Array[i]);
+            }
+            output->addArray(array);
+        }
+        else if(dataType == FlutterStandardDataTypeInt64) {
+            EzyArray *array = new EzyArray();
+            NSData* realData = [data data];
+            int64_t* int64Array = (int64_t*)[realData bytes];
+            for(int i = 0 ; i < [realData length] ; ++i) {
+                array->addInt(int64Array[i]);
+            }
+            output->addArray(array);
+        }
+        else if(dataType == FlutterStandardDataTypeFloat32) {
+            EzyArray *array = new EzyArray();
+            NSData* realData = [data data];
+            float* floatArray = (float*)[realData bytes];
+            for(int i = 0 ; i < [realData length] ; ++i) {
+                array->addFloat(floatArray[i]);
+            }
+            output->addArray(array);
+        }
+        else {
+            EzyArray *array = new EzyArray();
+            NSData* realData = [data data];
+            double* doubleArray = (double*)[realData bytes];
+            for(int i = 0 ; i < [realData length] ; ++i) {
+                array->addDouble(doubleArray[i]);
+            }
+            output->addArray(array);
+        }
     }
     else {
         @throw [NSException exceptionWithName:@"NSInvalidArgumentException"

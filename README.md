@@ -2,6 +2,10 @@
 
 flutter client for [ezyfox server](https://github.com/youngmonkeys/ezyfox-server)
 
+# Architecture
+
+<img src="https://raw.githubusercontent.com/youngmonkeys/ezyfox-server-flutter-client/master/images/flutter-sdk.png" />
+
 # Prepare
 
 1. Download and install [JDK 8](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)
@@ -24,16 +28,16 @@ git@github.com:youngmonkeys/ezyfox-server-flutter-client.git
 git submodule update --remote --recursive
 ```
 
-### 3. Import source code:
+### 3. Import source code
 
 - To IntelliJ IDE: for all
 - To Xcode: for iOS
 - To Android studio: for Android
 
-### 4. You can run:
+### 4. You can run
 
 - [main.dart](https://github.com/youngmonkeys/ezyfox-server-flutter-client/blob/master/lib/main.dart) on Intellij
-- Build and Run on Xcode for iOS
+- Build and Run on Xcode for iOS, don't for get run `pod install`
 - Build and run on Android Studio for Android
 
 ### 5. Where need I click?

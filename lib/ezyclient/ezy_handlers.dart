@@ -56,7 +56,7 @@ class EzyConnectionSuccessHandler extends EzyAbstractEventHandler {
     });
   }
 
-  List newHandshakeRequest(Uint8List? clientKey) {
+  List newHandshakeRequest(String? clientKey) {
     var clientId = this.getClientId();
     var token = this.getStoredToken();
     var request = [];
@@ -69,7 +69,7 @@ class EzyConnectionSuccessHandler extends EzyAbstractEventHandler {
     return request;
   }
 
-  bool _isEnableSSL(Uint8List? clientKey) {
+  bool _isEnableSSL(String? clientKey) {
     if(client.enableSSL &&
         client.enableDebug &&
         (clientKey == null || clientKey.isEmpty)) {
@@ -79,12 +79,12 @@ class EzyConnectionSuccessHandler extends EzyAbstractEventHandler {
   }
 
   void _onKeyPairGenerated(
-      EzyKeyPairProxy keyPair, Function(Uint8List?) callback) {
+      EzyKeyPairProxy keyPair, Function(String?) callback) {
     client.privateKey = keyPair.privateKey;
     callback(keyPair.publicKey);
   }
 
-  void generateClientKey(Function(Uint8List?) callback) {
+  void generateClientKey(Function(String?) callback) {
     if(client.enableSSL) {
       EzyRSAProxy.getInstance().generateKeyPair((keyPair) =>
       {
@@ -218,6 +218,7 @@ class EzyHandshakeHandler extends EzyAbstractDataHandler {
 
   void decryptSessionKey(
       Uint8List? encryptedSessionKey, Function(Uint8List?, bool) callback) {
+    EzyLogger.info("encryptedSessionKey: $encryptedSessionKey");
     if(encryptedSessionKey == null) {
       if(client.enableDebug) {
         callback(null, true);

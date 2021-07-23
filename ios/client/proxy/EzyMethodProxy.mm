@@ -301,9 +301,10 @@ FlutterMethodChannel* mMethodChannel;
     EzyClient* client = getClient(params);
     NSString* cmd = [request objectForKey:@"command"];
     NSArray* data = [request objectForKey:@"data"];
+    NSNumber* encrypted = [request objectForKey:@"encrypted"];
     EzyArray* array = (EzyArray*)[EzyNativeSerializers fromReadableArray:data];
     EzyCommand command = sNativeCommandIds[[cmd UTF8String]];
-    client->send(command, array);
+    client->send(command, array, [encrypted boolValue]);
     return [NSNumber numberWithBool:TRUE];
 }
 
@@ -348,10 +349,10 @@ FlutterMethodChannel* mMethodChannel;
 
 - (NSObject *)invoke:(NSDictionary *)params {
     EzyKeyPairProxy* keyPair = [[EzyRSAProxy getInstance] generateKeyPair];
-    NSData* publicKey = [[keyPair publicKey] dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:NO];
+    NSString* publicKey = [keyPair publicKey];
     NSData* privateKey = [[keyPair privateKey] dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:NO];
     NSDictionary* answer = [NSMutableDictionary dictionary];
-    [answer setValue:[FlutterStandardTypedData typedDataWithBytes:publicKey] forKey:@"publicKey"];
+    [answer setValue:publicKey forKey:@"publicKey"];
     [answer setValue:[FlutterStandardTypedData typedDataWithBytes:privateKey] forKey:@"privateKey"];
     return answer;
 }

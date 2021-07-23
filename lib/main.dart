@@ -86,6 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
       });
     }));
     client.connect("tvd12.com", 3005);
+    // client.connect("127.0.0.1", 3005);
   }
 
   void _incrementCounter() {
