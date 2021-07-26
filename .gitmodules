@@ -1,3 +1,3 @@
-[submodule "swift-client-sdk"]
+[submodule "cpp-client-sdk"]
   path = ios/client/socket
   url = https://github.com/youngmonkeys/ezyfox-server-cpp-client.git
