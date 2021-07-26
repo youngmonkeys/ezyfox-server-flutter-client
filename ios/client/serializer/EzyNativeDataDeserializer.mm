@@ -73,41 +73,8 @@ EZY_USING_NAMESPACE::entity;
             NSData* realData = [data data];
             output->addByteArray(std::string((char*)[realData bytes], [realData length]));
         }
-        else if(dataType == FlutterStandardDataTypeInt32) {
-            EzyArray *array = new EzyArray();
-            NSData* realData = [data data];
-            int32_t* int32Array = (int32_t*)[realData bytes];
-            for(int i = 0 ; i < [realData length] ; ++i) {
-                array->addInt(int32Array[i]);
-            }
-            output->addArray(array);
-        }
-        else if(dataType == FlutterStandardDataTypeInt64) {
-            EzyArray *array = new EzyArray();
-            NSData* realData = [data data];
-            int64_t* int64Array = (int64_t*)[realData bytes];
-            for(int i = 0 ; i < [realData length] ; ++i) {
-                array->addInt(int64Array[i]);
-            }
-            output->addArray(array);
-        }
-        else if(dataType == FlutterStandardDataTypeFloat32) {
-            EzyArray *array = new EzyArray();
-            NSData* realData = [data data];
-            float* floatArray = (float*)[realData bytes];
-            for(int i = 0 ; i < [realData length] ; ++i) {
-                array->addFloat(floatArray[i]);
-            }
-            output->addArray(array);
-        }
         else {
-            EzyArray *array = new EzyArray();
-            NSData* realData = [data data];
-            double* doubleArray = (double*)[realData bytes];
-            for(int i = 0 ; i < [realData length] ; ++i) {
-                array->addDouble(doubleArray[i]);
-            }
-            output->addArray(array);
+            output->addArray([self deserializeFlutterDataToArray:data]);
         }
     }
     else {
@@ -142,11 +109,59 @@ EZY_USING_NAMESPACE::entity;
         EzyObject* fobject = (EzyObject*)[self fromReadableMap:dict];
         output->setObject(k, fobject);
     }
+    else if([value isKindOfClass:[NSNull class]]) {
+        // do nothing
+    }
+    else if([value isKindOfClass:[FlutterStandardTypedData class]]) {
+        FlutterStandardTypedData* data = (FlutterStandardTypedData*)value;
+        FlutterStandardDataType dataType = [data type];
+        if(dataType == FlutterStandardDataTypeUInt8) {
+            NSData* realData = [data data];
+            output->setByteArray(k, std::string((char*)[realData bytes], [realData length]));
+        }
+        else {
+            output->setArray(k, [self deserializeFlutterDataToArray:data]);
+        }
+    }
     else {
         @throw [NSException exceptionWithName:@"NSInvalidArgumentException"
                                        reason: [NSString stringWithFormat:@"has no deserializer for key: %@, value: %@", key, value]
                                      userInfo:nil];
     }
+}
+
+-(EzyArray*)deserializeFlutterDataToArray:(FlutterStandardTypedData*)data {
+    EzyArray *array = new EzyArray();
+    FlutterStandardDataType dataType = [data type];
+    if(dataType == FlutterStandardDataTypeInt32) {
+        NSData* realData = [data data];
+        int32_t* int32Array = (int32_t*)[realData bytes];
+        for(int i = 0 ; i < [realData length] ; ++i) {
+            array->addInt(int32Array[i]);
+        }
+    }
+    else if(dataType == FlutterStandardDataTypeInt64) {
+        NSData* realData = [data data];
+        int64_t* int64Array = (int64_t*)[realData bytes];
+        for(int i = 0 ; i < [realData length] ; ++i) {
+            array->addInt(int64Array[i]);
+        }
+    }
+    else if(dataType == FlutterStandardDataTypeFloat32) {
+        NSData* realData = [data data];
+        float* floatArray = (float*)[realData bytes];
+        for(int i = 0 ; i < [realData length] ; ++i) {
+            array->addFloat(floatArray[i]);
+        }
+    }
+    else {
+        NSData* realData = [data data];
+        double* doubleArray = (double*)[realData bytes];
+        for(int i = 0 ; i < [realData length] ; ++i) {
+            array->addDouble(doubleArray[i]);
+        }
+    }
+    return array;
 }
 
 -(EzyPrimitive*)deserializeToNumber:(EzyNSNumber*)value {
