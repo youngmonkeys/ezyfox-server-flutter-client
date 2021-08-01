@@ -156,11 +156,19 @@ class EzyDisconnectionHandler extends EzyAbstractEventHandler {
     this.client.setStatus(EzyConnectionStatus.DISCONNECTED);
     if(mustReconnect) {
       client.reconnect().then((value) => {
-        if(value) {
-          control(event)
-        }
+        _onReconnect(event, value)
       });
     }
+    else {
+      postHandle(event);
+    }
+  }
+
+  void _onReconnect(Map event, bool success) {
+    if(success) {
+      control(event);
+    }
+    postHandle(event);
   }
 
   void preHandle(Map event) {}

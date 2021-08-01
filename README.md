@@ -19,16 +19,10 @@ flutter client for [ezyfox server](https://github.com/youngmonkeys/ezyfox-server
 ### 1. Clone source code
 
 ```
-git@github.com:youngmonkeys/ezyfox-server-flutter-client.git ezyfox_server_flutter_client
+git clone --recurse-submodules https://github.com/youngmonkeys/ezyfox-server-flutter-client.git ezyfox_server_flutter_client
 ```
 
-### 2. Pull submodules
-
-```
-git submodule update --remote --recursive
-```
-
-### 3. Import source code
+### 2. Import source code
 
 You need import `ezyfox_server_flutter_client/example` to your IDEs
 
@@ -36,13 +30,13 @@ You need import `ezyfox_server_flutter_client/example` to your IDEs
 - To Xcode: for iOS
 - To Android studio: for Android
 
-### 4. You can run
+### 3. You can run
 
 - [main.dart](https://github.com/youngmonkeys/ezyfox-server-flutter-client/blob/master/example/lib/main.dart) on Intellij
 - Build and Run on Xcode for iOS, don't for get run `pod install`
 - Build and run on Android Studio for Android
 
-### 5. Where need I click?
+### 4. Where need I click?
 
 - Tap to plus button in bottom right corner
 - When you see `Greet Flutter's developer!`, congratulation, you've just run and connect to server successfully
