@@ -1,3 +1,8 @@
+import java.nio.file.Paths
+
+group 'com.tvd12'
+version '1.0'
+
 buildscript {
     repositories {
         google()
@@ -9,19 +14,48 @@ buildscript {
     }
 }
 
-allprojects {
+rootProject.allprojects {
     repositories {
         google()
         mavenCentral()
     }
 }
 
-rootProject.buildDir = '../build'
-subprojects {
-    project.buildDir = "${rootProject.buildDir}/${project.name}"
-    project.evaluationDependsOn(':app')
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 30
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion 25
+    }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterRoot = localProperties.getProperty('flutter.sdk')
+if (flutterRoot == null) {
+    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+}
+
+String engineVersion = Paths
+        .get(flutterRoot, "bin", "internal", "engine.version")
+        .toFile()
+        .text.trim()
+
+dependencies {
+    implementation("com.tvd12:ezyfox-server-android-client:1.0.0")
+    compileOnly("androidx.core:core:1.1.0")
+    compileOnly("io.flutter:flutter_embedding_debug:1.0.0-$engineVersion")
 }
