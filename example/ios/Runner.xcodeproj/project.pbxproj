@@ -1,0 +1,1309 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
+		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
+		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
+		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
+		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
+		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
+		D44C6451496F39C9524E09C3 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30425E68A0587C2952C7A950 /* Pods_Runner.framework */; };
+		F1BFD9EB26B65711002EA3D8 /* EzyNativeDataSerializer.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD92726B65710002EA3D8 /* EzyNativeDataSerializer.mm */; };
+		F1BFD9EC26B65711002EA3D8 /* EzyClientConfigSerializer.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD92826B65710002EA3D8 /* EzyClientConfigSerializer.mm */; };
+		F1BFD9ED26B65711002EA3D8 /* EzyNativeDataDeserializer.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD92B26B65710002EA3D8 /* EzyNativeDataDeserializer.mm */; };
+		F1BFD9EE26B65711002EA3D8 /* EzyEventSerializer.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD92F26B65710002EA3D8 /* EzyEventSerializer.mm */; };
+		F1BFD9EF26B65711002EA3D8 /* EzyNativeSerializers.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD93026B65710002EA3D8 /* EzyNativeSerializers.mm */; };
+		F1BFD9F026B65711002EA3D8 /* EzyMethodProxy.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD93226B65710002EA3D8 /* EzyMethodProxy.mm */; };
+		F1BFD9F126B65711002EA3D8 /* EzyNativeStrings.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD93526B65710002EA3D8 /* EzyNativeStrings.mm */; };
+		F1BFD9F226B65711002EA3D8 /* NSByArray.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD93726B65710002EA3D8 /* NSByArray.m */; };
+		F1BFD9F326B65711002EA3D8 /* EzyEncryptionProxy.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD93C26B65710002EA3D8 /* EzyEncryptionProxy.mm */; };
+		F1BFD9F426B65711002EA3D8 /* EzyNSNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD94026B65710002EA3D8 /* EzyNSNumber.m */; };
+		F1BFD9F526B65711002EA3D8 /* EzyFlutterClientPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD94226B65710002EA3D8 /* EzyFlutterClientPlugin.m */; };
+		F1BFD9F626B65711002EA3D8 /* EzyClientProxy.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD94326B65710002EA3D8 /* EzyClientProxy.mm */; };
+		F1BFD9F726B65711002EA3D8 /* EzyMethodNames.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD94426B65710002EA3D8 /* EzyMethodNames.mm */; };
+		F1BFD9F826B65711002EA3D8 /* EzyMethodCallException.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD94626B65710002EA3D8 /* EzyMethodCallException.mm */; };
+		F1BFDA0326B65711002EA3D8 /* EzyEventHandlers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD96126B65710002EA3D8 /* EzyEventHandlers.cpp */; };
+		F1BFDA0426B65711002EA3D8 /* EzyDataHandlers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD96226B65710002EA3D8 /* EzyDataHandlers.cpp */; };
+		F1BFDA0526B65711002EA3D8 /* EzyEventHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD96726B65710002EA3D8 /* EzyEventHandler.cpp */; };
+		F1BFDA0626B65711002EA3D8 /* EzyAppDataHandlers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD96926B65710002EA3D8 /* EzyAppDataHandlers.cpp */; };
+		F1BFDA0726B65711002EA3D8 /* EzyPluginDataHandlers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD96B26B65711002EA3D8 /* EzyPluginDataHandlers.cpp */; };
+		F1BFDA0826B65711002EA3D8 /* EzyPluginDataHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD96C26B65711002EA3D8 /* EzyPluginDataHandler.cpp */; };
+		F1BFDA0926B65711002EA3D8 /* EzyAppDataHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD96D26B65711002EA3D8 /* EzyAppDataHandler.cpp */; };
+		F1BFDA0A26B65711002EA3D8 /* EzyDataHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD96E26B65711002EA3D8 /* EzyDataHandler.cpp */; };
+		F1BFDA0B26B65711002EA3D8 /* EzyUTClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD97226B65711002EA3D8 /* EzyUTClient.cpp */; };
+		F1BFDA0C26B65711002EA3D8 /* EzyLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD97426B65711002EA3D8 /* EzyLogger.cpp */; };
+		F1BFDA0D26B65711002EA3D8 /* EzyClientConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD97B26B65711002EA3D8 /* EzyClientConfig.cpp */; };
+		F1BFDA0E26B65711002EA3D8 /* EzyApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD97D26B65711002EA3D8 /* EzyApp.cpp */; };
+		F1BFDA0F26B65711002EA3D8 /* EzyString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD97E26B65711002EA3D8 /* EzyString.cpp */; };
+		F1BFDA1026B65711002EA3D8 /* EzyZone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD98026B65711002EA3D8 /* EzyZone.cpp */; };
+		F1BFDA1126B65711002EA3D8 /* EzyPrimitive.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD98126B65711002EA3D8 /* EzyPrimitive.cpp */; };
+		F1BFDA1226B65711002EA3D8 /* EzyObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD98326B65711002EA3D8 /* EzyObject.cpp */; };
+		F1BFDA1326B65711002EA3D8 /* EzyNull.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD98626B65711002EA3D8 /* EzyNull.cpp */; };
+		F1BFDA1426B65711002EA3D8 /* EzyByteArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD98826B65711002EA3D8 /* EzyByteArray.cpp */; };
+		F1BFDA1526B65711002EA3D8 /* EzyArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD98A26B65711002EA3D8 /* EzyArray.cpp */; };
+		F1BFDA1626B65711002EA3D8 /* EzyValue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD98B26B65711002EA3D8 /* EzyValue.cpp */; };
+		F1BFDA1726B65711002EA3D8 /* EzyUser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD98F26B65711002EA3D8 /* EzyUser.cpp */; };
+		F1BFDA1826B65711002EA3D8 /* EzyPlugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD99026B65711002EA3D8 /* EzyPlugin.cpp */; };
+		F1BFDA1926B65711002EA3D8 /* EzyMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD99626B65711002EA3D8 /* EzyMessage.cpp */; };
+		F1BFDA1A26B65711002EA3D8 /* EzyDataDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD99726B65711002EA3D8 /* EzyDataDecoder.cpp */; };
+		F1BFDA1B26B65711002EA3D8 /* EzyEncryption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD99926B65711002EA3D8 /* EzyEncryption.cpp */; };
+		F1BFDA1C26B65711002EA3D8 /* EzyDataEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD99B26B65711002EA3D8 /* EzyDataEncoder.cpp */; };
+		F1BFDA1D26B65711002EA3D8 /* EzyClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD99C26B65711002EA3D8 /* EzyClient.cpp */; };
+		F1BFDA1E26B65711002EA3D8 /* EzySetup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD99E26B65711002EA3D8 /* EzySetup.cpp */; };
+		F1BFDA1F26B65711002EA3D8 /* EzyClients.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9A026B65711002EA3D8 /* EzyClients.cpp */; };
+		F1BFDA2026B65711002EA3D8 /* EzyPluginManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9A426B65711002EA3D8 /* EzyPluginManager.cpp */; };
+		F1BFDA2126B65711002EA3D8 /* EzyAppManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9A526B65711002EA3D8 /* EzyAppManager.cpp */; };
+		F1BFDA2226B65711002EA3D8 /* EzyHandlerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9A626B65711002EA3D8 /* EzyHandlerManager.cpp */; };
+		F1BFDA2326B65711002EA3D8 /* EzyPingManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9A726B65711002EA3D8 /* EzyPingManager.cpp */; };
+		F1BFDA2426B65711002EA3D8 /* EzyConnectionStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9AE26B65711002EA3D8 /* EzyConnectionStatus.cpp */; };
+		F1BFDA2526B65711002EA3D8 /* EzyCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9B026B65711002EA3D8 /* EzyCommand.cpp */; };
+		F1BFDA2626B65711002EA3D8 /* EzyDisconnectReason.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9B526B65711002EA3D8 /* EzyDisconnectReason.cpp */; };
+		F1BFDA2726B65711002EA3D8 /* EzyConnectionFailedReason.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9B626B65711002EA3D8 /* EzyConnectionFailedReason.cpp */; };
+		F1BFDA2826B65711002EA3D8 /* EzyThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9B826B65711002EA3D8 /* EzyThread.cpp */; };
+		F1BFDA2926B65711002EA3D8 /* EzyScheduleAtFixedRate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9BB26B65711002EA3D8 /* EzyScheduleAtFixedRate.cpp */; };
+		F1BFDA2A26B65711002EA3D8 /* EzyReleasePool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9BF26B65711002EA3D8 /* EzyReleasePool.cpp */; };
+		F1BFDA2B26B65711002EA3D8 /* EzyAutoReleasePool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9C026B65711002EA3D8 /* EzyAutoReleasePool.cpp */; };
+		F1BFDA2C26B65711002EA3D8 /* EzyRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9C226B65711002EA3D8 /* EzyRequest.cpp */; };
+		F1BFDA2D26B65711002EA3D8 /* EzyRequestSerializer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9C326B65711002EA3D8 /* EzyRequestSerializer.cpp */; };
+		F1BFDA2E26B65711002EA3D8 /* EzyEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9C926B65711002EA3D8 /* EzyEvent.cpp */; };
+		F1BFDA2F26B65711002EA3D8 /* EzyEventType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9CA26B65711002EA3D8 /* EzyEventType.cpp */; };
+		F1BFDA3026B65711002EA3D8 /* EzyRef.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9CD26B65711002EA3D8 /* EzyRef.cpp */; };
+		F1BFDA3126B65711002EA3D8 /* EzyTcpSocketClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9D326B65711002EA3D8 /* EzyTcpSocketClient.cpp */; };
+		F1BFDA3226B65711002EA3D8 /* EzySocketClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9D426B65711002EA3D8 /* EzySocketClient.cpp */; };
+		F1BFDA3326B65711002EA3D8 /* EzySocketAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9D526B65711002EA3D8 /* EzySocketAdapter.cpp */; };
+		F1BFDA3426B65711002EA3D8 /* EzySocketCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9D826B65711002EA3D8 /* EzySocketCore.cpp */; };
+		F1BFDA3526B65711002EA3D8 /* EzyMainEventsLoop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9DE26B65711002EA3D8 /* EzyMainEventsLoop.cpp */; };
+		F1BFDA3626B65711002EA3D8 /* EzyPingSchedule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9DF26B65711002EA3D8 /* EzyPingSchedule.cpp */; };
+		F1BFDA3726B65711002EA3D8 /* EzySocketPool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9E126B65711002EA3D8 /* EzySocketPool.cpp */; };
+		F1BFDA3826B65711002EA3D8 /* EzySocketReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9E226B65711002EA3D8 /* EzySocketReader.cpp */; };
+		F1BFDA3926B65711002EA3D8 /* EzyUTSocketClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9E426B65711002EA3D8 /* EzyUTSocketClient.cpp */; };
+		F1BFDA3A26B65711002EA3D8 /* EzyUdpSocketClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9E526B65711002EA3D8 /* EzyUdpSocketClient.cpp */; };
+		F1BFDA3B26B65711002EA3D8 /* EzySocketWriter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1BFD9E626B65711002EA3D8 /* EzySocketWriter.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F1BFD9E926B65711002EA3D8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1BFD94E26B65710002EA3D8 /* ezyfox-client.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F1955055260608FD00402511;
+			remoteInfo = "ezyfox-client";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9705A1C41CF9048500538489 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		03332054315A3AE09980408C /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
+		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
+		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
+		30425E68A0587C2952C7A950 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
+		6B2CC68C51353B6B50C55957 /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
+		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
+		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
+		9740EEB21CF90195004384FC /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Flutter/Debug.xcconfig; sourceTree = "<group>"; };
+		9740EEB31CF90195004384FC /* Generated.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Generated.xcconfig; path = Flutter/Generated.xcconfig; sourceTree = "<group>"; };
+		97C146EE1CF9000F007C117D /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		97C146FB1CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B461B3840AFCB3A8BABC2A51 /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
+		F1BFD92726B65710002EA3D8 /* EzyNativeDataSerializer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EzyNativeDataSerializer.mm; sourceTree = "<group>"; };
+		F1BFD92826B65710002EA3D8 /* EzyClientConfigSerializer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EzyClientConfigSerializer.mm; sourceTree = "<group>"; };
+		F1BFD92926B65710002EA3D8 /* EzyNativeDataDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyNativeDataDeserializer.h; sourceTree = "<group>"; };
+		F1BFD92A26B65710002EA3D8 /* EzyNativeDataSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyNativeDataSerializer.h; sourceTree = "<group>"; };
+		F1BFD92B26B65710002EA3D8 /* EzyNativeDataDeserializer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EzyNativeDataDeserializer.mm; sourceTree = "<group>"; };
+		F1BFD92C26B65710002EA3D8 /* EzyEventSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyEventSerializer.h; sourceTree = "<group>"; };
+		F1BFD92D26B65710002EA3D8 /* EzyNativeSerializers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyNativeSerializers.h; sourceTree = "<group>"; };
+		F1BFD92E26B65710002EA3D8 /* EzyClientConfigSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyClientConfigSerializer.h; sourceTree = "<group>"; };
+		F1BFD92F26B65710002EA3D8 /* EzyEventSerializer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EzyEventSerializer.mm; sourceTree = "<group>"; };
+		F1BFD93026B65710002EA3D8 /* EzyNativeSerializers.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EzyNativeSerializers.mm; sourceTree = "<group>"; };
+		F1BFD93226B65710002EA3D8 /* EzyMethodProxy.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EzyMethodProxy.mm; sourceTree = "<group>"; };
+		F1BFD93326B65710002EA3D8 /* EzyMethodProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyMethodProxy.h; sourceTree = "<group>"; };
+		F1BFD93526B65710002EA3D8 /* EzyNativeStrings.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EzyNativeStrings.mm; sourceTree = "<group>"; };
+		F1BFD93626B65710002EA3D8 /* NSByteArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSByteArray.h; sourceTree = "<group>"; };
+		F1BFD93726B65710002EA3D8 /* NSByArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSByArray.m; sourceTree = "<group>"; };
+		F1BFD93826B65710002EA3D8 /* EzyNativeStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyNativeStrings.h; sourceTree = "<group>"; };
+		F1BFD93926B65710002EA3D8 /* EzyFlutterClientPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyFlutterClientPlugin.h; sourceTree = "<group>"; };
+		F1BFD93B26B65710002EA3D8 /* EzyEncryptionProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyEncryptionProxy.h; sourceTree = "<group>"; };
+		F1BFD93C26B65710002EA3D8 /* EzyEncryptionProxy.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EzyEncryptionProxy.mm; sourceTree = "<group>"; };
+		F1BFD93D26B65710002EA3D8 /* EzyMethodNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyMethodNames.h; sourceTree = "<group>"; };
+		F1BFD93E26B65710002EA3D8 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
+		F1BFD94026B65710002EA3D8 /* EzyNSNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EzyNSNumber.m; sourceTree = "<group>"; };
+		F1BFD94126B65710002EA3D8 /* EzyNSNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyNSNumber.h; sourceTree = "<group>"; };
+		F1BFD94226B65710002EA3D8 /* EzyFlutterClientPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EzyFlutterClientPlugin.m; sourceTree = "<group>"; };
+		F1BFD94326B65710002EA3D8 /* EzyClientProxy.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EzyClientProxy.mm; sourceTree = "<group>"; };
+		F1BFD94426B65710002EA3D8 /* EzyMethodNames.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EzyMethodNames.mm; sourceTree = "<group>"; };
+		F1BFD94626B65710002EA3D8 /* EzyMethodCallException.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EzyMethodCallException.mm; sourceTree = "<group>"; };
+		F1BFD94726B65710002EA3D8 /* EzyMethodCallException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyMethodCallException.h; sourceTree = "<group>"; };
+		F1BFD94826B65710002EA3D8 /* EzyClientProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyClientProxy.h; sourceTree = "<group>"; };
+		F1BFD94A26B65710002EA3D8 /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
+		F1BFD94B26B65710002EA3D8 /* CODING_CONVENSION.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CODING_CONVENSION.md; sourceTree = "<group>"; };
+		F1BFD94E26B65710002EA3D8 /* ezyfox-client.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "ezyfox-client.xcodeproj"; sourceTree = "<group>"; };
+		F1BFD95226B65710002EA3D8 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		F1BFD95326B65710002EA3D8 /* build.gradle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = build.gradle; sourceTree = "<group>"; };
+		F1BFD95426B65710002EA3D8 /* gradle.properties */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gradle.properties; sourceTree = "<group>"; };
+		F1BFD95626B65710002EA3D8 /* Android.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Android.mk; sourceTree = "<group>"; };
+		F1BFD95726B65710002EA3D8 /* Application.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Application.mk; sourceTree = "<group>"; };
+		F1BFD95A26B65710002EA3D8 /* AndroidManifest.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = AndroidManifest.xml; sourceTree = "<group>"; };
+		F1BFD95B26B65710002EA3D8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F1BFD95C26B65710002EA3D8 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		F1BFD95F26B65710002EA3D8 /* EzyPluginDataHandlers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyPluginDataHandlers.h; sourceTree = "<group>"; };
+		F1BFD96026B65710002EA3D8 /* EzyEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyEventHandler.h; sourceTree = "<group>"; };
+		F1BFD96126B65710002EA3D8 /* EzyEventHandlers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyEventHandlers.cpp; sourceTree = "<group>"; };
+		F1BFD96226B65710002EA3D8 /* EzyDataHandlers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyDataHandlers.cpp; sourceTree = "<group>"; };
+		F1BFD96326B65710002EA3D8 /* EzyPluginDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyPluginDataHandler.h; sourceTree = "<group>"; };
+		F1BFD96426B65710002EA3D8 /* EzyDataHandlers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyDataHandlers.h; sourceTree = "<group>"; };
+		F1BFD96526B65710002EA3D8 /* EzyEventHandlers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyEventHandlers.h; sourceTree = "<group>"; };
+		F1BFD96626B65710002EA3D8 /* EzyAppDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyAppDataHandler.h; sourceTree = "<group>"; };
+		F1BFD96726B65710002EA3D8 /* EzyEventHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyEventHandler.cpp; sourceTree = "<group>"; };
+		F1BFD96826B65710002EA3D8 /* EzyDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyDataHandler.h; sourceTree = "<group>"; };
+		F1BFD96926B65710002EA3D8 /* EzyAppDataHandlers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyAppDataHandlers.cpp; sourceTree = "<group>"; };
+		F1BFD96A26B65710002EA3D8 /* EzyAppDataHandlers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyAppDataHandlers.h; sourceTree = "<group>"; };
+		F1BFD96B26B65711002EA3D8 /* EzyPluginDataHandlers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyPluginDataHandlers.cpp; sourceTree = "<group>"; };
+		F1BFD96C26B65711002EA3D8 /* EzyPluginDataHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyPluginDataHandler.cpp; sourceTree = "<group>"; };
+		F1BFD96D26B65711002EA3D8 /* EzyAppDataHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyAppDataHandler.cpp; sourceTree = "<group>"; };
+		F1BFD96E26B65711002EA3D8 /* EzyDataHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyDataHandler.cpp; sourceTree = "<group>"; };
+		F1BFD96F26B65711002EA3D8 /* EzyClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyClient.h; sourceTree = "<group>"; };
+		F1BFD97026B65711002EA3D8 /* EzyClients.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyClients.h; sourceTree = "<group>"; };
+		F1BFD97126B65711002EA3D8 /* EzyUTClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyUTClient.h; sourceTree = "<group>"; };
+		F1BFD97226B65711002EA3D8 /* EzyUTClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyUTClient.cpp; sourceTree = "<group>"; };
+		F1BFD97426B65711002EA3D8 /* EzyLogger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyLogger.cpp; sourceTree = "<group>"; };
+		F1BFD97526B65711002EA3D8 /* EzyLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyLogger.h; sourceTree = "<group>"; };
+		F1BFD97726B65711002EA3D8 /* EzyStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyStack.h; sourceTree = "<group>"; };
+		F1BFD97826B65711002EA3D8 /* EzyMaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyMaps.h; sourceTree = "<group>"; };
+		F1BFD97A26B65711002EA3D8 /* EzyClientConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyClientConfig.h; sourceTree = "<group>"; };
+		F1BFD97B26B65711002EA3D8 /* EzyClientConfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyClientConfig.cpp; sourceTree = "<group>"; };
+		F1BFD97D26B65711002EA3D8 /* EzyApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyApp.cpp; sourceTree = "<group>"; };
+		F1BFD97E26B65711002EA3D8 /* EzyString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyString.cpp; sourceTree = "<group>"; };
+		F1BFD97F26B65711002EA3D8 /* EzyUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyUser.h; sourceTree = "<group>"; };
+		F1BFD98026B65711002EA3D8 /* EzyZone.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyZone.cpp; sourceTree = "<group>"; };
+		F1BFD98126B65711002EA3D8 /* EzyPrimitive.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyPrimitive.cpp; sourceTree = "<group>"; };
+		F1BFD98226B65711002EA3D8 /* EzyPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyPlugin.h; sourceTree = "<group>"; };
+		F1BFD98326B65711002EA3D8 /* EzyObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyObject.cpp; sourceTree = "<group>"; };
+		F1BFD98426B65711002EA3D8 /* EzyByteArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyByteArray.h; sourceTree = "<group>"; };
+		F1BFD98526B65711002EA3D8 /* EzyPrimitive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyPrimitive.h; sourceTree = "<group>"; };
+		F1BFD98626B65711002EA3D8 /* EzyNull.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyNull.cpp; sourceTree = "<group>"; };
+		F1BFD98726B65711002EA3D8 /* EzyArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyArray.h; sourceTree = "<group>"; };
+		F1BFD98826B65711002EA3D8 /* EzyByteArray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyByteArray.cpp; sourceTree = "<group>"; };
+		F1BFD98926B65711002EA3D8 /* EzyValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyValue.h; sourceTree = "<group>"; };
+		F1BFD98A26B65711002EA3D8 /* EzyArray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyArray.cpp; sourceTree = "<group>"; };
+		F1BFD98B26B65711002EA3D8 /* EzyValue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyValue.cpp; sourceTree = "<group>"; };
+		F1BFD98C26B65711002EA3D8 /* EzyZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyZone.h; sourceTree = "<group>"; };
+		F1BFD98D26B65711002EA3D8 /* EzyApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyApp.h; sourceTree = "<group>"; };
+		F1BFD98E26B65711002EA3D8 /* EzyObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyObject.h; sourceTree = "<group>"; };
+		F1BFD98F26B65711002EA3D8 /* EzyUser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyUser.cpp; sourceTree = "<group>"; };
+		F1BFD99026B65711002EA3D8 /* EzyPlugin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyPlugin.cpp; sourceTree = "<group>"; };
+		F1BFD99126B65711002EA3D8 /* EzyNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyNull.h; sourceTree = "<group>"; };
+		F1BFD99226B65711002EA3D8 /* EzyString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyString.h; sourceTree = "<group>"; };
+		F1BFD99426B65711002EA3D8 /* EzyDataEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyDataEncoder.h; sourceTree = "<group>"; };
+		F1BFD99526B65711002EA3D8 /* EzyMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyMessage.h; sourceTree = "<group>"; };
+		F1BFD99626B65711002EA3D8 /* EzyMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyMessage.cpp; sourceTree = "<group>"; };
+		F1BFD99726B65711002EA3D8 /* EzyDataDecoder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyDataDecoder.cpp; sourceTree = "<group>"; };
+		F1BFD99826B65711002EA3D8 /* EzyEncryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyEncryption.h; sourceTree = "<group>"; };
+		F1BFD99926B65711002EA3D8 /* EzyEncryption.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyEncryption.cpp; sourceTree = "<group>"; };
+		F1BFD99A26B65711002EA3D8 /* EzyDataDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyDataDecoder.h; sourceTree = "<group>"; };
+		F1BFD99B26B65711002EA3D8 /* EzyDataEncoder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyDataEncoder.cpp; sourceTree = "<group>"; };
+		F1BFD99C26B65711002EA3D8 /* EzyClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyClient.cpp; sourceTree = "<group>"; };
+		F1BFD99E26B65711002EA3D8 /* EzySetup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzySetup.cpp; sourceTree = "<group>"; };
+		F1BFD99F26B65711002EA3D8 /* EzySetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzySetup.h; sourceTree = "<group>"; };
+		F1BFD9A026B65711002EA3D8 /* EzyClients.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyClients.cpp; sourceTree = "<group>"; };
+		F1BFD9A126B65711002EA3D8 /* EzyHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyHeaders.h; sourceTree = "<group>"; };
+		F1BFD9A326B65711002EA3D8 /* EzyHandlerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyHandlerManager.h; sourceTree = "<group>"; };
+		F1BFD9A426B65711002EA3D8 /* EzyPluginManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyPluginManager.cpp; sourceTree = "<group>"; };
+		F1BFD9A526B65711002EA3D8 /* EzyAppManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyAppManager.cpp; sourceTree = "<group>"; };
+		F1BFD9A626B65711002EA3D8 /* EzyHandlerManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyHandlerManager.cpp; sourceTree = "<group>"; };
+		F1BFD9A726B65711002EA3D8 /* EzyPingManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyPingManager.cpp; sourceTree = "<group>"; };
+		F1BFD9A826B65711002EA3D8 /* EzyAppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyAppManager.h; sourceTree = "<group>"; };
+		F1BFD9A926B65711002EA3D8 /* EzyPingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyPingManager.h; sourceTree = "<group>"; };
+		F1BFD9AA26B65711002EA3D8 /* EzyPluginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyPluginManager.h; sourceTree = "<group>"; };
+		F1BFD9AB26B65711002EA3D8 /* EzyMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyMacro.h; sourceTree = "<group>"; };
+		F1BFD9AD26B65711002EA3D8 /* EzyStatusCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyStatusCode.h; sourceTree = "<group>"; };
+		F1BFD9AE26B65711002EA3D8 /* EzyConnectionStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyConnectionStatus.cpp; sourceTree = "<group>"; };
+		F1BFD9AF26B65711002EA3D8 /* EzyConnectionStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyConnectionStatus.h; sourceTree = "<group>"; };
+		F1BFD9B026B65711002EA3D8 /* EzyCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyCommand.cpp; sourceTree = "<group>"; };
+		F1BFD9B126B65711002EA3D8 /* EzyTransportType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyTransportType.h; sourceTree = "<group>"; };
+		F1BFD9B226B65711002EA3D8 /* EzyConnectionFailedReason.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyConnectionFailedReason.h; sourceTree = "<group>"; };
+		F1BFD9B326B65711002EA3D8 /* EzyDisconnectReason.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyDisconnectReason.h; sourceTree = "<group>"; };
+		F1BFD9B426B65711002EA3D8 /* EzyCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyCommand.h; sourceTree = "<group>"; };
+		F1BFD9B526B65711002EA3D8 /* EzyDisconnectReason.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyDisconnectReason.cpp; sourceTree = "<group>"; };
+		F1BFD9B626B65711002EA3D8 /* EzyConnectionFailedReason.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyConnectionFailedReason.cpp; sourceTree = "<group>"; };
+		F1BFD9B826B65711002EA3D8 /* EzyThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyThread.cpp; sourceTree = "<group>"; };
+		F1BFD9B926B65711002EA3D8 /* EzyThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyThread.h; sourceTree = "<group>"; };
+		F1BFD9BA26B65711002EA3D8 /* EzyScheduleAtFixedRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyScheduleAtFixedRate.h; sourceTree = "<group>"; };
+		F1BFD9BB26B65711002EA3D8 /* EzyScheduleAtFixedRate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyScheduleAtFixedRate.cpp; sourceTree = "<group>"; };
+		F1BFD9BD26B65711002EA3D8 /* EzyReleasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyReleasePool.h; sourceTree = "<group>"; };
+		F1BFD9BE26B65711002EA3D8 /* EzyAutoReleasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyAutoReleasePool.h; sourceTree = "<group>"; };
+		F1BFD9BF26B65711002EA3D8 /* EzyReleasePool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyReleasePool.cpp; sourceTree = "<group>"; };
+		F1BFD9C026B65711002EA3D8 /* EzyAutoReleasePool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyAutoReleasePool.cpp; sourceTree = "<group>"; };
+		F1BFD9C226B65711002EA3D8 /* EzyRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyRequest.cpp; sourceTree = "<group>"; };
+		F1BFD9C326B65711002EA3D8 /* EzyRequestSerializer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyRequestSerializer.cpp; sourceTree = "<group>"; };
+		F1BFD9C426B65711002EA3D8 /* EzyRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyRequest.h; sourceTree = "<group>"; };
+		F1BFD9C526B65711002EA3D8 /* EzyRequestSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyRequestSerializer.h; sourceTree = "<group>"; };
+		F1BFD9C726B65711002EA3D8 /* EzyEventType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyEventType.h; sourceTree = "<group>"; };
+		F1BFD9C826B65711002EA3D8 /* EzyEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyEvent.h; sourceTree = "<group>"; };
+		F1BFD9C926B65711002EA3D8 /* EzyEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyEvent.cpp; sourceTree = "<group>"; };
+		F1BFD9CA26B65711002EA3D8 /* EzyEventType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyEventType.cpp; sourceTree = "<group>"; };
+		F1BFD9CC26B65711002EA3D8 /* EzyRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyRef.h; sourceTree = "<group>"; };
+		F1BFD9CD26B65711002EA3D8 /* EzyRef.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyRef.cpp; sourceTree = "<group>"; };
+		F1BFD9CF26B65711002EA3D8 /* EzySocketDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzySocketDelegate.h; sourceTree = "<group>"; };
+		F1BFD9D026B65711002EA3D8 /* EzySocketAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzySocketAdapter.h; sourceTree = "<group>"; };
+		F1BFD9D126B65711002EA3D8 /* EzySocketClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzySocketClient.h; sourceTree = "<group>"; };
+		F1BFD9D226B65711002EA3D8 /* EzySocketReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzySocketReader.h; sourceTree = "<group>"; };
+		F1BFD9D326B65711002EA3D8 /* EzyTcpSocketClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyTcpSocketClient.cpp; sourceTree = "<group>"; };
+		F1BFD9D426B65711002EA3D8 /* EzySocketClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzySocketClient.cpp; sourceTree = "<group>"; };
+		F1BFD9D526B65711002EA3D8 /* EzySocketAdapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzySocketAdapter.cpp; sourceTree = "<group>"; };
+		F1BFD9D626B65711002EA3D8 /* EzySocketDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzySocketDefine.h; sourceTree = "<group>"; };
+		F1BFD9D726B65711002EA3D8 /* EzyTcpSocketClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyTcpSocketClient.h; sourceTree = "<group>"; };
+		F1BFD9D826B65711002EA3D8 /* EzySocketCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzySocketCore.cpp; sourceTree = "<group>"; };
+		F1BFD9D926B65711002EA3D8 /* EzySocketPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzySocketPool.h; sourceTree = "<group>"; };
+		F1BFD9DA26B65711002EA3D8 /* EzyUdpSocketClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyUdpSocketClient.h; sourceTree = "<group>"; };
+		F1BFD9DB26B65711002EA3D8 /* EzyUTSocketClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyUTSocketClient.h; sourceTree = "<group>"; };
+		F1BFD9DC26B65711002EA3D8 /* EzySender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzySender.h; sourceTree = "<group>"; };
+		F1BFD9DD26B65711002EA3D8 /* EzySocketCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzySocketCore.h; sourceTree = "<group>"; };
+		F1BFD9DE26B65711002EA3D8 /* EzyMainEventsLoop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyMainEventsLoop.cpp; sourceTree = "<group>"; };
+		F1BFD9DF26B65711002EA3D8 /* EzyPingSchedule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyPingSchedule.cpp; sourceTree = "<group>"; };
+		F1BFD9E026B65711002EA3D8 /* EzySocketWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzySocketWriter.h; sourceTree = "<group>"; };
+		F1BFD9E126B65711002EA3D8 /* EzySocketPool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzySocketPool.cpp; sourceTree = "<group>"; };
+		F1BFD9E226B65711002EA3D8 /* EzySocketReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzySocketReader.cpp; sourceTree = "<group>"; };
+		F1BFD9E326B65711002EA3D8 /* EzyPingSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyPingSchedule.h; sourceTree = "<group>"; };
+		F1BFD9E426B65711002EA3D8 /* EzyUTSocketClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyUTSocketClient.cpp; sourceTree = "<group>"; };
+		F1BFD9E526B65711002EA3D8 /* EzyUdpSocketClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzyUdpSocketClient.cpp; sourceTree = "<group>"; };
+		F1BFD9E626B65711002EA3D8 /* EzySocketWriter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EzySocketWriter.cpp; sourceTree = "<group>"; };
+		F1BFD9E726B65711002EA3D8 /* EzyMainEventsLoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EzyMainEventsLoop.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		97C146EB1CF9000F007C117D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D44C6451496F39C9524E09C3 /* Pods_Runner.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2EE83825BB93B668DB4A8852 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B461B3840AFCB3A8BABC2A51 /* Pods-Runner.debug.xcconfig */,
+				6B2CC68C51353B6B50C55957 /* Pods-Runner.release.xcconfig */,
+				03332054315A3AE09980408C /* Pods-Runner.profile.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		9740EEB11CF90186004384FC /* Flutter */ = {
+			isa = PBXGroup;
+			children = (
+				3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */,
+				9740EEB21CF90195004384FC /* Debug.xcconfig */,
+				7AFA3C8E1D35360C0083082E /* Release.xcconfig */,
+				9740EEB31CF90195004384FC /* Generated.xcconfig */,
+			);
+			name = Flutter;
+			sourceTree = "<group>";
+		};
+		97C146E51CF9000F007C117D = {
+			isa = PBXGroup;
+			children = (
+				9740EEB11CF90186004384FC /* Flutter */,
+				97C146F01CF9000F007C117D /* Runner */,
+				97C146EF1CF9000F007C117D /* Products */,
+				F17E46512699D40000668CED /* Frameworks */,
+				2EE83825BB93B668DB4A8852 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		97C146EF1CF9000F007C117D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				97C146EE1CF9000F007C117D /* Runner.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		97C146F01CF9000F007C117D /* Runner */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD92526B65710002EA3D8 /* EzyClient */,
+				97C146FA1CF9000F007C117D /* Main.storyboard */,
+				97C146FD1CF9000F007C117D /* Assets.xcassets */,
+				97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */,
+				97C147021CF9000F007C117D /* Info.plist */,
+				1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */,
+				1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */,
+				74858FAE1ED2DC5600515810 /* AppDelegate.swift */,
+				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
+			);
+			path = Runner;
+			sourceTree = "<group>";
+		};
+		F17E46512699D40000668CED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				30425E68A0587C2952C7A950 /* Pods_Runner.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F1BFD92526B65710002EA3D8 /* EzyClient */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD92626B65710002EA3D8 /* serializer */,
+				F1BFD93126B65710002EA3D8 /* proxy */,
+				F1BFD93426B65710002EA3D8 /* util */,
+				F1BFD93926B65710002EA3D8 /* EzyFlutterClientPlugin.h */,
+				F1BFD93A26B65710002EA3D8 /* codec */,
+				F1BFD93D26B65710002EA3D8 /* EzyMethodNames.h */,
+				F1BFD93E26B65710002EA3D8 /* Prefix.pch */,
+				F1BFD93F26B65710002EA3D8 /* math */,
+				F1BFD94226B65710002EA3D8 /* EzyFlutterClientPlugin.m */,
+				F1BFD94326B65710002EA3D8 /* EzyClientProxy.mm */,
+				F1BFD94426B65710002EA3D8 /* EzyMethodNames.mm */,
+				F1BFD94526B65710002EA3D8 /* exception */,
+				F1BFD94826B65710002EA3D8 /* EzyClientProxy.h */,
+				F1BFD94926B65710002EA3D8 /* socket */,
+			);
+			name = EzyClient;
+			path = ../../../ios/EzyClient;
+			sourceTree = "<group>";
+		};
+		F1BFD92626B65710002EA3D8 /* serializer */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD92726B65710002EA3D8 /* EzyNativeDataSerializer.mm */,
+				F1BFD92826B65710002EA3D8 /* EzyClientConfigSerializer.mm */,
+				F1BFD92926B65710002EA3D8 /* EzyNativeDataDeserializer.h */,
+				F1BFD92A26B65710002EA3D8 /* EzyNativeDataSerializer.h */,
+				F1BFD92B26B65710002EA3D8 /* EzyNativeDataDeserializer.mm */,
+				F1BFD92C26B65710002EA3D8 /* EzyEventSerializer.h */,
+				F1BFD92D26B65710002EA3D8 /* EzyNativeSerializers.h */,
+				F1BFD92E26B65710002EA3D8 /* EzyClientConfigSerializer.h */,
+				F1BFD92F26B65710002EA3D8 /* EzyEventSerializer.mm */,
+				F1BFD93026B65710002EA3D8 /* EzyNativeSerializers.mm */,
+			);
+			path = serializer;
+			sourceTree = "<group>";
+		};
+		F1BFD93126B65710002EA3D8 /* proxy */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD93226B65710002EA3D8 /* EzyMethodProxy.mm */,
+				F1BFD93326B65710002EA3D8 /* EzyMethodProxy.h */,
+			);
+			path = proxy;
+			sourceTree = "<group>";
+		};
+		F1BFD93426B65710002EA3D8 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD93526B65710002EA3D8 /* EzyNativeStrings.mm */,
+				F1BFD93626B65710002EA3D8 /* NSByteArray.h */,
+				F1BFD93726B65710002EA3D8 /* NSByArray.m */,
+				F1BFD93826B65710002EA3D8 /* EzyNativeStrings.h */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		F1BFD93A26B65710002EA3D8 /* codec */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD93B26B65710002EA3D8 /* EzyEncryptionProxy.h */,
+				F1BFD93C26B65710002EA3D8 /* EzyEncryptionProxy.mm */,
+			);
+			path = codec;
+			sourceTree = "<group>";
+		};
+		F1BFD93F26B65710002EA3D8 /* math */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD94026B65710002EA3D8 /* EzyNSNumber.m */,
+				F1BFD94126B65710002EA3D8 /* EzyNSNumber.h */,
+			);
+			path = math;
+			sourceTree = "<group>";
+		};
+		F1BFD94526B65710002EA3D8 /* exception */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD94626B65710002EA3D8 /* EzyMethodCallException.mm */,
+				F1BFD94726B65710002EA3D8 /* EzyMethodCallException.h */,
+			);
+			path = exception;
+			sourceTree = "<group>";
+		};
+		F1BFD94926B65710002EA3D8 /* socket */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD94A26B65710002EA3D8 /* CMakeLists.txt */,
+				F1BFD94B26B65710002EA3D8 /* CODING_CONVENSION.md */,
+				F1BFD94C26B65710002EA3D8 /* platform */,
+				F1BFD95B26B65710002EA3D8 /* README.md */,
+				F1BFD95C26B65710002EA3D8 /* .gitignore */,
+				F1BFD95D26B65710002EA3D8 /* src */,
+			);
+			path = socket;
+			sourceTree = "<group>";
+		};
+		F1BFD94C26B65710002EA3D8 /* platform */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD94D26B65710002EA3D8 /* apple */,
+				F1BFD95126B65710002EA3D8 /* android */,
+			);
+			path = platform;
+			sourceTree = "<group>";
+		};
+		F1BFD94D26B65710002EA3D8 /* apple */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD94E26B65710002EA3D8 /* ezyfox-client.xcodeproj */,
+			);
+			path = apple;
+			sourceTree = "<group>";
+		};
+		F1BFD94F26B65710002EA3D8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD9EA26B65711002EA3D8 /* libezyfox-client.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F1BFD95126B65710002EA3D8 /* android */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD95226B65710002EA3D8 /* .gitignore */,
+				F1BFD95326B65710002EA3D8 /* build.gradle */,
+				F1BFD95426B65710002EA3D8 /* gradle.properties */,
+				F1BFD95526B65710002EA3D8 /* jni */,
+				F1BFD95826B65710002EA3D8 /* src */,
+			);
+			path = android;
+			sourceTree = "<group>";
+		};
+		F1BFD95526B65710002EA3D8 /* jni */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD95626B65710002EA3D8 /* Android.mk */,
+				F1BFD95726B65710002EA3D8 /* Application.mk */,
+			);
+			path = jni;
+			sourceTree = "<group>";
+		};
+		F1BFD95826B65710002EA3D8 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD95926B65710002EA3D8 /* main */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		F1BFD95926B65710002EA3D8 /* main */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD95A26B65710002EA3D8 /* AndroidManifest.xml */,
+			);
+			path = main;
+			sourceTree = "<group>";
+		};
+		F1BFD95D26B65710002EA3D8 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD95E26B65710002EA3D8 /* handler */,
+				F1BFD96F26B65711002EA3D8 /* EzyClient.h */,
+				F1BFD97026B65711002EA3D8 /* EzyClients.h */,
+				F1BFD97126B65711002EA3D8 /* EzyUTClient.h */,
+				F1BFD97226B65711002EA3D8 /* EzyUTClient.cpp */,
+				F1BFD97326B65711002EA3D8 /* logger */,
+				F1BFD97626B65711002EA3D8 /* util */,
+				F1BFD97926B65711002EA3D8 /* config */,
+				F1BFD97C26B65711002EA3D8 /* entity */,
+				F1BFD99326B65711002EA3D8 /* codec */,
+				F1BFD99C26B65711002EA3D8 /* EzyClient.cpp */,
+				F1BFD99D26B65711002EA3D8 /* setup */,
+				F1BFD9A026B65711002EA3D8 /* EzyClients.cpp */,
+				F1BFD9A126B65711002EA3D8 /* EzyHeaders.h */,
+				F1BFD9A226B65711002EA3D8 /* manager */,
+				F1BFD9AB26B65711002EA3D8 /* EzyMacro.h */,
+				F1BFD9AC26B65711002EA3D8 /* constant */,
+				F1BFD9B726B65711002EA3D8 /* concurrent */,
+				F1BFD9BC26B65711002EA3D8 /* gc */,
+				F1BFD9C126B65711002EA3D8 /* request */,
+				F1BFD9C626B65711002EA3D8 /* event */,
+				F1BFD9CB26B65711002EA3D8 /* base */,
+				F1BFD9CE26B65711002EA3D8 /* socket */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		F1BFD95E26B65710002EA3D8 /* handler */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD95F26B65710002EA3D8 /* EzyPluginDataHandlers.h */,
+				F1BFD96026B65710002EA3D8 /* EzyEventHandler.h */,
+				F1BFD96126B65710002EA3D8 /* EzyEventHandlers.cpp */,
+				F1BFD96226B65710002EA3D8 /* EzyDataHandlers.cpp */,
+				F1BFD96326B65710002EA3D8 /* EzyPluginDataHandler.h */,
+				F1BFD96426B65710002EA3D8 /* EzyDataHandlers.h */,
+				F1BFD96526B65710002EA3D8 /* EzyEventHandlers.h */,
+				F1BFD96626B65710002EA3D8 /* EzyAppDataHandler.h */,
+				F1BFD96726B65710002EA3D8 /* EzyEventHandler.cpp */,
+				F1BFD96826B65710002EA3D8 /* EzyDataHandler.h */,
+				F1BFD96926B65710002EA3D8 /* EzyAppDataHandlers.cpp */,
+				F1BFD96A26B65710002EA3D8 /* EzyAppDataHandlers.h */,
+				F1BFD96B26B65711002EA3D8 /* EzyPluginDataHandlers.cpp */,
+				F1BFD96C26B65711002EA3D8 /* EzyPluginDataHandler.cpp */,
+				F1BFD96D26B65711002EA3D8 /* EzyAppDataHandler.cpp */,
+				F1BFD96E26B65711002EA3D8 /* EzyDataHandler.cpp */,
+			);
+			path = handler;
+			sourceTree = "<group>";
+		};
+		F1BFD97326B65711002EA3D8 /* logger */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD97426B65711002EA3D8 /* EzyLogger.cpp */,
+				F1BFD97526B65711002EA3D8 /* EzyLogger.h */,
+			);
+			path = logger;
+			sourceTree = "<group>";
+		};
+		F1BFD97626B65711002EA3D8 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD97726B65711002EA3D8 /* EzyStack.h */,
+				F1BFD97826B65711002EA3D8 /* EzyMaps.h */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		F1BFD97926B65711002EA3D8 /* config */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD97A26B65711002EA3D8 /* EzyClientConfig.h */,
+				F1BFD97B26B65711002EA3D8 /* EzyClientConfig.cpp */,
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
+		F1BFD97C26B65711002EA3D8 /* entity */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD97D26B65711002EA3D8 /* EzyApp.cpp */,
+				F1BFD97E26B65711002EA3D8 /* EzyString.cpp */,
+				F1BFD97F26B65711002EA3D8 /* EzyUser.h */,
+				F1BFD98026B65711002EA3D8 /* EzyZone.cpp */,
+				F1BFD98126B65711002EA3D8 /* EzyPrimitive.cpp */,
+				F1BFD98226B65711002EA3D8 /* EzyPlugin.h */,
+				F1BFD98326B65711002EA3D8 /* EzyObject.cpp */,
+				F1BFD98426B65711002EA3D8 /* EzyByteArray.h */,
+				F1BFD98526B65711002EA3D8 /* EzyPrimitive.h */,
+				F1BFD98626B65711002EA3D8 /* EzyNull.cpp */,
+				F1BFD98726B65711002EA3D8 /* EzyArray.h */,
+				F1BFD98826B65711002EA3D8 /* EzyByteArray.cpp */,
+				F1BFD98926B65711002EA3D8 /* EzyValue.h */,
+				F1BFD98A26B65711002EA3D8 /* EzyArray.cpp */,
+				F1BFD98B26B65711002EA3D8 /* EzyValue.cpp */,
+				F1BFD98C26B65711002EA3D8 /* EzyZone.h */,
+				F1BFD98D26B65711002EA3D8 /* EzyApp.h */,
+				F1BFD98E26B65711002EA3D8 /* EzyObject.h */,
+				F1BFD98F26B65711002EA3D8 /* EzyUser.cpp */,
+				F1BFD99026B65711002EA3D8 /* EzyPlugin.cpp */,
+				F1BFD99126B65711002EA3D8 /* EzyNull.h */,
+				F1BFD99226B65711002EA3D8 /* EzyString.h */,
+			);
+			path = entity;
+			sourceTree = "<group>";
+		};
+		F1BFD99326B65711002EA3D8 /* codec */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD99426B65711002EA3D8 /* EzyDataEncoder.h */,
+				F1BFD99526B65711002EA3D8 /* EzyMessage.h */,
+				F1BFD99626B65711002EA3D8 /* EzyMessage.cpp */,
+				F1BFD99726B65711002EA3D8 /* EzyDataDecoder.cpp */,
+				F1BFD99826B65711002EA3D8 /* EzyEncryption.h */,
+				F1BFD99926B65711002EA3D8 /* EzyEncryption.cpp */,
+				F1BFD99A26B65711002EA3D8 /* EzyDataDecoder.h */,
+				F1BFD99B26B65711002EA3D8 /* EzyDataEncoder.cpp */,
+			);
+			path = codec;
+			sourceTree = "<group>";
+		};
+		F1BFD99D26B65711002EA3D8 /* setup */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD99E26B65711002EA3D8 /* EzySetup.cpp */,
+				F1BFD99F26B65711002EA3D8 /* EzySetup.h */,
+			);
+			path = setup;
+			sourceTree = "<group>";
+		};
+		F1BFD9A226B65711002EA3D8 /* manager */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD9A326B65711002EA3D8 /* EzyHandlerManager.h */,
+				F1BFD9A426B65711002EA3D8 /* EzyPluginManager.cpp */,
+				F1BFD9A526B65711002EA3D8 /* EzyAppManager.cpp */,
+				F1BFD9A626B65711002EA3D8 /* EzyHandlerManager.cpp */,
+				F1BFD9A726B65711002EA3D8 /* EzyPingManager.cpp */,
+				F1BFD9A826B65711002EA3D8 /* EzyAppManager.h */,
+				F1BFD9A926B65711002EA3D8 /* EzyPingManager.h */,
+				F1BFD9AA26B65711002EA3D8 /* EzyPluginManager.h */,
+			);
+			path = manager;
+			sourceTree = "<group>";
+		};
+		F1BFD9AC26B65711002EA3D8 /* constant */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD9AD26B65711002EA3D8 /* EzyStatusCode.h */,
+				F1BFD9AE26B65711002EA3D8 /* EzyConnectionStatus.cpp */,
+				F1BFD9AF26B65711002EA3D8 /* EzyConnectionStatus.h */,
+				F1BFD9B026B65711002EA3D8 /* EzyCommand.cpp */,
+				F1BFD9B126B65711002EA3D8 /* EzyTransportType.h */,
+				F1BFD9B226B65711002EA3D8 /* EzyConnectionFailedReason.h */,
+				F1BFD9B326B65711002EA3D8 /* EzyDisconnectReason.h */,
+				F1BFD9B426B65711002EA3D8 /* EzyCommand.h */,
+				F1BFD9B526B65711002EA3D8 /* EzyDisconnectReason.cpp */,
+				F1BFD9B626B65711002EA3D8 /* EzyConnectionFailedReason.cpp */,
+			);
+			path = constant;
+			sourceTree = "<group>";
+		};
+		F1BFD9B726B65711002EA3D8 /* concurrent */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD9B826B65711002EA3D8 /* EzyThread.cpp */,
+				F1BFD9B926B65711002EA3D8 /* EzyThread.h */,
+				F1BFD9BA26B65711002EA3D8 /* EzyScheduleAtFixedRate.h */,
+				F1BFD9BB26B65711002EA3D8 /* EzyScheduleAtFixedRate.cpp */,
+			);
+			path = concurrent;
+			sourceTree = "<group>";
+		};
+		F1BFD9BC26B65711002EA3D8 /* gc */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD9BD26B65711002EA3D8 /* EzyReleasePool.h */,
+				F1BFD9BE26B65711002EA3D8 /* EzyAutoReleasePool.h */,
+				F1BFD9BF26B65711002EA3D8 /* EzyReleasePool.cpp */,
+				F1BFD9C026B65711002EA3D8 /* EzyAutoReleasePool.cpp */,
+			);
+			path = gc;
+			sourceTree = "<group>";
+		};
+		F1BFD9C126B65711002EA3D8 /* request */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD9C226B65711002EA3D8 /* EzyRequest.cpp */,
+				F1BFD9C326B65711002EA3D8 /* EzyRequestSerializer.cpp */,
+				F1BFD9C426B65711002EA3D8 /* EzyRequest.h */,
+				F1BFD9C526B65711002EA3D8 /* EzyRequestSerializer.h */,
+			);
+			path = request;
+			sourceTree = "<group>";
+		};
+		F1BFD9C626B65711002EA3D8 /* event */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD9C726B65711002EA3D8 /* EzyEventType.h */,
+				F1BFD9C826B65711002EA3D8 /* EzyEvent.h */,
+				F1BFD9C926B65711002EA3D8 /* EzyEvent.cpp */,
+				F1BFD9CA26B65711002EA3D8 /* EzyEventType.cpp */,
+			);
+			path = event;
+			sourceTree = "<group>";
+		};
+		F1BFD9CB26B65711002EA3D8 /* base */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD9CC26B65711002EA3D8 /* EzyRef.h */,
+				F1BFD9CD26B65711002EA3D8 /* EzyRef.cpp */,
+			);
+			path = base;
+			sourceTree = "<group>";
+		};
+		F1BFD9CE26B65711002EA3D8 /* socket */ = {
+			isa = PBXGroup;
+			children = (
+				F1BFD9CF26B65711002EA3D8 /* EzySocketDelegate.h */,
+				F1BFD9D026B65711002EA3D8 /* EzySocketAdapter.h */,
+				F1BFD9D126B65711002EA3D8 /* EzySocketClient.h */,
+				F1BFD9D226B65711002EA3D8 /* EzySocketReader.h */,
+				F1BFD9D326B65711002EA3D8 /* EzyTcpSocketClient.cpp */,
+				F1BFD9D426B65711002EA3D8 /* EzySocketClient.cpp */,
+				F1BFD9D526B65711002EA3D8 /* EzySocketAdapter.cpp */,
+				F1BFD9D626B65711002EA3D8 /* EzySocketDefine.h */,
+				F1BFD9D726B65711002EA3D8 /* EzyTcpSocketClient.h */,
+				F1BFD9D826B65711002EA3D8 /* EzySocketCore.cpp */,
+				F1BFD9D926B65711002EA3D8 /* EzySocketPool.h */,
+				F1BFD9DA26B65711002EA3D8 /* EzyUdpSocketClient.h */,
+				F1BFD9DB26B65711002EA3D8 /* EzyUTSocketClient.h */,
+				F1BFD9DC26B65711002EA3D8 /* EzySender.h */,
+				F1BFD9DD26B65711002EA3D8 /* EzySocketCore.h */,
+				F1BFD9DE26B65711002EA3D8 /* EzyMainEventsLoop.cpp */,
+				F1BFD9DF26B65711002EA3D8 /* EzyPingSchedule.cpp */,
+				F1BFD9E026B65711002EA3D8 /* EzySocketWriter.h */,
+				F1BFD9E126B65711002EA3D8 /* EzySocketPool.cpp */,
+				F1BFD9E226B65711002EA3D8 /* EzySocketReader.cpp */,
+				F1BFD9E326B65711002EA3D8 /* EzyPingSchedule.h */,
+				F1BFD9E426B65711002EA3D8 /* EzyUTSocketClient.cpp */,
+				F1BFD9E526B65711002EA3D8 /* EzyUdpSocketClient.cpp */,
+				F1BFD9E626B65711002EA3D8 /* EzySocketWriter.cpp */,
+				F1BFD9E726B65711002EA3D8 /* EzyMainEventsLoop.h */,
+			);
+			path = socket;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		97C146ED1CF9000F007C117D /* Runner */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 97C147051CF9000F007C117D /* Build configuration list for PBXNativeTarget "Runner" */;
+			buildPhases = (
+				EC309B84265F1B993387303B /* [CP] Check Pods Manifest.lock */,
+				9740EEB61CF901F6004384FC /* Run Script */,
+				97C146EA1CF9000F007C117D /* Sources */,
+				97C146EB1CF9000F007C117D /* Frameworks */,
+				97C146EC1CF9000F007C117D /* Resources */,
+				9705A1C41CF9048500538489 /* Embed Frameworks */,
+				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
+				25531C6403BEB076D77D440D /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Runner;
+			productName = Runner;
+			productReference = 97C146EE1CF9000F007C117D /* Runner.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		97C146E61CF9000F007C117D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1250;
+				ORGANIZATIONNAME = "";
+				TargetAttributes = {
+					97C146ED1CF9000F007C117D = {
+						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 1100;
+					};
+				};
+			};
+			buildConfigurationList = 97C146E91CF9000F007C117D /* Build configuration list for PBXProject "Runner" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 97C146E51CF9000F007C117D;
+			productRefGroup = 97C146EF1CF9000F007C117D /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = F1BFD94F26B65710002EA3D8 /* Products */;
+					ProjectRef = F1BFD94E26B65710002EA3D8 /* ezyfox-client.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				97C146ED1CF9000F007C117D /* Runner */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		F1BFD9EA26B65711002EA3D8 /* libezyfox-client.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libezyfox-client.a";
+			remoteRef = F1BFD9E926B65711002EA3D8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		97C146EC1CF9000F007C117D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
+				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
+				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
+				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		25531C6403BEB076D77D440D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3B06AD1E1E4923F5004D2608 /* Thin Binary */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Thin Binary";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" embed_and_thin\n";
+		};
+		9740EEB61CF901F6004384FC /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build\n";
+		};
+		EC309B84265F1B993387303B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Runner-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		97C146EA1CF9000F007C117D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1BFDA1F26B65711002EA3D8 /* EzyClients.cpp in Sources */,
+				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
+				F1BFDA0426B65711002EA3D8 /* EzyDataHandlers.cpp in Sources */,
+				F1BFDA1E26B65711002EA3D8 /* EzySetup.cpp in Sources */,
+				F1BFDA3226B65711002EA3D8 /* EzySocketClient.cpp in Sources */,
+				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
+				F1BFDA3826B65711002EA3D8 /* EzySocketReader.cpp in Sources */,
+				F1BFD9F426B65711002EA3D8 /* EzyNSNumber.m in Sources */,
+				F1BFDA2A26B65711002EA3D8 /* EzyReleasePool.cpp in Sources */,
+				F1BFDA2626B65711002EA3D8 /* EzyDisconnectReason.cpp in Sources */,
+				F1BFDA1426B65711002EA3D8 /* EzyByteArray.cpp in Sources */,
+				F1BFDA2826B65711002EA3D8 /* EzyThread.cpp in Sources */,
+				F1BFDA1326B65711002EA3D8 /* EzyNull.cpp in Sources */,
+				F1BFDA0C26B65711002EA3D8 /* EzyLogger.cpp in Sources */,
+				F1BFDA0826B65711002EA3D8 /* EzyPluginDataHandler.cpp in Sources */,
+				F1BFDA0526B65711002EA3D8 /* EzyEventHandler.cpp in Sources */,
+				F1BFDA3626B65711002EA3D8 /* EzyPingSchedule.cpp in Sources */,
+				F1BFD9EB26B65711002EA3D8 /* EzyNativeDataSerializer.mm in Sources */,
+				F1BFDA3726B65711002EA3D8 /* EzySocketPool.cpp in Sources */,
+				F1BFDA3B26B65711002EA3D8 /* EzySocketWriter.cpp in Sources */,
+				F1BFDA2B26B65711002EA3D8 /* EzyAutoReleasePool.cpp in Sources */,
+				F1BFDA0726B65711002EA3D8 /* EzyPluginDataHandlers.cpp in Sources */,
+				F1BFDA1A26B65711002EA3D8 /* EzyDataDecoder.cpp in Sources */,
+				F1BFD9EE26B65711002EA3D8 /* EzyEventSerializer.mm in Sources */,
+				F1BFDA0926B65711002EA3D8 /* EzyAppDataHandler.cpp in Sources */,
+				F1BFD9F826B65711002EA3D8 /* EzyMethodCallException.mm in Sources */,
+				F1BFDA0A26B65711002EA3D8 /* EzyDataHandler.cpp in Sources */,
+				F1BFDA1B26B65711002EA3D8 /* EzyEncryption.cpp in Sources */,
+				F1BFDA2026B65711002EA3D8 /* EzyPluginManager.cpp in Sources */,
+				F1BFDA1726B65711002EA3D8 /* EzyUser.cpp in Sources */,
+				F1BFDA2326B65711002EA3D8 /* EzyPingManager.cpp in Sources */,
+				F1BFDA1226B65711002EA3D8 /* EzyObject.cpp in Sources */,
+				F1BFD9F726B65711002EA3D8 /* EzyMethodNames.mm in Sources */,
+				F1BFDA3A26B65711002EA3D8 /* EzyUdpSocketClient.cpp in Sources */,
+				F1BFDA3126B65711002EA3D8 /* EzyTcpSocketClient.cpp in Sources */,
+				F1BFDA2226B65711002EA3D8 /* EzyHandlerManager.cpp in Sources */,
+				F1BFDA2926B65711002EA3D8 /* EzyScheduleAtFixedRate.cpp in Sources */,
+				F1BFD9F026B65711002EA3D8 /* EzyMethodProxy.mm in Sources */,
+				F1BFDA1626B65711002EA3D8 /* EzyValue.cpp in Sources */,
+				F1BFD9F326B65711002EA3D8 /* EzyEncryptionProxy.mm in Sources */,
+				F1BFDA2F26B65711002EA3D8 /* EzyEventType.cpp in Sources */,
+				F1BFDA3426B65711002EA3D8 /* EzySocketCore.cpp in Sources */,
+				F1BFDA3026B65711002EA3D8 /* EzyRef.cpp in Sources */,
+				F1BFDA1D26B65711002EA3D8 /* EzyClient.cpp in Sources */,
+				F1BFDA0E26B65711002EA3D8 /* EzyApp.cpp in Sources */,
+				F1BFDA2526B65711002EA3D8 /* EzyCommand.cpp in Sources */,
+				F1BFDA2726B65711002EA3D8 /* EzyConnectionFailedReason.cpp in Sources */,
+				F1BFD9EF26B65711002EA3D8 /* EzyNativeSerializers.mm in Sources */,
+				F1BFD9ED26B65711002EA3D8 /* EzyNativeDataDeserializer.mm in Sources */,
+				F1BFDA2E26B65711002EA3D8 /* EzyEvent.cpp in Sources */,
+				F1BFD9F226B65711002EA3D8 /* NSByArray.m in Sources */,
+				F1BFDA2D26B65711002EA3D8 /* EzyRequestSerializer.cpp in Sources */,
+				F1BFDA1026B65711002EA3D8 /* EzyZone.cpp in Sources */,
+				F1BFDA3326B65711002EA3D8 /* EzySocketAdapter.cpp in Sources */,
+				F1BFDA3526B65711002EA3D8 /* EzyMainEventsLoop.cpp in Sources */,
+				F1BFD9F626B65711002EA3D8 /* EzyClientProxy.mm in Sources */,
+				F1BFDA0F26B65711002EA3D8 /* EzyString.cpp in Sources */,
+				F1BFDA0B26B65711002EA3D8 /* EzyUTClient.cpp in Sources */,
+				F1BFDA1826B65711002EA3D8 /* EzyPlugin.cpp in Sources */,
+				F1BFDA0626B65711002EA3D8 /* EzyAppDataHandlers.cpp in Sources */,
+				F1BFDA0326B65711002EA3D8 /* EzyEventHandlers.cpp in Sources */,
+				F1BFDA1926B65711002EA3D8 /* EzyMessage.cpp in Sources */,
+				F1BFDA2C26B65711002EA3D8 /* EzyRequest.cpp in Sources */,
+				F1BFDA0D26B65711002EA3D8 /* EzyClientConfig.cpp in Sources */,
+				F1BFD9F526B65711002EA3D8 /* EzyFlutterClientPlugin.m in Sources */,
+				F1BFDA2126B65711002EA3D8 /* EzyAppManager.cpp in Sources */,
+				F1BFDA1126B65711002EA3D8 /* EzyPrimitive.cpp in Sources */,
+				F1BFD9EC26B65711002EA3D8 /* EzyClientConfigSerializer.mm in Sources */,
+				F1BFDA1C26B65711002EA3D8 /* EzyDataEncoder.cpp in Sources */,
+				F1BFD9F126B65711002EA3D8 /* EzyNativeStrings.mm in Sources */,
+				F1BFDA2426B65711002EA3D8 /* EzyConnectionStatus.cpp in Sources */,
+				F1BFDA1526B65711002EA3D8 /* EzyArray.cpp in Sources */,
+				F1BFDA3926B65711002EA3D8 /* EzyUTSocketClient.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		97C146FA1CF9000F007C117D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				97C146FB1CF9000F007C117D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				97C147001CF9000F007C117D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		249021D3217E4FDB00AE95B9 /* Profile */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Profile;
+		};
+		249021D4217E4FDB00AE95B9 /* Profile */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				ENABLE_BITCODE = NO;
+				FLUTTER_APPLICATION_PATH = "/Users/tvd12/Documents/workspace-flutter/ezyfox_server_flutter_client/example";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Runner/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tvd12.helloFlutter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Profile;
+		};
+		97C147031CF9000F007C117D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"EZY_SSL_ENABLE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		97C147041CF9000F007C117D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		97C147061CF9000F007C117D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				ENABLE_BITCODE = NO;
+				FLUTTER_APPLICATION_PATH = "/Users/tvd12/Documents/workspace-flutter/ezyfox_server_flutter_client/example";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"EZY_DEBUG=1",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Runner/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tvd12.helloFlutter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		97C147071CF9000F007C117D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				ENABLE_BITCODE = NO;
+				FLUTTER_APPLICATION_PATH = "/Users/tvd12/Documents/workspace-flutter/ezyfox_server_flutter_client/example";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Runner/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tvd12.helloFlutter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		97C146E91CF9000F007C117D /* Build configuration list for PBXProject "Runner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97C147031CF9000F007C117D /* Debug */,
+				97C147041CF9000F007C117D /* Release */,
+				249021D3217E4FDB00AE95B9 /* Profile */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		97C147051CF9000F007C117D /* Build configuration list for PBXNativeTarget "Runner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97C147061CF9000F007C117D /* Debug */,
+				97C147071CF9000F007C117D /* Release */,
+				249021D4217E4FDB00AE95B9 /* Profile */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 97C146E61CF9000F007C117D /* Project object */;
+}
