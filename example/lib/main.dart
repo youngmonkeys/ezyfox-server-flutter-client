@@ -70,6 +70,24 @@ class _MyHomePageState extends State<MyHomePage> {
     config.enableDebug = true;
     EzyClients clients = EzyClients.getInstance();
     EzyClient client = clients.newDefaultClient(config);
+    client.setup.addEventHandler(
+        EzyEventType.DISCONNECTION,
+        _SocketDisconnectionHandler(() => {
+          setState(() {
+            socketState = "Disconnected, retry ...";
+            sslMessage = "";
+          })
+        })
+    );
+    client.setup.addEventHandler(
+        EzyEventType.CONNECTION_FAILURE,
+        _SocketConnectionFailureHandler(() => {
+          setState(() {
+            socketState = "Can not connect to server";
+            sslMessage = "";
+          })
+        })
+    );
     client.setup.addDataHandler(EzyCommand.HANDSHAKE, _SocketHandshakeHandler());
     client.setup.addDataHandler(EzyCommand.LOGIN, _SocketLoginSuccessHandler());
     client.setup.addDataHandler(EzyCommand.APP_ACCESS, _SocketAppAccessHandler());
@@ -84,8 +102,8 @@ class _MyHomePageState extends State<MyHomePage> {
         sslMessage = message;
       });
     }));
-    client.connect("tvd12.com", 3005);
-    // client.connect("127.0.0.1", 3005);
+    // client.connect("tvd12.com", 3005);
+    client.connect("127.0.0.1", 3005);
   }
 
   void _incrementCounter() {
@@ -220,5 +238,31 @@ class _SocketSecureChatResponseHandler extends EzyAppDataHandler<Map> {
   @override
   void handle(EzyApp app, Map data) {
     _callback(data["secure-message"]);
+  }
+}
+
+class _SocketConnectionFailureHandler extends EzyConnectionFailureHandler {
+  late Function _callback;
+
+  _SocketConnectionFailureHandler(Function callback) {
+    _callback = callback;
+  }
+
+  @override
+  void onConnectionFailed(Map event) {
+    _callback();
+  }
+}
+
+
+class _SocketDisconnectionHandler extends EzyDisconnectionHandler {
+  late Function _callback;
+
+  _SocketDisconnectionHandler(Function callback) {
+    _callback = callback;
+  }
+  @override
+  void postHandle(Map event) {
+    _callback();
   }
 }

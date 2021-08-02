@@ -42,13 +42,12 @@ class EzyClient {
     EzyProxy.run("connect", params);
   }
 
-  Future<bool> reconnect() {
+  Future reconnect() {
     this.privateKey = null;
     this.sessionKey = null;
     var params = Map();
     params["clientName"] = name;
-    var result = EzyProxy.run<bool>("reconnect", params);
-    return result as Future<bool>;
+    return EzyProxy.run("reconnect", params);
   }
 
   void disconnect([int reason = EzyDisconnectReason.CLOSE]) {

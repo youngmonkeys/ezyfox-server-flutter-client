@@ -67,9 +67,7 @@ std::vector<EzyClient*> clientVector;
     @try {
         [func validate:params];
         NSObject* result = [func invoke:params];
-        if(callback) {
-            callback(result);
-        }
+        callback(result);
     }
     @catch (EzyMethodCallException* e) {
         NSLog(@"call method: %@ with params %@ error: %@", method, params, [e reason]);
