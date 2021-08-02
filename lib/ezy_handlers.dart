@@ -122,10 +122,12 @@ class EzyConnectionFailureHandler extends EzyAbstractEventHandler {
     this.client.setStatus(EzyConnectionStatus.FAILURE);
     if(mustReconnect) {
       client.reconnect().then((value) => {
-        if(value) {
-          control(event)
-        }
+        _onReconnect(event, value)
       });
+    }
+    else {
+      onConnectionFailed(event);
+      postHandle(event);
     }
   }
 
@@ -133,7 +135,21 @@ class EzyConnectionFailureHandler extends EzyAbstractEventHandler {
     return true;
   }
 
-  void control(Map event) {}
+  void _onReconnect(Map event, bool success) {
+    if(success) {
+      onReconnecting(event);
+    }
+    else {
+      onConnectionFailed(event);
+    }
+    postHandle(event);
+  }
+
+  void onReconnecting(Map event) {}
+
+  void onConnectionFailed(Map event) {}
+
+  void postHandle(Map event) {}
 }
 
 //=======================================================
@@ -160,13 +176,17 @@ class EzyDisconnectionHandler extends EzyAbstractEventHandler {
       });
     }
     else {
+      onDisconnected(event);
       postHandle(event);
     }
   }
 
   void _onReconnect(Map event, bool success) {
     if(success) {
-      control(event);
+      onReconnecting(event);
+    }
+    else {
+      onDisconnected(event);
     }
     postHandle(event);
   }
@@ -184,8 +204,11 @@ class EzyDisconnectionHandler extends EzyAbstractEventHandler {
   void control(Map event) {
   }
 
-  void postHandle(Map event) {
-  }
+  void onReconnecting(Map event) {}
+
+  void onDisconnected(Map event) {}
+
+  void postHandle(Map event) {}
 }
 
 //=======================================================
