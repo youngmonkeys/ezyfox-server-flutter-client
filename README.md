@@ -6,6 +6,10 @@ flutter client for [ezyfox server](https://github.com/youngmonkeys/ezyfox-server
 
 <img src="https://raw.githubusercontent.com/youngmonkeys/ezyfox-server-flutter-client/master/images/flutter-sdk.png" />
 
+# Offical documentation
+
+[https://youngmonkeys.org/ezyfox-flutter-client-sdk/](https://youngmonkeys.org/ezyfox-flutter-client-sdk/)
+
 # Prepare
 
 1. Download and install [JDK 8](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)
