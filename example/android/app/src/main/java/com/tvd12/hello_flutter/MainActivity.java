@@ -2,7 +2,7 @@ package com.tvd12.hello_flutter;
 
 import androidx.annotation.NonNull;
 
-import com.tvd12.ezyfoxserver.client.EzyClientProxy;
+import com.tvd12.ezyfoxserver.client.flutter.EzyClientProxy;
 
 import io.flutter.embedding.android.FlutterActivity;
 import io.flutter.embedding.engine.FlutterEngine;

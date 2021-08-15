@@ -28,7 +28,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.tvd12.ezyfoxserver.client
+        package: com.tvd12.ezyfoxserver.client.flutter
         pluginClass: EzyFlutterClientPlugin
 
   # To add assets to your plugin package, add an assets section, like this:

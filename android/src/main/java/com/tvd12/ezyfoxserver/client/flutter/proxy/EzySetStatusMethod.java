@@ -1,6 +1,6 @@
-package com.tvd12.ezyfoxserver.client.proxy;
+package com.tvd12.ezyfoxserver.client.flutter.proxy;
 
-import com.tvd12.ezyfoxserver.client.EzyMethodNames;
+import com.tvd12.ezyfoxserver.client.flutter.EzyMethodNames;
 import com.tvd12.ezyfoxserver.client.EzyClient;
 import com.tvd12.ezyfoxserver.client.constant.EzyConnectionStatus;
 
