@@ -1,22 +1,22 @@
-package com.tvd12.ezyfoxserver.client;
+package com.tvd12.ezyfoxserver.client.flutter;
 
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.tvd12.ezyfoxserver.client.exception.EzyMethodCallException;
-import com.tvd12.ezyfoxserver.client.proxy.EzyConnectMethod;
-import com.tvd12.ezyfoxserver.client.proxy.EzyCreateClientMethod;
-import com.tvd12.ezyfoxserver.client.proxy.EzyDisconnectMethod;
-import com.tvd12.ezyfoxserver.client.proxy.EzyGenerateKeyPairMethod;
-import com.tvd12.ezyfoxserver.client.proxy.EzyLogMethod;
-import com.tvd12.ezyfoxserver.client.proxy.EzyMethodProxy;
-import com.tvd12.ezyfoxserver.client.proxy.EzyReconnectMethod;
-import com.tvd12.ezyfoxserver.client.proxy.EzyRsaDecryptMethod;
-import com.tvd12.ezyfoxserver.client.proxy.EzySendMethod;
-import com.tvd12.ezyfoxserver.client.proxy.EzySetSessionKeyMethod;
-import com.tvd12.ezyfoxserver.client.proxy.EzySetStatusMethod;
-import com.tvd12.ezyfoxserver.client.proxy.EzyStartPingScheduleMethod;
+import com.tvd12.ezyfoxserver.client.flutter.exception.EzyMethodCallException;
+import com.tvd12.ezyfoxserver.client.flutter.proxy.EzyConnectMethod;
+import com.tvd12.ezyfoxserver.client.flutter.proxy.EzyCreateClientMethod;
+import com.tvd12.ezyfoxserver.client.flutter.proxy.EzyDisconnectMethod;
+import com.tvd12.ezyfoxserver.client.flutter.proxy.EzyGenerateKeyPairMethod;
+import com.tvd12.ezyfoxserver.client.flutter.proxy.EzyLogMethod;
+import com.tvd12.ezyfoxserver.client.flutter.proxy.EzyMethodProxy;
+import com.tvd12.ezyfoxserver.client.flutter.proxy.EzyReconnectMethod;
+import com.tvd12.ezyfoxserver.client.flutter.proxy.EzyRsaDecryptMethod;
+import com.tvd12.ezyfoxserver.client.flutter.proxy.EzySendMethod;
+import com.tvd12.ezyfoxserver.client.flutter.proxy.EzySetSessionKeyMethod;
+import com.tvd12.ezyfoxserver.client.flutter.proxy.EzySetStatusMethod;
+import com.tvd12.ezyfoxserver.client.flutter.proxy.EzyStartPingScheduleMethod;
 import com.tvd12.ezyfoxserver.client.socket.EzyMainEventsLoop;
 
 import java.util.HashMap;

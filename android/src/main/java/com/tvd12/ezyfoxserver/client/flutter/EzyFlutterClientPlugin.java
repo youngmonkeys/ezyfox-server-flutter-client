@@ -1,4 +1,4 @@
-package com.tvd12.ezyfoxserver.client;
+package com.tvd12.ezyfoxserver.client.flutter;
 
 import androidx.annotation.NonNull;
 

@@ -1,4 +1,4 @@
-package com.tvd12.ezyfoxserver.client;
+package com.tvd12.ezyfoxserver.client.flutter;
 
 /**
  * Created by tavandung12 on 10/24/18.

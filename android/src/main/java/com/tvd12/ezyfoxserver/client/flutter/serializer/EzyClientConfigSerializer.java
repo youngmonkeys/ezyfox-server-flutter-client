@@ -1,4 +1,4 @@
-package com.tvd12.ezyfoxserver.client.serializer;
+package com.tvd12.ezyfoxserver.client.flutter.serializer;
 
 import com.tvd12.ezyfoxserver.client.config.EzyClientConfig;
 import com.tvd12.ezyfoxserver.client.config.EzyReconnectConfig;
