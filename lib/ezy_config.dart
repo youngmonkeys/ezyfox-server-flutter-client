@@ -5,6 +5,7 @@ class EzyConfig {
   late String clientName;
   late bool enableSSL = false;
   late bool enableDebug = false;
+  late EzyPingConfig ping = EzyPingConfig();
   late EzyReconnectConfig reconnect = EzyReconnectConfig();
 
   String getClientName() {
@@ -19,7 +20,21 @@ class EzyConfig {
     map["zoneName"] = zoneName;
     map["enableSSL"] = enableSSL;
     map["enableDebug"] = enableDebug;
+    map["ping"] = ping.toMap();
     map["reconnect"] = reconnect.toMap();
+    return map;
+  }
+}
+
+class EzyPingConfig {
+
+  late int pingPeriod = 3000;
+  late int maxLostPingCount = 5;
+
+  Map toMap() {
+    Map map = Map();
+    map["pingPeriod"] = pingPeriod;
+    map["maxLostPingCount"] = maxLostPingCount;
     return map;
   }
 }

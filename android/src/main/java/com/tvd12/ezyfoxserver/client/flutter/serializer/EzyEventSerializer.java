@@ -1,6 +1,5 @@
 package com.tvd12.ezyfoxserver.client.flutter.serializer;
 
-import com.tvd12.ezyfoxserver.client.constant.EzyDisconnectReasons;
 import com.tvd12.ezyfoxserver.client.event.EzyConnectionFailureEvent;
 import com.tvd12.ezyfoxserver.client.event.EzyDisconnectionEvent;
 import com.tvd12.ezyfoxserver.client.event.EzyEvent;
@@ -50,7 +49,7 @@ public class EzyEventSerializer {
             public Map apply(EzyEvent event) {
                 EzyConnectionFailureEvent mevent = (EzyConnectionFailureEvent)event;
                 Map map = new HashMap<>();
-                map.put("reason", mevent.getReason().toString());
+                map.put("reason", mevent.getReason().getId());
                 return map;
             }
         });
@@ -59,9 +58,7 @@ public class EzyEventSerializer {
             public Map apply(EzyEvent event) {
                 EzyDisconnectionEvent mevent = (EzyDisconnectionEvent)event;
                 Map map = new HashMap<>();
-                int reason = mevent.getReason();
-                String reasonName = EzyDisconnectReasons.getDisconnectReasonName(reason);
-                map.put("reason", reasonName);
+                map.put("reason", mevent.getReason());
                 return map;
             }
         });

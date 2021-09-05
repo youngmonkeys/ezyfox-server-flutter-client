@@ -18,12 +18,20 @@ EZY_USING_NAMESPACE::config;
     NSDictionary* dict = [NSMutableDictionary dictionary];
     [dict setValue:[EzyNativeStrings newNSString:config->getClientName().c_str()] forKey:@"clientName"];
     [dict setValue:[EzyNativeStrings newNSString:config->getZoneName().c_str()] forKey:@"zoneName"];
+    
+    EzyPingConfig* pingConfig = config->getPing();
+    NSDictionary* pingDict = [NSMutableDictionary dictionary];
+    [pingDict setValue:[NSNumber numberWithInt:pingConfig->getPingPeriod()] forKey:@"pingPeriod"];
+    [pingDict setValue:[NSNumber numberWithInt:pingConfig->getMaxLostPingCount()] forKey:@"maxLostPingCount"];
+   [dict setValue:pingDict forKey:@"ping"];
+    
     NSDictionary* reconnectDict = [NSMutableDictionary dictionary];
     EzyReconnectConfig* reconnectConfig = config->getReconnect();
     [reconnectDict setValue:[NSNumber numberWithInt:reconnectConfig->getMaxReconnectCount()] forKey:@"maxReconnectCount"];
     [reconnectDict setValue:[NSNumber numberWithInt:reconnectConfig->getReconnectPeriod()] forKey:@"reconnectPeriod"];
     [reconnectDict setValue:[NSNumber numberWithInt:reconnectConfig->isEnable()] forKey:@"enable"];
     [dict setValue:reconnectDict forKey:@"reconnect"];
+    
     return dict;
 }
 @end

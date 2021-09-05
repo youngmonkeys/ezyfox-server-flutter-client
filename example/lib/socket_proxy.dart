@@ -29,7 +29,11 @@ class SocketProxy {
     EzyConfig config = EzyConfig();
     config.clientName = ZONE_NAME;
     config.enableSSL = true;
-    config.enableDebug = true;
+    config.ping.maxLostPingCount = 3;
+    config.ping.pingPeriod = 1000;
+    config.reconnect.maxReconnectCount = 10;
+    config.reconnect.reconnectPeriod = 1000;
+    // config.enableDebug = true;
     EzyClients clients = EzyClients.getInstance();
     _client = clients.newDefaultClient(config);
     _client.setup.addEventHandler(EzyEventType.DISCONNECTION, _DisconnectionHandler(_disconnectedCallback!));
@@ -54,6 +58,7 @@ class SocketProxy {
     this.username = username;
     this.password = password;
     // this._client.connect("127.0.0.1", 3005);
+    // this._client.connect("192.168.0.101", 3005);
     this._client.connect("tvd12.com", 3005);
   }
 

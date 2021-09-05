@@ -102,11 +102,23 @@ EzyClientConfig* newConfig(NSDictionary* params) {
     EzyClientConfig* config = EzyClientConfig::create();
     NSString* clientName = [params valueForKey:@"clientName"];
     NSString* zoneName = [params valueForKey:@"zoneName"];
+    NSDictionary* ping = [params valueForKey:@"ping"];
     NSDictionary* reconnect = [params valueForKey:@"reconnect"];
     if(clientName)
         config->setClientName([clientName UTF8String]);
     if(zoneName)
         config->setZoneName([zoneName UTF8String]);
+    if(ping) {
+        NSNumber* pingPeriod = [ping objectForKey:@"pingPeriod"];
+        NSNumber* maxLostPingCount = [ping objectForKey:@"maxLostPingCount"];
+        EzyPingConfig* pingConfig = config->getPing();
+        if(pingPeriod) {
+            pingConfig->setPingPeriod((int)[pingPeriod integerValue]);
+        }
+        if(maxLostPingCount) {
+            pingConfig->setMaxLostPingCount((int)[maxLostPingCount integerValue]);
+        }
+    }
     if(reconnect) {
         NSNumber* enable = [reconnect objectForKey:@"enable"];
         NSNumber* reconnectPeriod = [reconnect objectForKey:@"reconnectPeriod"];
