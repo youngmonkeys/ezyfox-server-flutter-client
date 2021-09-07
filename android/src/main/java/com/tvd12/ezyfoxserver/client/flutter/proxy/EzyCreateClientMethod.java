@@ -1,5 +1,6 @@
 package com.tvd12.ezyfoxserver.client.flutter.proxy;
 
+import com.tvd12.ezyfoxserver.client.config.EzyPingConfig;
 import com.tvd12.ezyfoxserver.client.flutter.EzyMethodNames;
 import com.tvd12.ezyfoxserver.client.flutter.serializer.EzyNativeSerializers;
 import com.tvd12.ezyfoxserver.client.EzyClient;
@@ -62,6 +63,14 @@ public class EzyCreateClientMethod extends EzyMethodProxy {
             configBuilder.enableSSL((Boolean) params.get("enableSSL"));
         if(params.containsKey("enableDebug"))
             configBuilder.enableDebug((Boolean) params.get("enableDebug"));
+        if(params.containsKey("ping")) {
+            Map ping = (Map) params.get("ping");
+            EzyPingConfig.Builder pingConfigBuilder = configBuilder.pingConfigBuilder();
+            if(ping.containsKey("pingPeriod"))
+                pingConfigBuilder.pingPeriod((Integer) ping.get("pingPeriod"));
+            if(ping.containsKey("maxLostPingCount"))
+                pingConfigBuilder.maxLostPingCount((Integer) ping.get("maxLostPingCount"));
+        }
         if(params.containsKey("reconnect")) {
             Map reconnect = (Map) params.get("reconnect");
             EzyReconnectConfig.Builder reconnectConfigBuilder = configBuilder.reconnectConfigBuilder();
