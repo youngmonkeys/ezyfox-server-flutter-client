@@ -3,7 +3,7 @@ package com.tvd12.ezyfoxserver.client.flutter.proxy;
 import android.util.Base64;
 
 import com.tvd12.ezyfoxserver.client.flutter.EzyMethodNames;
-import com.tvd12.ezyfoxserver.client.sercurity.EzyKeysGenerator;
+import com.tvd12.ezyfoxserver.client.security.EzyKeysGenerator;
 
 import java.security.KeyPair;
 import java.util.HashMap;
