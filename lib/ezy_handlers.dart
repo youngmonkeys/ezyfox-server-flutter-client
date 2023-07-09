@@ -70,11 +70,6 @@ class EzyConnectionSuccessHandler extends EzyAbstractEventHandler {
   }
 
   bool _isEnableSSL(String? clientKey) {
-    if(client.enableSSL &&
-        client.enableDebug &&
-        (clientKey == null || clientKey.isEmpty)) {
-      return false;
-    }
     return client.enableSSL;
   }
 
@@ -248,8 +243,9 @@ class EzyHandshakeHandler extends EzyAbstractDataHandler {
   }
 
   void decryptSessionKey(
-      Uint8List? encryptedSessionKey, Function(Uint8List?, bool) callback) {
-    EzyLogger.info("encryptedSessionKey: $encryptedSessionKey");
+    Uint8List? encryptedSessionKey,
+    Function(Uint8List?, bool) callback
+  ) {
     if(encryptedSessionKey == null) {
       if(client.enableDebug) {
         callback(null, true);

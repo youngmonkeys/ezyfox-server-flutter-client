@@ -1,7 +1,7 @@
 package com.tvd12.ezyfoxserver.client.flutter.proxy;
 
 import com.tvd12.ezyfoxserver.client.flutter.EzyMethodNames;
-import com.tvd12.ezyfoxserver.client.sercurity.EzyAsyCrypt;
+import com.tvd12.ezyfoxserver.client.security.EzyAsyCrypt;
 
 import java.util.Map;
 

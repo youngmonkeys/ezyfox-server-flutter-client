@@ -58,8 +58,8 @@ class SocketProxy {
     this.username = username;
     this.password = password;
     // this._client.connect("127.0.0.1", 3005);
-    // this._client.connect("192.168.0.101", 3005);
-    this._client.connect("tvd12.com", 3005);
+    this._client.connect("192.168.1.151", 3005);
+    // this._client.connect("tvd12.com", 3005);
   }
 
   void onGreet(Function(String) callback) {
