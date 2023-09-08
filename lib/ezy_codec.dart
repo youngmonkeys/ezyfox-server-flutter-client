@@ -6,10 +6,7 @@ class EzyKeyPairProxy {
   late String publicKey;
   late Uint8List privateKey;
 
-  EzyKeyPairProxy(String publicKey, Uint8List privateKey) {
-    this.publicKey = publicKey;
-    this.privateKey = privateKey;
-  }
+  EzyKeyPairProxy(this.publicKey, this.privateKey);
 }
 
 class EzyRSAProxy {

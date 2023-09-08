@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'ezy_proxy.dart';
 
 class EzyLogger {
