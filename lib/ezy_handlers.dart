@@ -233,7 +233,8 @@ class EzyHandshakeHandler extends EzyAbstractDataHandler {
         return;
       }
       EzyLogger.error(
-          "maybe server was not enable SSL, you must enable SSL on server or disable SSL on your client or enable debug mode");
+        "maybe server was not enable SSL, you must enable SSL on server or disable SSL on your client or enable debug mode",
+      );
       client.close();
       callback(null, false);
       return;

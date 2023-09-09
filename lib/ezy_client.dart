@@ -66,8 +66,10 @@ class EzyClient {
       if (enableDebug) {
         shouldEncrypted = false;
       } else {
-        EzyLogger.error("can not send command: $cmd, you must enable SSL "
-            "or enable debug mode by configuration when you create the client");
+        EzyLogger.error(
+          "can not send command: $cmd, you must enable SSL "
+          "or enable debug mode by configuration when you create the client",
+        );
         return;
       }
     }

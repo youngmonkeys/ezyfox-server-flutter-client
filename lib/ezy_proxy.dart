@@ -28,7 +28,8 @@ class EzyProxy {
         break;
       default:
         EzyLogger.warn(
-            "there is no handler for method: ${call.method}, ignore it");
+          "there is no handler for method: ${call.method}, ignore it",
+        );
     }
   }
 
