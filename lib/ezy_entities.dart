@@ -11,11 +11,8 @@ class EzyZone {
   late EzyClient client;
   late EzyAppManager appManager;
 
-  EzyZone(EzyClient client, int id, String name) {
-    this.client = client;
-    this.id = id;
-    this.name = name;
-    this.appManager = EzyAppManager(name);
+  EzyZone(this.client, this.id, this.name) {
+    appManager = EzyAppManager(name);
   }
 
   EzyApp? getApp() {
@@ -31,26 +28,22 @@ class EzyApp {
   late EzyAppDataHandlers dataHandlers;
   static const Map EMPTY_MAP = {};
 
-  EzyApp(EzyClient client, EzyZone zone, int id, String name) {
-    this.id = id;
-    this.name = name;
-    this.client = client;
-    this.zone = zone;
-    this.dataHandlers = client.handlerManager.getAppDataHandlers(name);
+  EzyApp(this.client, this.zone, this.id, this.name) {
+    dataHandlers = client.handlerManager.getAppDataHandlers(name);
   }
 
   void send(String cmd, [dynamic data = EMPTY_MAP, bool encrypted = false]) {
     var requestData = [];
-    requestData.add(this.id);
+    requestData.add(id);
     var requestParams = [];
     requestParams.add(cmd);
     requestParams.add(data);
     requestData.add(requestParams);
-    this.client.send(EzyCommand.APP_REQUEST, requestData, encrypted);
+    client.send(EzyCommand.APP_REQUEST, requestData, encrypted);
   }
 
   EzyAppDataHandler? getDataHandler(String cmd) {
-    return this.dataHandlers.getHandler(cmd);
+    return dataHandlers.getHandler(cmd);
   }
 }
 
@@ -58,8 +51,5 @@ class EzyUser {
   late int id;
   late String name;
 
-  EzyUser(int id, String name) {
-    this.id = id;
-    this.name = name;
-  }
+  EzyUser(this.id, this.name);
 }

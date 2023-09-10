@@ -9,8 +9,8 @@ class EzyProxy {
   static final EzyProxy _INSTANCE = EzyProxy._();
 
   EzyProxy._() {
-    this._methodChannel = const MethodChannel('com.tvd12.ezyfoxserver.client');
-    this._methodChannel.setMethodCallHandler(this._handleSocketEventDatas);
+    _methodChannel = const MethodChannel('com.tvd12.ezyfoxserver.client');
+    _methodChannel.setMethodCallHandler(_handleSocketEventDatas);
   }
 
   static EzyProxy getInstance() {
@@ -19,7 +19,7 @@ class EzyProxy {
 
   Future<void> _handleSocketEventDatas(MethodCall call) async {
     // type inference will work here avoiding an explicit cast
-    switch(call.method) {
+    switch (call.method) {
       case "ezy.event":
         _onSocketEvent(call.arguments);
         break;
@@ -27,7 +27,9 @@ class EzyProxy {
         _onSocketData(call.arguments);
         break;
       default:
-        EzyLogger.warn("there is no handler for method: ${call.method}, ignore it");
+        EzyLogger.warn(
+          "there is no handler for method: ${call.method}, ignore it",
+        );
     }
   }
 

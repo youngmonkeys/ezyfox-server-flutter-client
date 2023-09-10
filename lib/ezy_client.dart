@@ -1,10 +1,10 @@
 import 'dart:typed_data';
 
 import 'ezy_config.dart';
-import 'ezy_managers.dart';
 import 'ezy_constants.dart';
 import 'ezy_entities.dart';
 import 'ezy_logger.dart';
+import 'ezy_managers.dart';
 import 'ezy_proxy.dart';
 import 'ezy_setup.dart';
 
@@ -22,19 +22,18 @@ class EzyClient {
   late String? sessionToken;
   late Uint8List? sessionKey;
 
-  EzyClient(EzyConfig config) {
+  EzyClient(this.config) {
     EzyProxy.run("init", config.toMap());
-    this.config = config;
-    this.name = config.getClientName();
-    this.enableSSL = config.enableSSL;
-    this.enableDebug = config.enableDebug;
-    this.handlerManager = EzyHandlerManager.create(this);
-    this.setup = EzySetup(handlerManager);
+    name = config.getClientName();
+    enableSSL = config.enableSSL;
+    enableDebug = config.enableDebug;
+    handlerManager = EzyHandlerManager.create(this);
+    setup = EzySetup(handlerManager);
   }
 
   void connect(String host, int port) {
-    this.privateKey = null;
-    this.sessionKey = null;
+    privateKey = null;
+    sessionKey = null;
     var params = Map();
     params["clientName"] = name;
     params["host"] = host;
@@ -43,8 +42,8 @@ class EzyClient {
   }
 
   Future reconnect() {
-    this.privateKey = null;
-    this.sessionKey = null;
+    privateKey = null;
+    sessionKey = null;
     var params = Map();
     params["clientName"] = name;
     return EzyProxy.run("reconnect", params);
@@ -56,21 +55,20 @@ class EzyClient {
     params["reason"] = reason;
     EzyProxy.run("disconnect", params);
   }
-  
+
   void close() {
     disconnect();
   }
-  
+
   void send(String cmd, dynamic data, [bool encrypted = false]) {
     var shouldEncrypted = encrypted;
-    if(encrypted && sessionKey == null) {
-      if(enableDebug) {
+    if (encrypted && sessionKey == null) {
+      if (enableDebug) {
         shouldEncrypted = false;
-      }
-      else {
+      } else {
         EzyLogger.error(
-            "can not send command: $cmd, you must enable SSL "
-            "or enable debug mode by configuration when you create the client"
+          "can not send command: $cmd, you must enable SSL "
+          "or enable debug mode by configuration when you create the client",
         );
         return;
       }
@@ -84,20 +82,20 @@ class EzyClient {
     params["request"] = requestParams;
     EzyProxy.run("send", params);
   }
-  
+
   void startPingSchedule() {
     var params = Map();
     params["clientName"] = name;
     EzyProxy.run("startPingSchedule", params);
   }
-  
+
   void setStatus(String status) {
     var params = Map();
     params["clientName"] = name;
     params["status"] = status;
     EzyProxy.run("setStatus", params);
   }
-  
+
   void setSessionKey(Uint8List sessionKey) {
     this.sessionKey = sessionKey;
     var params = Map();
@@ -107,7 +105,7 @@ class EzyClient {
   }
 
   EzyApp? getApp() {
-    if(zone != null) {
+    if (zone != null) {
       var appManager = zone!.appManager;
       var app = appManager.getApp();
       return app;
@@ -116,22 +114,21 @@ class EzyClient {
   }
 
   EzyApp? getAppById(int appId) {
-    if(zone != null) {
+    if (zone != null) {
       var appManager = zone!.appManager;
       var app = appManager.getAppById(appId);
       return app;
     }
     return null;
   }
-  
+
   void handleEvent(String eventType, Map data) {
-    var eventHandlers = this.handlerManager.eventHandlers;
+    var eventHandlers = handlerManager.eventHandlers;
     eventHandlers.handle(eventType, data);
   }
-  
-  void handleData(String command, List data)  {
-    var dataHandlers = this.handlerManager.dataHandlers;
+
+  void handleData(String command, List data) {
+    var dataHandlers = handlerManager.dataHandlers;
     dataHandlers.handle(command, data);
   }
 }
-

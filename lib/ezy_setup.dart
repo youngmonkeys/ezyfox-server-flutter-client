@@ -5,27 +5,26 @@ class EzySetup {
   late EzyHandlerManager handlerManager;
   late Map<String, EzyAppSetup> appSetupByAppName;
 
-  EzySetup(EzyHandlerManager handlerManager) {
-    this.handlerManager = handlerManager;
-    this.appSetupByAppName = Map();
+  EzySetup(this.handlerManager) {
+    appSetupByAppName = Map();
   }
 
   EzySetup addDataHandler(String cmd, EzyDataHandler handler) {
-    this.handlerManager.addDataHandler(cmd, handler);
+    handlerManager.addDataHandler(cmd, handler);
     return this;
   }
 
   EzySetup addEventHandler(String eventType, EzyEventHandler handler) {
-    this.handlerManager.addEventHandler(eventType, handler);
+    handlerManager.addEventHandler(eventType, handler);
     return this;
   }
 
   EzyAppSetup setupApp(String appName) {
-    var appSetup = this.appSetupByAppName[appName];
-    if(appSetup == null) {
-      var appDataHandlers = this.handlerManager.getAppDataHandlers(appName);
+    var appSetup = appSetupByAppName[appName];
+    if (appSetup == null) {
+      var appDataHandlers = handlerManager.getAppDataHandlers(appName);
       appSetup = EzyAppSetup(appDataHandlers, this);
-      this.appSetupByAppName[appName] = appSetup;
+      appSetupByAppName[appName] = appSetup;
     }
     return appSetup;
   }
@@ -35,17 +34,14 @@ class EzyAppSetup {
   late EzySetup parent;
   late EzyAppDataHandlers dataHandlers;
 
-  EzyAppSetup(EzyAppDataHandlers dataHandlers, EzySetup parent) {
-    this.parent = parent;
-    this.dataHandlers = dataHandlers;
-  }
+  EzyAppSetup(this.dataHandlers, this.parent);
 
   EzyAppSetup addDataHandler(String cmd, EzyAppDataHandler handler) {
-    this.dataHandlers.addHandler(cmd, handler);
+    dataHandlers.addHandler(cmd, handler);
     return this;
   }
 
   EzySetup done() {
-    return this.parent;
+    return parent;
   }
 }
