@@ -39,34 +39,37 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<void> setup() async {
     SocketProxy socketProxy = SocketProxy.getInstance();
     socketProxy.onDisconnected(() => {
-      setState(() {
-        socketState = "Disconnected, retry ...";
-        sslMessage = "";
-      })
-    });
+          setState(() {
+            socketState = "Disconnected, retry ...";
+            sslMessage = '';
+          })
+        });
     socketProxy.onConnectionFailed(() => {
-      setState(() {
-        socketState = "Can not connect to server";
-        sslMessage = "";
-      })
-    });
-    socketProxy.onGreet((message) => {
-      setState(() {
-        socketState = message;
-      })
-    });
+          setState(() {
+            socketState = "Can not connect to server";
+            sslMessage = '';
+          })
+        });
     socketProxy.onSecureChat((message) => {
-      setState(() {
-        sslMessage = message;
-      })
-    });
+          setState(() {
+            socketState = 'Secure Chat';
+            sslMessage = message;
+          })
+        });
+    socketProxy.onConnection(() => {
+          setState(() {
+            socketState = 'Connected';
+            sslMessage = '';
+          })
+        });
   }
 
-  void _incrementCounter() {
+  void _connect() {
     setState(() {
       _counter++;
+      SocketProxy.getInstance().connectToServer("example", "123456");
+      // freechat java client default credentials
     });
-    SocketProxy.getInstance().connectToServer("flutter", "123456");
   }
 
   @override
@@ -91,22 +94,22 @@ class _MyHomePageState extends State<MyHomePage> {
               'Socket message: ',
             ),
             Text(
-              '$socketState',
+              socketState,
               style: Theme.of(context).textTheme.headline6,
             ),
             const Text(
               'SSL message: ',
             ),
             Text(
-              '$sslMessage',
+              sslMessage,
               style: Theme.of(context).textTheme.headline6,
-            )
+            ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        onPressed: _connect,
+        tooltip: 'Connect',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
