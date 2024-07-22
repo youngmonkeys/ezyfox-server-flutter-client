@@ -39,27 +39,27 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<void> setup() async {
     SocketProxy socketProxy = SocketProxy.getInstance();
     socketProxy.onDisconnected(() => {
-      setState(() {
-        socketState = "Disconnected, retry ...";
-        sslMessage = "";
-      })
-    });
+          setState(() {
+            socketState = "Disconnected, retry ...";
+            sslMessage = "";
+          })
+        });
     socketProxy.onConnectionFailed(() => {
-      setState(() {
-        socketState = "Can not connect to server";
-        sslMessage = "";
-      })
-    });
+          setState(() {
+            socketState = "Can not connect to server";
+            sslMessage = "";
+          })
+        });
     socketProxy.onGreet((message) => {
-      setState(() {
-        socketState = message;
-      })
-    });
+          setState(() {
+            socketState = message;
+          })
+        });
     socketProxy.onSecureChat((message) => {
-      setState(() {
-        sslMessage = message;
-      })
-    });
+          setState(() {
+            sslMessage = message;
+          })
+        });
   }
 
   void _incrementCounter() {
@@ -85,21 +85,21 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
             const Text(
               'Socket message: ',
             ),
             Text(
               '$socketState',
-              style: Theme.of(context).textTheme.headline6,
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
             const Text(
               'SSL message: ',
             ),
             Text(
               '$sslMessage',
-              style: Theme.of(context).textTheme.headline6,
+              style: Theme.of(context).textTheme.headlineMedium,
             )
           ],
         ),

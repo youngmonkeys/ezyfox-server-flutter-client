@@ -36,8 +36,10 @@ class SocketProxy {
     // config.enableDebug = true;
     EzyClients clients = EzyClients.getInstance();
     _client = clients.newDefaultClient(config);
-    _client.setup.addEventHandler(EzyEventType.DISCONNECTION, _DisconnectionHandler(_disconnectedCallback!));
-    _client.setup.addEventHandler(EzyEventType.CONNECTION_FAILURE, _ConnectionFailureHandler(_disconnectedCallback!));
+    _client.setup.addEventHandler(EzyEventType.DISCONNECTION,
+        _DisconnectionHandler(_disconnectedCallback!));
+    _client.setup.addEventHandler(EzyEventType.CONNECTION_FAILURE,
+        _ConnectionFailureHandler(_disconnectedCallback!));
     _client.setup.addDataHandler(EzyCommand.HANDSHAKE, _HandshakeHandler());
     _client.setup.addDataHandler(EzyCommand.LOGIN, _LoginSuccessHandler());
     _client.setup.addDataHandler(EzyCommand.APP_ACCESS, _AppAccessHandler());
@@ -51,14 +53,14 @@ class SocketProxy {
   }
 
   void connectToServer(String username, String password) {
-    if(!settedUp) {
+    if (!settedUp) {
       settedUp = true;
       _setup();
     }
     this.username = username;
     this.password = password;
     // this._client.connect("127.0.0.1", 3005);
-    this._client.connect("192.168.1.151", 3005);
+    this._client.connect("10.0.2.2", 3005);
     // this._client.connect("tvd12.com", 3005);
   }
 
@@ -106,7 +108,6 @@ class _AppAccessHandler extends EzyAppAccessHandler {
 }
 
 class _GreetResponseHandler extends EzyAppDataHandler<Map> {
-
   late Function(String) _callback;
 
   _GreetResponseHandler(Function(String) callback) {
@@ -121,7 +122,6 @@ class _GreetResponseHandler extends EzyAppDataHandler<Map> {
 }
 
 class _SecureChatResponseHandler extends EzyAppDataHandler<Map> {
-
   late Function(String) _callback;
 
   _SecureChatResponseHandler(Function(String) callback) {
@@ -145,7 +145,6 @@ class _DisconnectionHandler extends EzyDisconnectionHandler {
     _callback();
   }
 }
-
 
 class _ConnectionFailureHandler extends EzyConnectionFailureHandler {
   late Function _callback;
