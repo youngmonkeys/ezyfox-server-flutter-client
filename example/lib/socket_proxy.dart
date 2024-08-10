@@ -5,8 +5,8 @@ import 'package:ezyfox_server_flutter_client/ezy_constants.dart';
 import 'package:ezyfox_server_flutter_client/ezy_entities.dart';
 import 'package:ezyfox_server_flutter_client/ezy_handlers.dart';
 
-const ZONE_NAME = "example";
-const APP_NAME = "hello-world";
+const ZONE_NAME = "freechat";
+const APP_NAME = "freechat";
 
 class SocketProxy {
   bool settedUp = false;
@@ -16,6 +16,7 @@ class SocketProxy {
   late Function(String)? _greetCallback;
   late Function(String)? _secureChatCallback;
   late Function? _disconnectedCallback;
+  late Function? _connectionCallback;
   late Function? _connectionFailedCallback;
   static final SocketProxy _INSTANCE = SocketProxy._();
 
@@ -28,7 +29,8 @@ class SocketProxy {
   void _setup() {
     EzyConfig config = EzyConfig();
     config.clientName = ZONE_NAME;
-    config.enableSSL = true;
+    config.enableSSL =
+        false; // SSL is not active by default using freechat server
     config.ping.maxLostPingCount = 3;
     config.ping.pingPeriod = 1000;
     config.reconnect.maxReconnectCount = 10;
@@ -38,8 +40,10 @@ class SocketProxy {
     _client = clients.newDefaultClient(config);
     _client.setup.addEventHandler(EzyEventType.DISCONNECTION,
         _DisconnectionHandler(_disconnectedCallback!));
+    _client.setup.addEventHandler(EzyEventType.CONNECTION_SUCCESS,
+        _connectionHandler(_connectionCallback!));
     _client.setup.addEventHandler(EzyEventType.CONNECTION_FAILURE,
-        _ConnectionFailureHandler(_disconnectedCallback!));
+        _ConnectionFailureHandler(_connectionFailedCallback!));
     _client.setup.addDataHandler(EzyCommand.HANDSHAKE, _HandshakeHandler());
     _client.setup.addDataHandler(EzyCommand.LOGIN, _LoginSuccessHandler());
     _client.setup.addDataHandler(EzyCommand.APP_ACCESS, _AppAccessHandler());
@@ -65,19 +69,23 @@ class SocketProxy {
   }
 
   void onGreet(Function(String) callback) {
-    this._greetCallback = callback;
+    _greetCallback = callback;
   }
 
   void onSecureChat(Function(String) callback) {
-    this._secureChatCallback = callback;
+    _secureChatCallback = callback;
   }
 
   void onDisconnected(Function callback) {
-    this._disconnectedCallback = callback;
+    _disconnectedCallback = callback;
+  }
+
+  void onConnection(Function callback) {
+    _connectionCallback = callback;
   }
 
   void onConnectionFailed(Function callback) {
-    this._connectionFailedCallback = callback;
+    _connectionFailedCallback = callback;
   }
 }
 
@@ -155,6 +163,21 @@ class _ConnectionFailureHandler extends EzyConnectionFailureHandler {
 
   @override
   void onConnectionFailed(Map event) {
+    _callback();
+  }
+}
+
+class _connectionHandler extends EzyConnectionSuccessHandler {
+  late Function _callback;
+
+  _connectionHandler(Function callback) {
+    _callback = callback;
+  }
+
+  @override
+  void handle(Map event) {
+    sendHandshakeRequest();
+    postHandle();
     _callback();
   }
 }

@@ -40,33 +40,42 @@ class _MyHomePageState extends State<MyHomePage> {
     SocketProxy socketProxy = SocketProxy.getInstance();
     socketProxy.onDisconnected(() => {
           setState(() {
-            socketState = "Disconnected, retry ...";
-            sslMessage = "";
+            socketState = 'Disconnected, retry ...';
+            sslMessage = '';
           })
         });
     socketProxy.onConnectionFailed(() => {
           setState(() {
-            socketState = "Can not connect to server";
-            sslMessage = "";
+            socketState = 'Can not connect to server';
+            sslMessage = '';
           })
         });
     socketProxy.onGreet((message) => {
           setState(() {
             socketState = message;
+            sslMessage = '';
           })
         });
     socketProxy.onSecureChat((message) => {
           setState(() {
+            socketState = 'Secure Chat';
             sslMessage = message;
+          })
+        });
+    socketProxy.onConnection(() => {
+          setState(() {
+            socketState = 'Connected';
+            sslMessage = '';
           })
         });
   }
 
-  void _incrementCounter() {
+  void _connect() {
     setState(() {
       _counter++;
+      SocketProxy.getInstance().connectToServer("example", "123456");
+      // freechat java client default credentials
     });
-    SocketProxy.getInstance().connectToServer("flutter", "123456");
   }
 
   @override
@@ -105,8 +114,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        onPressed: _connect,
+        tooltip: 'Connect',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
