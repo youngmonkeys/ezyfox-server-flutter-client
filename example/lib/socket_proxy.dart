@@ -63,8 +63,10 @@ class SocketProxy {
     }
     this.username = username;
     this.password = password;
-    _client.connect("10.0.2.2", 3005);
-  } // Android emulator localhost-10.0.2.2 for ios it may be 127.0.0.1
+    // this._client.connect("127.0.0.1", 3005);
+    this._client.connect("10.0.2.2", 3005);
+    // this._client.connect("tvd12.com", 3005);
+  }
 
   void onGreet(Function(String) callback) {
     _greetCallback = callback;

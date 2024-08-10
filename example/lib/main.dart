@@ -40,13 +40,19 @@ class _MyHomePageState extends State<MyHomePage> {
     SocketProxy socketProxy = SocketProxy.getInstance();
     socketProxy.onDisconnected(() => {
           setState(() {
-            socketState = "Disconnected, retry ...";
+            socketState = 'Disconnected, retry ...';
             sslMessage = '';
           })
         });
     socketProxy.onConnectionFailed(() => {
           setState(() {
-            socketState = "Can not connect to server";
+            socketState = 'Can not connect to server';
+            sslMessage = '';
+          })
+        });
+    socketProxy.onGreet((message) => {
+          setState(() {
+            socketState = message;
             sslMessage = '';
           })
         });
@@ -88,22 +94,22 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
             const Text(
               'Socket message: ',
             ),
             Text(
-              socketState,
-              style: Theme.of(context).textTheme.headline6,
+              '$socketState',
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
             const Text(
               'SSL message: ',
             ),
             Text(
-              sslMessage,
-              style: Theme.of(context).textTheme.headline6,
-            ),
+              '$sslMessage',
+              style: Theme.of(context).textTheme.headlineMedium,
+            )
           ],
         ),
       ),
