@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_collection_literals
+
 import 'ezy_handlers.dart';
 import 'ezy_managers.dart';
 
@@ -25,6 +27,8 @@ class EzySetup {
       var appDataHandlers = handlerManager.getAppDataHandlers(appName);
       appSetup = EzyAppSetup(appDataHandlers, this);
       appSetupByAppName[appName] = appSetup;
+      // add more
+
     }
     return appSetup;
   }
@@ -33,11 +37,17 @@ class EzySetup {
 class EzyAppSetup {
   late EzySetup parent;
   late EzyAppDataHandlers dataHandlers;
+  late EzyAppResponseHandler dataNumberHandlers;
 
   EzyAppSetup(this.dataHandlers, this.parent);
 
   EzyAppSetup addDataHandler(String cmd, EzyAppDataHandler handler) {
     dataHandlers.addHandler(cmd, handler);
+    return this;
+  }
+  // add more
+  EzyAppSetup addNumberHandlers(List<dynamic> cmd){
+    dataNumberHandlers.handle(cmd);
     return this;
   }
 

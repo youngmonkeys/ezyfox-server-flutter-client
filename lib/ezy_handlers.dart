@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_collection_literals
+
 import 'dart:core';
 import 'dart:typed_data';
 
@@ -356,7 +358,7 @@ class EzyAppResponseHandler extends EzyAbstractDataHandler {
     var appId = data[0] as int;
     var responseData = data[1] as List;
     var cmd = responseData[0];
-    var commandData = responseData[1] as Map;
+    var commandData = responseData[1];
 
     var app = client.getAppById(appId);
     if (app == null) {

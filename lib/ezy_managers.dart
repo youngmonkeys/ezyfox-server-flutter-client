@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_collection_literals
+
 import 'ezy_client.dart';
 import 'ezy_constants.dart';
 import 'ezy_entities.dart';

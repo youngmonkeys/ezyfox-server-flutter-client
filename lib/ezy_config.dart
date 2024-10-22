@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:core';
 
 class EzyConfig {
@@ -9,13 +11,12 @@ class EzyConfig {
   late EzyReconnectConfig reconnect = EzyReconnectConfig();
 
   String getClientName() {
-    if(clientName == null)
-      return zoneName;
+    if (clientName == null) return zoneName;
     return clientName;
   }
 
   Map toMap() {
-    Map map = Map();
+    Map map = {};
     map["clientName"] = getClientName();
     map["zoneName"] = zoneName;
     map["enableSSL"] = enableSSL;
@@ -27,12 +28,11 @@ class EzyConfig {
 }
 
 class EzyPingConfig {
-
   late int pingPeriod = 3000;
   late int maxLostPingCount = 5;
 
   Map toMap() {
-    Map map = Map();
+    Map map = {};
     map["pingPeriod"] = pingPeriod;
     map["maxLostPingCount"] = maxLostPingCount;
     return map;
@@ -45,7 +45,7 @@ class EzyReconnectConfig {
   late int reconnectPeriod = 3000;
 
   Map toMap() {
-    Map map = Map();
+    Map map = {};
     map["enable"] = enable;
     map["maxReconnectCount"] = maxReconnectCount;
     map["reconnectPeriod"] = reconnectPeriod;

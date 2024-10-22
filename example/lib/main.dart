@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_string_interpolations
+
 import 'package:flutter/material.dart';
 import 'socket_proxy.dart';
 

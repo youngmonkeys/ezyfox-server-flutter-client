@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names, empty_constructor_bodies, unnecessary_this, camel_case_types
+
 import 'package:ezyfox_server_flutter_client/ezy_client.dart';
 import 'package:ezyfox_server_flutter_client/ezy_clients.dart';
 import 'package:ezyfox_server_flutter_client/ezy_config.dart';

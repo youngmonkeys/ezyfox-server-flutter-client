@@ -1,8 +1,11 @@
+// ignore_for_file: constant_identifier_names, empty_constructor_bodies
+
 import 'dart:math';
 
 class UUID {
-  static const _CHARS = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
-  UUID._(){}
+  static const _CHARS =
+      'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+  UUID._() {}
 
   static String random() {
     return "${_randomString(8)}-${_randomString(8)}-${_randomString(8)}-${_randomString(8)}";
@@ -10,10 +13,7 @@ class UUID {
 
   static String _randomString(int length) {
     Random random = Random();
-    return String.fromCharCodes(
-        Iterable.generate(
-            length, (_) => _CHARS.codeUnitAt(random.nextInt(_CHARS.length))
-        )
-    );
+    return String.fromCharCodes(Iterable.generate(
+        length, (_) => _CHARS.codeUnitAt(random.nextInt(_CHARS.length))));
   }
 }
