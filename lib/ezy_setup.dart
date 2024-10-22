@@ -37,17 +37,11 @@ class EzySetup {
 class EzyAppSetup {
   late EzySetup parent;
   late EzyAppDataHandlers dataHandlers;
-  late EzyAppResponseHandler dataNumberHandlers;
 
   EzyAppSetup(this.dataHandlers, this.parent);
 
   EzyAppSetup addDataHandler(String cmd, EzyAppDataHandler handler) {
     dataHandlers.addHandler(cmd, handler);
-    return this;
-  }
-  // add more
-  EzyAppSetup addNumberHandlers(List<dynamic> cmd){
-    dataNumberHandlers.handle(cmd);
     return this;
   }
 
