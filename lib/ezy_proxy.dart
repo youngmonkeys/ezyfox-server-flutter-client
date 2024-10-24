@@ -1,5 +1,3 @@
-// ignore_for_file: non_constant_identifier_names
-
 import 'package:flutter/services.dart';
 import 'ezy_clients.dart';
 import 'ezy_logger.dart';
