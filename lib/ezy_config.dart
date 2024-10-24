@@ -27,7 +27,6 @@ class EzyConfig {
 }
 
 class EzyPingConfig {
-
   late int pingPeriod = 3000;
   late int maxLostPingCount = 5;
 
