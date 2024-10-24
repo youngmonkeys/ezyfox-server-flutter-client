@@ -25,7 +25,6 @@ class EzySetup {
       var appDataHandlers = handlerManager.getAppDataHandlers(appName);
       appSetup = EzyAppSetup(appDataHandlers, this);
       appSetupByAppName[appName] = appSetup;
-      // add more
     }
     return appSetup;
   }

@@ -23,16 +23,20 @@ class EzyRSAProxy {
   }
 
   void generateKeyPair(Function(EzyKeyPairProxy) callback) {
-    EzyProxy.run("generateKeyPair", {})
-        .then((result) => {_onKeyPairGenerated(result, callback)});
+    EzyProxy.run("generateKeyPair", {}).then((result) => {
+      _onKeyPairGenerated(result, callback)
+    });
   }
 
   void decrypt(
-      Uint8List message, Uint8List privateKey, Function(Uint8List) callback) {
+      Uint8List message,
+      Uint8List privateKey, Function(Uint8List) callback) {
     Map<String, Uint8List> params = {
       "message": message,
       "privateKey": privateKey
     };
-    EzyProxy.run("rsaDecrypt", params).then((result) => {callback(result)});
+    EzyProxy.run("rsaDecrypt", params).then((result) => {
+      callback(result)
+    });
   }
 }

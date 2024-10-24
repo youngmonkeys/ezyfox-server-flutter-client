@@ -9,12 +9,13 @@ class EzyConfig {
   late EzyReconnectConfig reconnect = EzyReconnectConfig();
 
   String getClientName() {
-    if (clientName == null) return zoneName;
+    if(clientName == null)
+      return zoneName;
     return clientName;
   }
 
   Map toMap() {
-    Map map = {};
+    Map map = Map();
     map["clientName"] = getClientName();
     map["zoneName"] = zoneName;
     map["enableSSL"] = enableSSL;
@@ -30,7 +31,7 @@ class EzyPingConfig {
   late int maxLostPingCount = 5;
 
   Map toMap() {
-    Map map = {};
+    Map map = Map();
     map["pingPeriod"] = pingPeriod;
     map["maxLostPingCount"] = maxLostPingCount;
     return map;
@@ -43,7 +44,7 @@ class EzyReconnectConfig {
   late int reconnectPeriod = 3000;
 
   Map toMap() {
-    Map map = {};
+    Map map = Map();
     map["enable"] = enable;
     map["maxReconnectCount"] = maxReconnectCount;
     map["reconnectPeriod"] = reconnectPeriod;
