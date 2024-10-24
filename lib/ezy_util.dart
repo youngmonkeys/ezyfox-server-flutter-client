@@ -1,5 +1,3 @@
-// ignore_for_file: constant_identifier_names, empty_constructor_bodies
-
 import 'dart:math';
 
 class UUID {

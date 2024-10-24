@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_collection_literals
-
 import 'ezy_handlers.dart';
 import 'ezy_managers.dart';
 
@@ -28,7 +26,6 @@ class EzySetup {
       appSetup = EzyAppSetup(appDataHandlers, this);
       appSetupByAppName[appName] = appSetup;
       // add more
-
     }
     return appSetup;
   }

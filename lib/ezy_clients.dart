@@ -1,5 +1,3 @@
-// ignore_for_file: non_constant_identifier_names
-
 import 'ezy_client.dart';
 import 'ezy_config.dart';
 
