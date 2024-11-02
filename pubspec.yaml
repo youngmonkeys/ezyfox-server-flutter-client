@@ -1,7 +1,9 @@
 name: ezyfox_server_flutter_client
 description: EzyFox Server's Flutter client sdk.
 version: 0.0.1
-homepage:
+homepage: https://youngmonkeys.org/
+repository: https://github.com/youngmonkeys/ezyfox-server-flutter-client
+issue_tracker: https://github.com/youngmonkeys/ezyfox-server-flutter-client/issues
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -30,6 +32,13 @@ flutter:
       android:
         package: com.tvd12.ezyfoxserver.client.flutter
         pluginClass: EzyFlutterClientPlugin
+
+topics:
+  - ezyfox
+  - ezyfox-server
+  - ezyfox-server-client
+  - ezyfox-server-flutter-client
+  - ezyfox-server-flutter-client-sdk
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
