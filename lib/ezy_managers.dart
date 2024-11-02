@@ -5,16 +5,12 @@ import 'ezy_handlers.dart';
 import 'ezy_logger.dart';
 
 class EzyAppManager {
-  late String zoneName;
-  late List<EzyApp> appList;
-  late Map<int, EzyApp> appById;
-  late Map<String, EzyApp> appByName;
+  String zoneName;
+  List<EzyApp> appList = [];
+  Map<int, EzyApp> appById = {};
+  Map<String, EzyApp> appByName = {};
 
-  EzyAppManager(this.zoneName) {
-    appList = [];
-    appById = Map();
-    appByName = Map();
-  }
+  EzyAppManager(this.zoneName);
 
   EzyApp? getApp() {
     if (appList.isEmpty) {
@@ -31,7 +27,7 @@ class EzyAppManager {
   }
 
   EzyApp? removeApp(int appId) {
-    var app = appById[appId];
+    EzyApp? app = appById[appId];
     if (app != null) {
       appList.remove(app);
       appById.remove(app.id);
@@ -51,24 +47,24 @@ class EzyAppManager {
 
 //===================================================
 class EzyHandlerManager {
-  late EzyClient client;
+  EzyClient client;
   late EzyDataHandlers dataHandlers;
   late EzyEventHandlers eventHandlers;
-  late Map<String, EzyAppDataHandlers> appDataHandlersByAppName;
+  Map<String, EzyAppDataHandlers> appDataHandlersByAppName =
+      <String, EzyAppDataHandlers>{};
 
   EzyHandlerManager(this.client) {
-    appDataHandlersByAppName = Map<String, EzyAppDataHandlers>();
     dataHandlers = _newDataHandlers();
     eventHandlers = _newEventHandlers();
   }
 
   static EzyHandlerManager create(EzyClient client) {
-    var pRet = EzyHandlerManager(client);
+    EzyHandlerManager pRet = EzyHandlerManager(client);
     return pRet;
   }
 
   EzyEventHandlers _newEventHandlers() {
-    var handlers = EzyEventHandlers(client);
+    EzyEventHandlers handlers = EzyEventHandlers(client);
     handlers.addHandler(
         EzyEventType.CONNECTION_SUCCESS, EzyConnectionSuccessHandler());
     handlers.addHandler(
@@ -78,7 +74,7 @@ class EzyHandlerManager {
   }
 
   EzyDataHandlers _newDataHandlers() {
-    var handlers = EzyDataHandlers(client);
+    EzyDataHandlers handlers = EzyDataHandlers(client);
     handlers.addHandler(EzyCommand.PONG, EzyPongHandler());
     handlers.addHandler(EzyCommand.HANDSHAKE, EzyHandshakeHandler());
     handlers.addHandler(EzyCommand.LOGIN, EzyLoginSuccessHandler());
@@ -98,7 +94,7 @@ class EzyHandlerManager {
   }
 
   EzyAppDataHandlers getAppDataHandlers(String appName) {
-    var answer = appDataHandlersByAppName[appName];
+    EzyAppDataHandlers? answer = appDataHandlersByAppName[appName];
     if (answer == null) {
       answer = EzyAppDataHandlers();
       appDataHandlersByAppName[appName] = answer;

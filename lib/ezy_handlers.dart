@@ -1,6 +1,8 @@
 import 'dart:core';
 import 'dart:typed_data';
 
+import 'package:ezyfox_server_flutter_client/ezy_managers.dart';
+
 import 'ezy_client.dart';
 import 'ezy_constants.dart';
 import 'ezy_entities.dart';
@@ -99,10 +101,16 @@ class EzyConnectionSuccessHandler extends EzyAbstractEventHandler {
 class EzyConnectionFailureHandler extends EzyAbstractEventHandler {
   @override
   void handle(Map event) {
-    var reason = event["reason"] as int;
-    var reasonName =
-        EzyConnectionFailedReasons.getConnectionFailedReasonName(reason);
-    EzyLogger.warn("connection failure, reason = $reasonName");
+    try {
+      var reason = event["reason"] as int;
+      var reasonName =
+          EzyConnectionFailedReasons.getConnectionFailedReasonName(reason);
+      EzyLogger.warn("connection failure, reason = $reasonName");
+    } catch (e) {
+      EzyLogger.error("error when handle connection failure $e");
+      rethrow;
+    }
+
     var config = client.config;
     var reconnectConfig = config.reconnect;
     var should = shouldReconnect(event);
@@ -141,9 +149,15 @@ class EzyConnectionFailureHandler extends EzyAbstractEventHandler {
 class EzyDisconnectionHandler extends EzyAbstractEventHandler {
   @override
   void handle(Map event) {
-    var reason = event["reason"] as int;
-    var reasonName = EzyDisconnectReasons.getDisconnectReasonName(reason);
-    EzyLogger.info("handle disconnection, reason = $reasonName");
+    int? reason;
+    try {
+      reason = event["reason"] as int;
+      var reasonName = EzyDisconnectReasons.getDisconnectReasonName(reason);
+      EzyLogger.info("handle disconnection, reason = $reasonName");
+    } catch (e) {
+      EzyLogger.error("error when handle disconnection $e");
+      rethrow;
+    }
     preHandle(event);
     var config = client.config;
     var reconnectConfig = config.reconnect;
@@ -174,7 +188,12 @@ class EzyDisconnectionHandler extends EzyAbstractEventHandler {
   void preHandle(Map event) {}
 
   bool shouldReconnect(Map event) {
-    var reason = event["reason"] as int;
+    int? reason;
+    try {
+      reason = event["reason"] as int;
+    } catch (e) {
+      EzyLogger.error("error when check should reconnect $e");
+    }
     if (reason == EzyDisconnectReason.ANOTHER_SESSION_LOGIN) {
       return false;
     }
@@ -213,15 +232,20 @@ class EzyHandshakeHandler extends EzyAbstractDataHandler {
   }
 
   void doHandle(List data) {
-    client.sessionToken = data[1] as String;
-    client.sessionId = data[2] as int;
-    if (client.enableSSL) {
-      decryptSessionKey(
-          data[3],
-          (sessionKey, success) =>
-              {_onSessionKeyDecrypted(data, sessionKey, success)});
-    } else {
-      _onSessionKeyDecrypted(data, null, true);
+    try {
+      client.sessionToken = data[1] as String;
+      client.sessionId = data[2] as int;
+      if (client.enableSSL) {
+        decryptSessionKey(
+            data[3],
+            (sessionKey, success) =>
+                {_onSessionKeyDecrypted(data, sessionKey, success)});
+      } else {
+        _onSessionKeyDecrypted(data, null, true);
+      }
+    } catch (e) {
+      EzyLogger.error("error when handle handshake $e");
+      rethrow;
     }
   }
 
@@ -236,6 +260,11 @@ class EzyHandshakeHandler extends EzyAbstractDataHandler {
         "maybe server was not enable SSL, you must enable SSL on server or disable SSL on your client or enable debug mode",
       );
       client.close();
+      callback(null, false);
+      return;
+    }
+    if (client.privateKey == null) {
+      EzyLogger.error("private key is null");
       callback(null, false);
       return;
     }
@@ -282,17 +311,27 @@ class EzyLoginSuccessHandler extends EzyAbstractDataHandler {
   }
 
   EzyUser newUser(List data) {
-    var userId = data[2] as int;
-    var username = data[3] as String;
-    var user = EzyUser(userId, username);
-    return user;
+    try {
+      var userId = data[2] as int;
+      var username = data[3] as String;
+      var user = EzyUser(id: userId, name: username);
+      return user;
+    } catch (e) {
+      EzyLogger.error("create user error $e");
+      rethrow;
+    }
   }
 
   EzyZone newZone(List data) {
-    var zoneId = data[0] as int;
-    var zoneName = data[1] as String;
-    var zone = EzyZone(client, zoneId, zoneName);
-    return zone;
+    try {
+      var zoneId = data[0] as int;
+      var zoneName = data[1] as String;
+      var zone = EzyZone(client, zoneId, zoneName);
+      return zone;
+    } catch (e) {
+      EzyLogger.error("create zone error $e");
+      rethrow;
+    }
   }
 
   void handleLoginSuccess(dynamic responseData) {}
@@ -313,19 +352,28 @@ class EzyLoginErrorHandler extends EzyAbstractDataHandler {
 class EzyAppAccessHandler extends EzyAbstractDataHandler {
   @override
   void handle(List data) {
-    var zone = client.zone;
-    var appManager = zone!.appManager;
-    var app = newApp(zone, data);
+    EzyZone? zone = client.zone;
+    EzyAppManager? appManager = zone?.appManager;
+    if (zone == null || appManager == null) {
+      EzyLogger.warn("receive app access before login successfully");
+      return;
+    }
+    EzyApp app = newApp(zone, data);
     appManager.addApp(app);
     postHandle(app, data);
     EzyLogger.info("access app: ${app.name} successfully");
   }
 
   EzyApp newApp(EzyZone zone, List data) {
-    var appId = data[0] as int;
-    var appName = data[1] as String;
-    var app = EzyApp(client, zone, appId, appName);
-    return app;
+    try {
+      var appId = data[0] as int;
+      var appName = data[1] as String;
+      var app = EzyApp(client: client, zone: zone, id: appId, name: appName);
+      return app;
+    } catch (e) {
+      EzyLogger.error("create app error $e");
+      rethrow;
+    }
   }
 
   void postHandle(EzyApp app, List data) {}
@@ -336,13 +384,19 @@ class EzyAppExitHandler extends EzyAbstractDataHandler {
   @override
   void handle(List data) {
     var zone = client.zone;
-    var appManager = zone!.appManager;
-    var appId = data[0] as int;
-    var reasonId = data[1] as int;
-    var app = appManager.removeApp(appId);
-    if (app != null) {
-      postHandle(app, data);
-      EzyLogger.info("user exit app: ${app.name}, reason: $reasonId");
+    var appManager = zone?.appManager;
+    try {
+      var appId = data[0] as int;
+      var reasonId = data[1] as int;
+
+      var app = appManager?.removeApp(appId);
+      if (app != null) {
+        postHandle(app, data);
+        EzyLogger.info("user exit app: ${app.name}, reason: $reasonId");
+      }
+    } catch (e) {
+      EzyLogger.error("error when handle app exit $e");
+      rethrow;
     }
   }
 
@@ -353,38 +407,45 @@ class EzyAppExitHandler extends EzyAbstractDataHandler {
 class EzyAppResponseHandler extends EzyAbstractDataHandler {
   @override
   void handle(List data) {
-    var appId = data[0] as int;
-    var responseData = data[1] as List;
-    var cmd = responseData[0];
-    var commandData = responseData[1];
-
-    var app = client.getAppById(appId);
-    if (app == null) {
-      EzyLogger.info("receive message when has not joined app yet");
-      return;
-    }
-    var handler = app.getDataHandler(cmd);
-    if (handler != null) {
-      handler.handle(app, commandData);
-    } else {
-      EzyLogger.warn("app: ${app.name} has no handler for command: $cmd");
+    try {
+      var appId = data[0] as int;
+      var responseData = data[1] as List;
+      var cmd = responseData[0];
+      var commandData = responseData[1];
+      var app = client.getAppById(appId);
+      if (app == null) {
+        EzyLogger.info("receive message when has not joined app yet");
+        return;
+      }
+      var handler = app.getDataHandler(cmd);
+      if (handler != null) {
+        handler.handle(app, commandData);
+      } else {
+        EzyLogger.warn("app: ${app.name} has no handler for command: $cmd");
+      }
+    } catch (e) {
+      EzyLogger.error("error when handle app response $e");
+      rethrow;
     }
   }
 }
 
 //=======================================================
 class EzyEventHandlers {
-  late EzyClient client;
-  late Map handlers;
+  EzyClient client;
+  Map handlers = {};
 
-  EzyEventHandlers(this.client) {
-    handlers = Map();
-  }
+  EzyEventHandlers(this.client);
 
   void addHandler(String eventType, EzyEventHandler handler) {
-    var abs = handler as EzyAbstractEventHandler;
-    abs.client = client;
-    handlers[eventType] = handler;
+    try {
+      var abs = handler as EzyAbstractEventHandler;
+      abs.client = client;
+      handlers[eventType] = handler;
+    } catch (e) {
+      EzyLogger.error("error when add event handler $e");
+      rethrow;
+    }
   }
 
   EzyEventHandler? getHandler(String eventType) {
@@ -404,17 +465,20 @@ class EzyEventHandlers {
 //=======================================================
 
 class EzyDataHandlers {
-  late EzyClient client;
-  late Map handlerByCommand;
+  EzyClient client;
+  Map handlerByCommand = {};
 
-  EzyDataHandlers(this.client) {
-    handlerByCommand = Map();
-  }
+  EzyDataHandlers(this.client);
 
   void addHandler(String cmd, EzyDataHandler handler) {
-    var abs = handler as EzyAbstractDataHandler;
-    abs.client = client;
-    handlerByCommand[cmd] = handler;
+    try {
+      var abs = handler as EzyAbstractDataHandler;
+      abs.client = client;
+      handlerByCommand[cmd] = handler;
+    } catch (e) {
+      EzyLogger.error("error when add data handler $e");
+      rethrow;
+    }
   }
 
   EzyDataHandler? getHandler(String cmd) {
@@ -434,11 +498,10 @@ class EzyDataHandlers {
 //=======================================================
 
 class EzyAppDataHandlers {
-  late Map<String, EzyAppDataHandler> _handlerByAppName;
+  final Map<String, EzyAppDataHandler> _handlerByAppName =
+      <String, EzyAppDataHandler>{};
 
-  EzyAppDataHandlers() {
-    _handlerByAppName = Map();
-  }
+  EzyAppDataHandlers();
 
   void addHandler(String cmd, EzyAppDataHandler handler) {
     _handlerByAppName[cmd] = handler;

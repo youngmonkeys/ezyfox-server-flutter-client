@@ -4,12 +4,12 @@ import 'ezy_logger.dart';
 import 'ezy_client.dart';
 
 class EzyProxy {
-  late MethodChannel _methodChannel;
+  final MethodChannel _methodChannel =
+      const MethodChannel('com.tvd12.ezyfoxserver.client');
 
   static final EzyProxy _INSTANCE = EzyProxy._();
 
   EzyProxy._() {
-    _methodChannel = const MethodChannel('com.tvd12.ezyfoxserver.client');
     _methodChannel.setMethodCallHandler(_handleSocketEventDatas);
   }
 
@@ -34,18 +34,42 @@ class EzyProxy {
   }
 
   void _onSocketEvent(Map arguments) {
-    String clientName = arguments["clientName"];
-    String eventType = arguments["eventType"];
+    String? clientName = arguments["clientName"];
+    String? eventType = arguments["eventType"];
     dynamic data = arguments["data"];
-    EzyClient client = _getClient(clientName);
+    if (clientName == null) {
+      EzyLogger.warn("clientName is null, ignore event: $eventType");
+      return;
+    }
+    EzyClient? client = _getClient(clientName);
+    if (eventType == null) {
+      EzyLogger.warn("Event type not found, client name: $clientName");
+      return;
+    }
+    if (client == null) {
+      EzyLogger.warn("Client not found, client name: $clientName");
+      return;
+    }
     client.handleEvent(eventType, data);
   }
 
   void _onSocketData(Map arguments) {
-    String clientName = arguments["clientName"];
-    String command = arguments["command"];
+    String? clientName = arguments["clientName"];
+    String? command = arguments["command"];
     dynamic data = arguments["data"];
-    EzyClient client = _getClient(clientName);
+    if (clientName == null) {
+      EzyLogger.warn("clientName is null, ignore data: $command");
+      return;
+    }
+    EzyClient? client = _getClient(clientName);
+    if (client == null) {
+      EzyLogger.warn("Client not found, client name: $clientName");
+      return;
+    }
+    if (command == null) {
+      EzyLogger.warn("Command not found, client name: $clientName");
+      return;
+    }
     client.handleData(command, data);
   }
 
@@ -53,7 +77,7 @@ class EzyProxy {
     return EzyProxy.getInstance()._methodChannel.invokeMethod(method, params);
   }
 
-  EzyClient _getClient(String clientName) {
+  EzyClient? _getClient(String clientName) {
     return EzyClients.getInstance().getClient(clientName);
   }
 }
