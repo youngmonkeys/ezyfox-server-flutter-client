@@ -2,14 +2,11 @@ import 'ezy_client.dart';
 import 'ezy_config.dart';
 
 class EzyClients {
-  late String defaultClientName;
-  late Map<String, EzyClient> clients;
+  String defaultClientName = "";
+  Map<String, EzyClient> clients = <String, EzyClient>{};
   static final EzyClients _INSTANCE = EzyClients._();
 
-  EzyClients._() {
-    defaultClientName = "";
-    clients = <String, EzyClient>{};
-  }
+  EzyClients._();
 
   static EzyClients getInstance() {
     return _INSTANCE;
@@ -34,12 +31,12 @@ class EzyClients {
     clients[client.name] = client;
   }
 
-  EzyClient getClient(String clientName) {
-    var client = clients[clientName]!;
+  EzyClient? getClient(String clientName) {
+    EzyClient? client = clients[clientName];
     return client;
   }
 
-  EzyClient getDefaultClient() {
-    return clients[defaultClientName]!;
+  EzyClient? getDefaultClient() {
+    return clients[defaultClientName];
   }
 }

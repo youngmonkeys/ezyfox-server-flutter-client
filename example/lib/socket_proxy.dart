@@ -20,15 +20,15 @@ class SocketProxy {
   late Function? _connectionFailedCallback;
   static final SocketProxy _INSTANCE = SocketProxy._();
 
-  SocketProxy._() {}
+  SocketProxy._();
 
   static SocketProxy getInstance() {
     return _INSTANCE;
   }
 
   void _setup() {
-    EzyConfig config = EzyConfig();
-    config.clientName = ZONE_NAME;
+    EzyConfig config = EzyConfig(ZONE_NAME);
+
     config.enableSSL =
         false; // SSL is not active by default using freechat server
     config.ping.maxLostPingCount = 3;
@@ -41,7 +41,7 @@ class SocketProxy {
     _client.setup.addEventHandler(EzyEventType.DISCONNECTION,
         _DisconnectionHandler(_disconnectedCallback!));
     _client.setup.addEventHandler(EzyEventType.CONNECTION_SUCCESS,
-        _connectionHandler(_connectionCallback!));
+        _ConnectionHandler(_connectionCallback!));
     _client.setup.addEventHandler(EzyEventType.CONNECTION_FAILURE,
         _ConnectionFailureHandler(_connectionFailedCallback!));
     _client.setup.addDataHandler(EzyCommand.HANDSHAKE, _HandshakeHandler());
@@ -64,7 +64,7 @@ class SocketProxy {
     this.username = username;
     this.password = password;
     // this._client.connect("127.0.0.1", 3005);
-    this._client.connect("10.0.2.2", 3005);
+    _client.connect("10.0.2.2", 3005);
     // this._client.connect("tvd12.com", 3005);
   }
 
@@ -167,10 +167,10 @@ class _ConnectionFailureHandler extends EzyConnectionFailureHandler {
   }
 }
 
-class _connectionHandler extends EzyConnectionSuccessHandler {
+class _ConnectionHandler extends EzyConnectionSuccessHandler {
   late Function _callback;
 
-  _connectionHandler(Function callback) {
+  _ConnectionHandler(Function callback) {
     _callback = callback;
   }
 

@@ -11,16 +11,16 @@ import 'ezy_setup.dart';
 class EzyClient {
   late bool enableSSL;
   late bool enableDebug;
-  late EzyConfig config;
+  EzyConfig config;
   late String name;
-  late EzyZone? zone;
-  late EzyUser? me;
+  EzyZone? zone;
+  EzyUser? me;
   late EzySetup setup;
   late EzyHandlerManager handlerManager;
-  late Uint8List? privateKey;
-  late int sessionId;
-  late String? sessionToken;
-  late Uint8List? sessionKey;
+  Uint8List? privateKey;
+  int? sessionId;
+  String? sessionToken;
+  Uint8List? sessionKey;
 
   EzyClient(this.config) {
     EzyProxy.run("init", config.toMap());
@@ -34,7 +34,7 @@ class EzyClient {
   void connect(String host, int port) {
     privateKey = null;
     sessionKey = null;
-    var params = Map();
+    var params = {};
     params["clientName"] = name;
     params["host"] = host;
     params["port"] = port;
@@ -44,13 +44,13 @@ class EzyClient {
   Future reconnect() {
     privateKey = null;
     sessionKey = null;
-    var params = Map();
+    var params = {};
     params["clientName"] = name;
     return EzyProxy.run("reconnect", params);
   }
 
   void disconnect([int reason = EzyDisconnectReason.CLOSE]) {
-    var params = Map();
+    var params = {};
     params["clientName"] = name;
     params["reason"] = reason;
     EzyProxy.run("disconnect", params);
@@ -73,9 +73,9 @@ class EzyClient {
         return;
       }
     }
-    var params = Map();
+    var params = {};
     params["clientName"] = name;
-    var requestParams = Map();
+    var requestParams = {};
     requestParams["command"] = cmd;
     requestParams["data"] = data;
     requestParams["encrypted"] = shouldEncrypted;
@@ -84,13 +84,13 @@ class EzyClient {
   }
 
   void startPingSchedule() {
-    var params = Map();
+    var params = {};
     params["clientName"] = name;
     EzyProxy.run("startPingSchedule", params);
   }
 
   void setStatus(String status) {
-    var params = Map();
+    var params = {};
     params["clientName"] = name;
     params["status"] = status;
     EzyProxy.run("setStatus", params);
@@ -98,7 +98,7 @@ class EzyClient {
 
   void setSessionKey(Uint8List sessionKey) {
     this.sessionKey = sessionKey;
-    var params = Map();
+    var params = {};
     params["clientName"] = name;
     params["sessionKey"] = sessionKey;
     EzyProxy.run("setSessionKey", params);

@@ -1,21 +1,19 @@
 import 'dart:core';
 
 class EzyConfig {
-  late String zoneName = "";
-  late String clientName;
-  late bool enableSSL = false;
-  late bool enableDebug = false;
-  late EzyPingConfig ping = EzyPingConfig();
-  late EzyReconnectConfig reconnect = EzyReconnectConfig();
-
+  String zoneName = "";
+  String clientName;
+  bool enableSSL = false;
+  bool enableDebug = false;
+  EzyPingConfig ping = EzyPingConfig();
+  EzyReconnectConfig reconnect = EzyReconnectConfig();
+  EzyConfig(this.clientName);
   String getClientName() {
-    if(clientName == null)
-      return zoneName;
     return clientName;
   }
 
   Map toMap() {
-    Map map = Map();
+    Map map = {};
     map["clientName"] = getClientName();
     map["zoneName"] = zoneName;
     map["enableSSL"] = enableSSL;
@@ -27,11 +25,11 @@ class EzyConfig {
 }
 
 class EzyPingConfig {
-  late int pingPeriod = 3000;
-  late int maxLostPingCount = 5;
+  int pingPeriod = 3000;
+  int maxLostPingCount = 5;
 
   Map toMap() {
-    Map map = Map();
+    Map map = {};
     map["pingPeriod"] = pingPeriod;
     map["maxLostPingCount"] = maxLostPingCount;
     return map;
@@ -39,12 +37,12 @@ class EzyPingConfig {
 }
 
 class EzyReconnectConfig {
-  late bool enable = true;
-  late int maxReconnectCount = 5;
-  late int reconnectPeriod = 3000;
+  bool enable = true;
+  int maxReconnectCount = 5;
+  int reconnectPeriod = 3000;
 
   Map toMap() {
-    Map map = Map();
+    Map map = {};
     map["enable"] = enable;
     map["maxReconnectCount"] = maxReconnectCount;
     map["reconnectPeriod"] = reconnectPeriod;

@@ -6,9 +6,9 @@ import 'ezy_handlers.dart';
 import 'ezy_managers.dart';
 
 class EzyZone {
-  late int id;
-  late String name;
-  late EzyClient client;
+  int id;
+  String name;
+  EzyClient client;
   late EzyAppManager appManager;
 
   EzyZone(this.client, this.id, this.name) {
@@ -21,14 +21,18 @@ class EzyZone {
 }
 
 class EzyApp {
-  late int id;
-  late String name;
-  late EzyZone zone;
-  late EzyClient client;
+  int id;
+  String name;
+  EzyZone zone;
+  EzyClient client;
   late EzyAppDataHandlers dataHandlers;
   static const Map EMPTY_MAP = {};
 
-  EzyApp(this.client, this.zone, this.id, this.name) {
+  EzyApp(
+      {required this.client,
+      required this.zone,
+      required this.id,
+      required this.name}) {
     dataHandlers = client.handlerManager.getAppDataHandlers(name);
   }
 
@@ -48,8 +52,8 @@ class EzyApp {
 }
 
 class EzyUser {
-  late int id;
-  late String name;
+  int id;
+  String name;
 
-  EzyUser(this.id, this.name);
+  EzyUser({required this.id, required this.name});
 }
