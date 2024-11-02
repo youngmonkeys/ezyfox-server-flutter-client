@@ -100,14 +100,14 @@ class _MyHomePageState extends State<MyHomePage> {
               'Socket message: ',
             ),
             Text(
-              '$socketState',
+              socketState,
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             const Text(
               'SSL message: ',
             ),
             Text(
-              '$sslMessage',
+              sslMessage,
               style: Theme.of(context).textTheme.headlineMedium,
             )
           ],
